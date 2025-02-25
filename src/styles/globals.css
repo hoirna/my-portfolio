@@ -111,6 +111,28 @@ body {
   animation: cloudMove 45s linear infinite; /* Medium-duration animation */
 }
 
+/* Cloud 3 (Fast) */
+.animate-clouds-3 {
+  position: absolute;
+  top: 10%;
+  left: -30%;
+  width: 280px;
+  height: 130px;
+  opacity: 0.3;
+  animation: cloudMove 30s linear infinite; /* Faster movement */
+}
+
+/* Cloud 4 (Very Slow) */
+.animate-clouds-4 {
+  position: absolute;
+  top: 40%;
+  left: -5%;
+  width: 350px;
+  height: 170px;
+  opacity: 0.6;
+  animation: cloudMove 60s linear infinite; /* Very slow movement */
+}
+
 /* Stars for Dark Mode */
 .stars {
   position: absolute;
@@ -173,12 +195,12 @@ body {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 30%);
 }
 
-
 /* Dark Mode Overrides for Body */
 body.dark-theme {
   background-color: var(--background);
   color: var(--foreground);
 }
+
 @keyframes zoom {
   0% {
     transform: scale(1);
@@ -193,4 +215,60 @@ body.dark-theme {
 
 .animate-zoom {
   animation: zoom 8s infinite ease-in-out;
+}
+.perspective-1000 {
+  perspective: 1000px; /* Maintain perspective for 3D effect */
+}
+
+.flip-card {
+  transform-style: preserve-3d;
+  width: 300px;  /* Set fixed width */
+  height: 400px; /* Set fixed height */
+  transition: transform 1s ease-in-out; /* Smooth transition for flip effect */
+}
+
+.flip-card-inner {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out; /* Ensure smooth flip animation */
+}
+
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For Safari */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem; /* rounded-xl */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front {
+  background-color: white;
+  color: black;
+  padding: 2rem; /* Increased padding */
+}
+
+.flip-card-back {
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: white;
+  transform: rotateY(180deg); /* Initially rotated to hide the back */
+  padding: 2rem; /* Increased padding */
+}
+
+/* When hovering, flip the card to show the back */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg); /* Flip to show back */
+}
+
+/* Ensure card stays in the last flipped state when hover ends */
+.flip-card .flip-card-inner {
+  transform: rotateY(0deg); /* Reset to front position when not hovered */
 }
