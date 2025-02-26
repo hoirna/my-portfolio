@@ -39,7 +39,7 @@ const Navbar = () => {
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography variant="h6" component="div" className="text-lg font-bold">
           <Link href="/" passHref>
-            My Portfolio
+            MY PORTFOLIO
           </Link>
         </Typography>
 
