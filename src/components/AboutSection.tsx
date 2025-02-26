@@ -113,19 +113,14 @@ const AboutSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <a
-              href="#projects"
-              className="inline-block px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold text-lg rounded-lg shadow-xl hover:scale-110 transform transition-all duration-300"
-            >
-              View Projects
-            </a>
+
             <a
               href="#contact"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold text-lg rounded-lg shadow-xl hover:scale-110 transform transition-all duration-300"
             >
               Contact Me
             </a>
-          </motion.div>
+          </motion.div>``
         </motion.div>
       </div>
     </section>

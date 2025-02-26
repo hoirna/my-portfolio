@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '@/context/ThemeContext';
 import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -24,8 +24,18 @@ const Navbar = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  const navItems = [
+    { text: 'Home', path: '/' },
+    { text: 'About', path: '/About' },
+    { text: 'Projects', path: '/Projects' },
+    { text: 'Contact', path: '/Contact' },
+  ];
+
   return (
-    <AppBar position="fixed" color="default" className="w-full">
+    <AppBar
+      position="fixed"
+      className={`w-full ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
+    >
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography variant="h6" component="div" className="text-lg font-bold">
           <Link href="/" passHref>
@@ -34,9 +44,11 @@ const Navbar = () => {
         </Typography>
 
         <div className="hidden md:flex gap-6 items-center">
-          {['Home', 'About', 'Projects', 'Contact'].map((text) => (
-            <Link href={`/${text}`} passHref key={text}>
-              <Button color="inherit">{text}</Button>
+          {navItems.map((item) => (
+            <Link href={item.path} passHref key={item.text}>
+              <Button className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+                {item.text}
+              </Button>
             </Link>
           ))}
           <IconButton onClick={toggleTheme} className="ml-4">
@@ -50,9 +62,9 @@ const Navbar = () => {
           </IconButton>
           <IconButton
             edge="end"
-            color="inherit"
             aria-label="menu"
             onClick={() => setIsOpen(!isOpen)}
+            className={theme === 'dark' ? 'text-white' : 'text-gray-900'}
           >
             {isOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
@@ -60,11 +72,11 @@ const Navbar = () => {
       </Toolbar>
 
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
-        <List className="w-64">
-          {['Home', 'About', 'Projects', 'Contact'].map((text) => (
-            <Link href={`/${text}`} passHref key={text}>
-              <ListItem component="a">
-                <ListItemText primary={text} />
+        <List className={`w-64 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+          {navItems.map((item) => (
+            <Link href={item.path} passHref key={item.text}>
+              <ListItem component="a" onClick={() => setIsOpen(false)}>
+                <ListItemText primary={item.text} />
               </ListItem>
             </Link>
           ))}
