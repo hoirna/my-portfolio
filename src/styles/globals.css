@@ -275,3 +275,31 @@ body.dark-theme {
 .flip-card .flip-card-inner {
   transform: rotateY(0deg);
 }
+:root {
+  --background: #f9ef19;
+  --foreground: #111;
+  --primary: #F9EF19;
+  --primary-light: #FFEB3B;
+  --primary-dark: #FBC02D;
+  --secondary: #1976D2;
+  --secondary-light: #42A5F5;
+  --secondary-dark: #1565C0;
+  --accent: #FF4081;
+  --accent-light: #FF80AB;
+  --accent-dark: #F50057;
+}
+
+/* Dark theme */
+.dark {
+  --background: #111;
+  --foreground: #f9ef19;
+  --primary: #1976D2;
+  --primary-light: #42A5F5;
+  --primary-dark: #1565C0;
+  --secondary: #FF4081;
+  --secondary-light: #FF80AB;
+  --secondary-dark: #F50057;
+  --accent: #FBC02D;
+  --accent-light: #FFEB3B;
+  --accent-dark: #F9EF19;
+}

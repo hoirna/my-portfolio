@@ -9,8 +9,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  // Make sure the theme is applied only on the client-side
   useEffect(() => {
+    // Ensure the theme is applied only on the client-side
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
@@ -37,10 +37,7 @@ const Navbar = () => {
   ];
 
   return (
-    <AppBar
-      position="fixed"
-      className={`w-full ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
-    >
+    <AppBar position="fixed" className={`w-full ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography variant="h6" component="div" className="text-lg font-bold">
           <Link href="/" passHref>
@@ -57,14 +54,14 @@ const Navbar = () => {
               </Button>
             </Link>
           ))}
-          <IconButton onClick={toggleTheme} className="ml-4">
+          <IconButton onClick={toggleTheme} className="ml-4" aria-label="toggle-theme">
             {theme === 'light' ? '🌙' : '☀️'}
           </IconButton>
         </div>
 
         {/* Mobile Navbar */}
         <div className="md:hidden flex items-center gap-2">
-          <IconButton onClick={toggleTheme}>
+          <IconButton onClick={toggleTheme} aria-label="toggle-theme">
             {theme === 'light' ? '🌙' : '☀️'}
           </IconButton>
           <IconButton
