@@ -9,19 +9,24 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  // Make sure the theme is applied only on the client-side
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      document.documentElement.classList.add(storedTheme);
-    } else {
-      document.documentElement.classList.add('light');
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+        document.documentElement.classList.add(storedTheme);
+      } else {
+        document.documentElement.classList.add('light');
+      }
     }
   }, []);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.documentElement.classList.toggle('light', theme !== 'dark');
-    localStorage.setItem('theme', theme);
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+      document.documentElement.classList.toggle('light', theme !== 'dark');
+      localStorage.setItem('theme', theme);
+    }
   }, [theme]);
 
   const navItems = [
@@ -43,6 +48,7 @@ const Navbar = () => {
           </Link>
         </Typography>
 
+        {/* Desktop Navbar */}
         <div className="hidden md:flex gap-6 items-center">
           {navItems.map((item) => (
             <Link href={item.path} passHref key={item.text}>
@@ -56,6 +62,7 @@ const Navbar = () => {
           </IconButton>
         </div>
 
+        {/* Mobile Navbar */}
         <div className="md:hidden flex items-center gap-2">
           <IconButton onClick={toggleTheme}>
             {theme === 'light' ? '🌙' : '☀️'}
@@ -71,6 +78,7 @@ const Navbar = () => {
         </div>
       </Toolbar>
 
+      {/* Drawer (Mobile Menu) */}
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
         <List className={`w-64 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
           {navItems.map((item) => (
