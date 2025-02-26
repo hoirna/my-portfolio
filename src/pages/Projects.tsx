@@ -96,7 +96,7 @@ export default function Projects() {
 
   return (
     <main
-      className={`mt-16 min-h-screen py-16 px-6 sm:px-10 lg:px-20 ${
+      className={` min-h-screen py-16 px-6 sm:px-10 lg:px-20 ${
         theme === "dark"
           ? "bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white"
           : "bg-gradient-to-b from-gray-100 via-white to-gray-200 text-gray-900"
@@ -107,7 +107,7 @@ export default function Projects() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold text-center mb-4 bg-clip-text text-transparent ${
+          className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold text-center mb-4 bg-clip-text text-transparent mt-12 ${
             theme === "dark"
               ? "bg-gradient-to-r from-cyan-400 to-pink-500"
               : "bg-gradient-to-r from-indigo-600 to-purple-600"
@@ -119,9 +119,9 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className={`text-lg sm:text-xl ${
+          className={`text-md sm:text-xl ${
             theme === "dark" ? "text-gray-300" : "text-gray-700"
-          } text-center mb-12 max-w-2xl mx-auto`}
+          } text-center mb-12 max-w-2xl mx-auto mt-12`}
         >
           Bold, innovative creations built with passion and precision.
         </motion.p>
