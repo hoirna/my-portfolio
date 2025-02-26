@@ -1,8 +1,9 @@
+/* Base Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Mode Settings */
+/* Dark Mode Settings - These can be used when system prefers dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -10,14 +11,36 @@
   }
 }
 
-.dark-theme {
-  background-color: #1a202c; /* Dark background */
-  color: #e2e8f0; /* Light text */
+/* Custom Theme Variables for Light and Dark Modes */
+
+/* Light Theme Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #1a202c;
+  --primary: #F9EF19;
+  --primary-light: #FFEB3B;
+  --primary-dark: #FBC02D;
+  --secondary: #1976D2;
+  --secondary-light: #42A5F5;
+  --secondary-dark: #1565C0;
+  --accent: #FF4081;
+  --accent-light: #FF80AB;
+  --accent-dark: #F50057;
 }
 
-.light-theme {
-  background-color: #ffffff; /* Light background */
-  color: #1a202c; /* Dark text */
+/* Dark Theme Variables */
+.dark {
+  --background: #111;
+  --foreground: #f9ef19;
+  --primary: #1976D2;
+  --primary-light: #42A5F5;
+  --primary-dark: #1565C0;
+  --secondary: #FF4081;
+  --secondary-light: #FF80AB;
+  --secondary-dark: #F50057;
+  --accent: #FBC02D;
+  --accent-light: #FFEB3B;
+  --accent-dark: #F9EF19;
 }
 
 /* Global Styles */
@@ -25,8 +48,11 @@ html {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+/* Body Styles - These will react to light or dark class */
 body {
   @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-white;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 /* Typing effect animation */
@@ -46,10 +72,8 @@ body {
   width: 0;
   animation: typing 3s steps(30) 1s forwards;
   font-family: "Courier New", Courier, monospace;
-  animation: 
-    typing 4s steps(60, end) infinite, /* Typing animation runs once */
-    blink 0.75s step-end infinite; /* Cursor blink animation */
-  border-right: 4px solid #00ff00; /* Cursor style */
+  animation: typing 4s steps(60, end) infinite, blink 0.75s step-end infinite;
+  border-right: 4px solid #00ff00;
 }
 
 /* Keyframe for blinking cursor */
@@ -62,8 +86,8 @@ body {
 /* Cursor */
 .cursor {
   display: inline-block;
-  width: 4px; /* Cursor width */
-  background-color: #00ff00; /* Cursor color */
+  width: 4px;
+  background-color: #00ff00;
   animation: blink 0.75s step-end infinite;
 }
 
@@ -95,7 +119,7 @@ body {
   }
 }
 
-/* Cloud 1 (Slow) */
+/* Cloud Animations (Multiple Clouds with different speeds) */
 .animate-clouds {
   position: absolute;
   top: 5%;
@@ -106,7 +130,6 @@ body {
   animation: cloudMove 40s linear infinite;
 }
 
-/* Cloud 2 (Medium Speed) */
 .animate-clouds-2 {
   position: absolute;
   top: 25%;
@@ -117,7 +140,6 @@ body {
   animation: cloudMove 45s linear infinite;
 }
 
-/* Cloud 3 (Fast) */
 .animate-clouds-3 {
   position: absolute;
   top: 10%;
@@ -128,7 +150,6 @@ body {
   animation: cloudMove 30s linear infinite;
 }
 
-/* Cloud 4 (Very Slow) */
 .animate-clouds-4 {
   position: absolute;
   top: 40%;
@@ -185,16 +206,7 @@ body {
   }
 }
 
-.star:nth-child(odd) {
-  animation-duration: 1.8s;
-  animation-delay: -0.2s;
-}
-
-.star:nth-child(even) {
-  animation-duration: 2.2s;
-  animation-delay: -0.4s;
-}
-
+/* Stars background with gradient */
 .stars {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 30%);
 }
@@ -205,6 +217,7 @@ body.dark-theme {
   color: var(--foreground);
 }
 
+/* Zoom Effect Animation */
 @keyframes zoom {
   0% {
     transform: scale(1);
@@ -221,6 +234,7 @@ body.dark-theme {
   animation: zoom 8s infinite ease-in-out;
 }
 
+/* 3D Flip Card */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -243,7 +257,6 @@ body.dark-theme {
 .flip-card-front,
 .flip-card-back {
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -274,32 +287,4 @@ body.dark-theme {
 
 .flip-card .flip-card-inner {
   transform: rotateY(0deg);
-}
-:root {
-  --background: #f9ef19;
-  --foreground: #111;
-  --primary: #F9EF19;
-  --primary-light: #FFEB3B;
-  --primary-dark: #FBC02D;
-  --secondary: #1976D2;
-  --secondary-light: #42A5F5;
-  --secondary-dark: #1565C0;
-  --accent: #FF4081;
-  --accent-light: #FF80AB;
-  --accent-dark: #F50057;
-}
-
-/* Dark theme */
-.dark {
-  --background: #111;
-  --foreground: #f9ef19;
-  --primary: #1976D2;
-  --primary-light: #42A5F5;
-  --primary-dark: #1565C0;
-  --secondary: #FF4081;
-  --secondary-light: #FF80AB;
-  --secondary-dark: #F50057;
-  --accent: #FBC02D;
-  --accent-light: #FFEB3B;
-  --accent-dark: #F9EF19;
 }
