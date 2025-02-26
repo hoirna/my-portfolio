@@ -1,32 +1,13 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
-import { AppBar, Toolbar, IconButton, Typography, Button, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme) {
-        document.documentElement.classList.add(storedTheme);
-      } else {
-        document.documentElement.classList.add('light');
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
-      document.documentElement.classList.toggle('light', theme !== 'dark');
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
 
   const navItems = [
     { text: 'Home', path: '/' },
@@ -36,7 +17,10 @@ const Navbar = () => {
   ];
 
   return (
-    <AppBar position="fixed" className={`w-full ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+    <AppBar
+      position="fixed"
+      className={`w-full ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
+    >
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography variant="h6" component="div" className="text-lg font-bold">
           <Link href="/" passHref>
@@ -45,14 +29,14 @@ const Navbar = () => {
         </Typography>
 
         {/* Desktop Navbar */}
-        <div className="hidden md:flex gap-6 items-center">
+        <div className="hidden md:flex gap-6 items-center text-lg font-semibold">
           {navItems.map((item) => (
-            <Link href={item.path} passHref key={item.text}>
-              <Button
+            <Link href={item.path} key={item.text}>
+              <span
                 className={theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}
               >
                 {item.text}
-              </Button>
+              </span>
             </Link>
           ))}
           <IconButton onClick={toggleTheme} className="ml-4" aria-label="toggle-theme">
@@ -80,10 +64,12 @@ const Navbar = () => {
       <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(false)}>
         <List className={`w-64 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
           {navItems.map((item) => (
-            <Link href={item.path} passHref key={item.text}>
-              <ListItem component="a" onClick={() => setIsOpen(false)}>
-                <ListItemText primary={item.text} />
-              </ListItem>
+            <Link href={item.path} key={item.text}>
+              <span onClick={() => setIsOpen(false)}>
+                <ListItem component="div">
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              </span>
             </Link>
           ))}
         </List>
@@ -91,4 +77,5 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 export default Navbar;

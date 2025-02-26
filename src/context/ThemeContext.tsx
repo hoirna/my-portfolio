@@ -1,35 +1,39 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 
-// Define a type for the context value
 interface ThemeContextType {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
 
-// Create a context with a default value of null
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// Create a provider component
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    // Check if the code is running in the browser
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
-        setTheme(savedTheme as 'light' | 'dark'); // Type assertion
+        setTheme(savedTheme as 'light' | 'dark');
       } else {
-        setTheme('light'); // Default theme if not set
+        setTheme('light');
       }
     }
   }, []);
+
+  useEffect(() => {
+    // Apply the theme class to the document HTML element
+    if (typeof window !== 'undefined') {
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', newTheme); // Save the theme to localStorage
+      localStorage.setItem('theme', newTheme);
     }
   };
 
@@ -40,7 +44,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Custom hook to use the ThemeContext
 export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (!context) {
