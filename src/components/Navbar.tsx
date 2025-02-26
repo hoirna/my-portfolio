@@ -29,7 +29,7 @@ const Navbar = () => {
         </Typography>
 
         {/* Desktop Navbar */}
-        <div className="hidden md:flex gap-6 items-center text-lg fond">
+        <div className="hidden md:flex gap-6 items-center text-lg font">
           {navItems.map((item) => (
             <Link href={item.path} key={item.text}>
               <span
