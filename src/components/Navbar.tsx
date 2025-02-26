@@ -10,7 +10,6 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    // Ensure the theme is applied only on the client-side
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
@@ -49,7 +48,9 @@ const Navbar = () => {
         <div className="hidden md:flex gap-6 items-center">
           {navItems.map((item) => (
             <Link href={item.path} passHref key={item.text}>
-              <Button className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>
+              <Button
+                className={theme === 'dark' ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-700'}
+              >
                 {item.text}
               </Button>
             </Link>
@@ -90,5 +91,4 @@ const Navbar = () => {
     </AppBar>
   );
 };
-
 export default Navbar;
