@@ -1,32 +1,22 @@
 import { motion } from "framer-motion";
-import { FaReact, FaDocker, FaAws, FaJsSquare } from "react-icons/fa"; // React, Docker, AWS, JS icons
-import { MdPublic } from "react-icons/md"; // Web icon from react-icons
-import { IoLogoGithub } from "react-icons/io"; // GitHub icon from react-icons
-import { SiNodedotjs, SiTypescript, SiFigma, SiVercel, SiHeroku, SiCircleci, SiVsco } from "react-icons/si"; // Node.js, TypeScript, Figma, Vercel, Heroku, CI/CD, VS Code icons
-import { DiMongodb } from "react-icons/di"; // MongoDB icon
-import { GiDatabase } from "react-icons/gi"; // SQL database icon
 
 const AboutSection = () => {
   const cards = [
     {
       title: "FRONTEND",
-      skills: ["React", "Next.js", "Tailwind CSS", "JavaScript/TypeScript"],
-      icons: [FaReact, MdPublic, FaJsSquare, SiTypescript], // React, web, JS, TypeScript icons
+      skills: ["HTML","CSS", "Tailwind CSS", "Next JS", "JavaScript/TypeScript"],
     },
     {
       title: "BACKEND",
-      skills: ["Node.js", "Express", "MongoDB", "SQL"],
-      icons: [SiNodedotjs, DiMongodb, FaDocker, GiDatabase], // Node.js, MongoDB, Docker, SQL database icons
+      skills: ["Node JS", "Express JS", "Docker", "SQL"],
     },
     {
       title: "TOOLS & TECH",
-      skills: ["Git & GitHub", "Docker", "Figma", "VS Code"],
-      icons: [IoLogoGithub, FaDocker, SiFigma, SiVsco], // GitHub, Docker, Figma, VS Code icons
+      skills: ["Git & GitHub", "Figma", "VS Code", "Canva"],
     },
     {
       title: "CLOUD SERVER",
-      skills: ["AWS", "Vercel", "Heroku", "CI/CD"],
-      icons: [FaAws, SiVercel, SiHeroku, SiCircleci], // AWS, Vercel, Heroku, CI/CD icons
+      skills: ["AWS", "Vercel"],
     },
   ];
 
@@ -80,11 +70,8 @@ const AboutSection = () => {
               <div key={index} className="relative perspective-1000">
                 <div className="flip-card w-full h-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
                   <div className="flip-card-inner w-full h-full absolute transition-all duration-600 transform-style-preserve-3d">
-                    <div className="flip-card-front bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
-                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-4 flex-grow">
-                        {card.title}
-                      </h3>
-                      <ul className="text-gray-600 dark:text-gray-300 space-y-3 flex-grow">
+                    <div className="flip-card-front bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col justify-center">
+                      <ul className="text-gray-600 dark:text-gray-300 space-y-3">
                         {card.skills.map((skill) => (
                           <li key={skill} className="text-lg">
                             {skill}
@@ -93,13 +80,10 @@ const AboutSection = () => {
                       </ul>
                     </div>
                     <div className="flip-card-back bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl p-8 flex justify-center items-center flex-col shadow-lg transform rotate-y-180 transition-all duration-300">
-                      <div className="flex space-x-4">
-                        {card.icons.map((Icon, i) => (
-                          <div key={i} className="text-3xl">
-                            <Icon />
-                          </div>
-                        ))}
-                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-semibold">
+                        {card.title}
+                      </h3>
+                      <p className="text-lg mt-2">Explore More</p>
                     </div>
                   </div>
                 </div>
@@ -113,7 +97,6 @@ const AboutSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-
             <a
               href="#contact"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold text-lg rounded-lg shadow-xl hover:scale-110 transform transition-all duration-300"

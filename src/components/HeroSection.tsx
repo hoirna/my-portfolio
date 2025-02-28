@@ -131,7 +131,7 @@ const HeroSection = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
               <span className="typing-effect">
-                Hi, I am <span className="text-[#80ff80]">SENG HOIRNA</span>
+                Hi, I am <span className="text-[#80ff80]">SENG HOIRNA.</span>
               </span>
             </h1>
             <p
@@ -151,7 +151,7 @@ const HeroSection = () => {
             </p>
             <div className="mt-8">
               <Link
-                href="/projects"
+                href="/Contact"
                 className={`inline-block px-8 py-4 font-semibold rounded-full shadow-lg transition duration-300 ${
                   theme === "dark"
                     ? "bg-gradient-to-r from-[#00ff00] to-[#80ff80] text-gray-900 hover:from-[#00cc00] hover:to-[#66cc66]"
@@ -165,45 +165,44 @@ const HeroSection = () => {
 
           {/* Profile Picture with Circular Hover Effect */}
           <motion.div
-  initial={{ scale: 1 }}
-  animate={{ scale: [1, 1.05, 1] }}
-  transition={{
-    duration: 4,
-    ease: "easeInOut",
-    repeat: Infinity,
-  }}
-  className="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[450px] lg:h-[450px] mx-auto rounded-full overflow-hidden"
->
-  {/* Gradient background */}
-  <div
-    className={`absolute inset-4 rounded-full bg-gradient-to-br ${
-      theme === "dark"
-        ? "from-gray-800/50 to-indigo-900/50"
-        : "from-orange-100/50 to-indigo-200/50"
-    } shadow-inner`}
-  />
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{
+              duration: 4,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+            className="relative w-[250px] sm:w-[300px] lg:w-[350px] h-[250px] sm:h-[300px] lg:h-[350px] mx-auto rounded-full overflow-hidden"
+          >
+            {/* Gradient background */}
+            <div
+              className={`absolute inset-4 rounded-full bg-gradient-to-br ${
+                theme === "dark"
+                  ? "from-gray-800/50 to-indigo-900/50"
+                  : "from-orange-100/50 to-indigo-200/50"
+              } shadow-inner`}
+            />
 
-  {/* Hover effect */}
-  <motion.div
-    className={`absolute inset-0 rounded-md border-3 ${
-      theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
-    } opacity-0`}
-    whileHover={{ scale: 1.1, opacity: 1 }}
-    transition={{ duration: 0.3 }}
-  />
+            {/* Hover effect */}
+            <motion.div
+              className={`absolute inset-0 rounded-md border-3 ${
+                theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
+              } opacity-0`}
+              whileHover={{ scale: 1.1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
 
-  {/* Profile Image */}
-  <Image
-    src="/images/Mypic.png"
-    alt="Seng Hoirna's Profile Picture"
-    width={400}
-    height={400}
-    className={`relative z-10 object-cover w-full h-full rounded-full border-4 ${
-      theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
-    } shadow-2xl transition-all duration-300 ease-in-out`}
-  />
-</motion.div>
-
+            {/* Profile Image */}
+            <Image
+              src="/images/profile.png"
+              alt="Seng Hoirna's Profile Picture"
+              width={350}  // Adjusted to match the largest container size
+              height={350} // Adjusted to match the largest container size
+              className={`relative z-10 object-cover w-full h-full rounded-full border-4 ${
+                theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
+              } shadow-2xl transition-all duration-300 ease-in-out`}
+            />
+          </motion.div>
         </div>
       </div>
     </motion.section>

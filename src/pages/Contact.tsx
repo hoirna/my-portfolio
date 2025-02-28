@@ -1,8 +1,24 @@
 import { useTheme } from "@/context/ThemeContext"; // Adjust path as needed
 import { motion } from "framer-motion";
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
-  const { theme } = useTheme(); // Access theme from context
+  const { theme } = useTheme();
+
+  // Define form data type
+  interface FormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<string>("");
 
   const socialLinks = [
     {
@@ -31,7 +47,6 @@ export default function Contact() {
         </svg>
       ),
     },
-
   ];
 
   // Animation variants
@@ -43,6 +58,59 @@ export default function Contact() {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  // Handle form input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  // Handle form submission with EmailJS
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    // Access environment variables
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // Check if environment variables are available
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus("Error: EmailJS configuration is missing.");
+      console.error("Missing EmailJS environment variables.");
+      setTimeout(() => setStatus(""), 3000);
+      return;
+    }
+
+    try {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      console.log("EmailJS Success:", result.text);
+      setStatus("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" }); // Reset form
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("EmailJS Error:", error.message);
+        setStatus(`Error: ${error.message}. Please try again.`);
+      } else {
+        console.error("Unknown EmailJS Error:", error);
+        setStatus("An unexpected error occurred. Please try again.");
+      }
+    }
+
+    // Clear status message after 3 seconds
+    setTimeout(() => setStatus(""), 3000);
   };
 
   return (
@@ -97,7 +165,7 @@ export default function Contact() {
               : "bg-white/80 border-gray-200/50"
           } backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-full max-w-lg mx-auto border hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-shadow duration-500`}
         >
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label
                 htmlFor="name"
@@ -111,6 +179,9 @@ export default function Contact() {
                 type="text"
                 id="name"
                 placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className={`w-full px-4 py-3 rounded-lg ${
                   theme === "dark"
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
@@ -131,6 +202,9 @@ export default function Contact() {
                 type="email"
                 id="email"
                 placeholder="your.email@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className={`w-full px-4 py-3 rounded-lg ${
                   theme === "dark"
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
@@ -151,6 +225,9 @@ export default function Contact() {
                 id="message"
                 placeholder="What’s on your mind?"
                 rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                required
                 className={`w-full px-4 py-3 rounded-lg ${
                   theme === "dark"
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
@@ -168,6 +245,15 @@ export default function Contact() {
             >
               Send It!
             </button>
+            {status && (
+              <p
+                className={`mt-4 text-center ${
+                  status.includes("success") ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {status}
+              </p>
+            )}
           </form>
         </motion.div>
 

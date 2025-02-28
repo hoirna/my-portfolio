@@ -58,10 +58,13 @@ body {
 /* Typing effect animation */
 @keyframes typing {
   0% {
-    width: 0;
+    width: 0; /* Start with no width */
+  }
+  70% {
+    width: 100%; /* Typing completes at 70% of the total duration */
   }
   100% {
-    width: 100%;
+    width: 100%; /* Holds full width for the remaining 30% (pause) */
   }
 }
 
@@ -72,7 +75,7 @@ body {
   width: 0;
   animation: typing 3s steps(30) 1s forwards;
   font-family: "Courier New", Courier, monospace;
-  animation: typing 4s steps(60, end) infinite, blink 0.75s step-end infinite;
+  animation: typing 10s steps(60, end) infinite, blink 0.75s step-end infinite;
   border-right: 4px solid #00ff00;
 }
 
@@ -122,12 +125,12 @@ body {
 /* Cloud Animations (Multiple Clouds with different speeds) */
 .animate-clouds {
   position: absolute;
-  top: 5%;
+  top: 15%;
   left: -20%;
   width: 320px;
   height: 150px;
   opacity: 0.5;
-  animation: cloudMove 40s linear infinite;
+  animation: cloudMove 50s linear infinite;
 }
 
 .animate-clouds-2 {
@@ -137,7 +140,7 @@ body {
   width: 250px;
   height: 120px;
   opacity: 0.4;
-  animation: cloudMove 45s linear infinite;
+  animation: cloudMove 60s linear infinite;
 }
 
 .animate-clouds-3 {
@@ -147,17 +150,17 @@ body {
   width: 280px;
   height: 130px;
   opacity: 0.3;
-  animation: cloudMove 30s linear infinite;
+  animation: cloudMove 40s linear infinite;
 }
 
 .animate-clouds-4 {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: -5%;
   width: 350px;
   height: 170px;
   opacity: 0.6;
-  animation: cloudMove 60s linear infinite;
+  animation: cloudMove 70s linear infinite;
 }
 
 /* Stars for Dark Mode */
@@ -176,7 +179,7 @@ body {
   background: #ffffff;
   border-radius: 50%;
   opacity: 0.2;
-  animation: twinkle 1.5s infinite alternate, float 20s linear infinite;
+  animation: twinkle 4.5s infinite alternate, float 20s linear infinite;
 }
 
 @keyframes twinkle {
