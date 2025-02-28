@@ -8,7 +8,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  
+
   darkMode: "class",
   theme: {
     extend: {
@@ -30,6 +30,9 @@ const config: Config = {
           light: "var(--accent-light)",
           dark: "var(--accent-dark)",
         },
+      },
+      fontFamily: {
+        sans: ['Roboto', 'Arial', 'sans-serif'], // Add your font family here
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",

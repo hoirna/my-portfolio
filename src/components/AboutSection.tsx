@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const AboutSection = () => {
   const cards = [
     {
       title: "FRONTEND",
-      skills: ["HTML","CSS", "Tailwind CSS", "Next JS", "JavaScript/TypeScript"],
+      skills: ["HTML", "CSS", "Tailwind CSS", "Next JS", "JavaScript/TypeScript"],
     },
     {
       title: "BACKEND",
@@ -70,20 +71,19 @@ const AboutSection = () => {
               <div key={index} className="relative perspective-1000">
                 <div className="flip-card w-full h-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
                   <div className="flip-card-inner w-full h-full absolute transition-all duration-600 transform-style-preserve-3d">
-                    <div className="flip-card-front bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col justify-center">
-                      <ul className="text-gray-600 dark:text-gray-300 space-y-3">
+                    <div className="flip-card-front bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col justify-center items-center">
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
+                        {card.title}
+                      </h3>
+                    </div>
+                    <div className="flip-card-back bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl p-8 flex flex-col justify-center shadow-lg transform rotate-y-180 transition-all duration-300">
+                      <ul className="space-y-3">
                         {card.skills.map((skill) => (
                           <li key={skill} className="text-lg">
                             {skill}
                           </li>
                         ))}
                       </ul>
-                    </div>
-                    <div className="flip-card-back bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl p-8 flex justify-center items-center flex-col shadow-lg transform rotate-y-180 transition-all duration-300">
-                      <h3 className="text-2xl sm:text-3xl font-semibold">
-                        {card.title}
-                      </h3>
-                      <p className="text-lg mt-2">Explore More</p>
                     </div>
                   </div>
                 </div>
@@ -97,12 +97,12 @@ const AboutSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.6 }}
           >
-            <a
-              href="#contact"
+            <Link
+              href="/Contact"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold text-lg rounded-lg shadow-xl hover:scale-110 transform transition-all duration-300"
             >
               Contact Me
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
