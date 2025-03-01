@@ -201,8 +201,8 @@ const HeroSection = () => {
             <Image
               src="/images/Profile.png"
               alt="Seng Hoirna's Profile Picture"
-              width={450}
-              height={450}
+              width={350}
+              height={350}
               className={`relative z-10 object-cover w-full h-full rounded-full border-4 ${
                 theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
               } shadow-2xl transition-all duration-300 ease-in-out`}

@@ -125,12 +125,13 @@ export default function About() {
           whileHover={{ boxShadow: "0 0 30px rgba(79, 70, 229, 0.7)" }}
         >
           <Image
-            src="/images/Profile.png"
+            src="/images/Profile.png" // Ensure this matches the exact path and case
             alt="Seng Hoirna"
             className="w-full h-full object-cover"
             width={300}
             height={300}
             priority
+            onError={() => console.log("Image failed to load")} // Add for debugging
           />
         </motion.div>
 
@@ -234,7 +235,9 @@ export default function About() {
                                 ? "text-gray-300"
                                 : "text-gray-700"
                             }`}
-                            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h4
+                            style={{
+                              fontFamily: '"Courier New", Courier, monospace',
+                            }} // Applied to h4
                           >
                             {subCategory}
                           </h4>
@@ -251,7 +254,10 @@ export default function About() {
                                       ? "bg-gradient-to-br from-indigo-600 to-purple-700 text-white"
                                       : "bg-gradient-to-br from-indigo-400 to-purple-500 text-white"
                                   } shadow-md`}
-                                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to skill tags
+                                  style={{
+                                    fontFamily:
+                                      '"Courier New", Courier, monospace',
+                                  }} // Applied to skill tags
                                 >
                                   {skill}
                                 </motion.div>
@@ -259,7 +265,10 @@ export default function About() {
                             ) : (
                               <p
                                 className="text-red-500"
-                                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to error message
+                                style={{
+                                  fontFamily:
+                                    '"Courier New", Courier, monospace',
+                                }} // Applied to error message
                               >
                                 Error: Invalid skills data
                               </p>

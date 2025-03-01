@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState } from "react"; // Removed unused useEffect
 import { useTheme } from "@/context/ThemeContext";
 import {
   Toolbar,
@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // Fixed type
 
   const navItems = [
     { text: "HOME", path: "/" },
@@ -25,31 +26,6 @@ const Navbar = () => {
     { text: "PROJECTS", path: "/Projects" },
     { text: "CONTACT", path: "/Contact" },
   ];
-
-  // Animation variants for the name
-  const nameVariants = {
-    initial: {
-      scale: 1,
-      rotate: 0,
-      y: 0,
-    },
-    hover: {
-      scale: 1.1,
-      rotate: [0, 2, -2, 0], // Wobble effect
-      y: -5, // Slight lift
-      color: theme === "dark" ? "#4ade80" : "#16a34a", // Different hover colors for dark/light
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-        duration: 0.3,
-        rotate: {
-          duration: 0.4,
-          repeat: 1,
-        },
-      },
-    },
-  };
 
   const containerVariants = {
     initial: {},
@@ -70,8 +46,40 @@ const Navbar = () => {
     },
   };
 
+  // Animation properties without color changes
+  const motionProps = {
+    initial: {
+      scale: 1,
+      rotate: 0,
+      y: 0,
+    },
+    hover: {
+      scale: 1.1,
+      rotate: [0, 2, -2, 0],
+      y: -5,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+        duration: 0.3,
+        rotate: {
+          duration: 0.4,
+          repeat: 1,
+        },
+      },
+    },
+  };
+
   const name = "SENG HOIRNA";
-  const textColor = theme === "dark" ? "text-white" : "text-gray-900";
+
+  // Get letter color based on theme and hover state
+  const getLetterColor = (index: number) => { // Added type
+    if (theme === "dark") {
+      return hoveredIndex === index ? "#6ee7b7" : "#ffffff";
+    } else {
+      return hoveredIndex === index ? "#16a34a" : "#111827";
+    }
+  };
 
   return (
     <header
@@ -85,35 +93,48 @@ const Navbar = () => {
           component="div"
           style={{
             fontFamily: '"Courier New", Courier, monospace',
-            color: theme === "dark" ? "#ffffff" : "#111827",
             fontSize: "1.875rem",
             fontWeight: 600,
           }}
         >
           <Link href="/" legacyBehavior>
             <a className="inline-block">
-              <motion.span
+              <motion.div
                 variants={containerVariants}
                 initial="initial"
                 whileHover="hover"
-                className={`inline-flex ${textColor}`}
+                className="inline-flex"
+                style={{
+                  textShadow: theme === "dark" ? "0px 0px 2px rgba(255,255,255,0.3)" : "none"
+                }}
               >
                 {name.split("").map((letter, index) => (
                   <motion.span
                     key={index}
                     variants={letterVariants}
                     className="inline-block"
+                    onMouseEnter={() => setHoveredIndex(index)} // No type error now
+                    onMouseLeave={() => setHoveredIndex(null)} // No type error now
                   >
                     <motion.span
-                      variants={nameVariants}
-                      initial="initial"
-                      whileHover="hover"
+                      animate={{
+                        ...motionProps.initial,
+                        color: getLetterColor(index)
+                      }}
+                      whileHover={{
+                        ...motionProps.hover,
+                        color: theme === "dark" ? "#6ee7b7" : "#16a34a"
+                      }}
+                      style={{
+                        color: getLetterColor(index),
+                        transition: "color 0.3s ease"
+                      }}
                     >
                       {letter === " " ? "\u00A0" : letter}
                     </motion.span>
                   </motion.span>
                 ))}
-              </motion.span>
+              </motion.div>
             </a>
           </Link>
         </Typography>
