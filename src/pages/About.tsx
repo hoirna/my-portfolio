@@ -121,11 +121,11 @@ export default function About() {
         {/* Profile Image */}
         <motion.div
           variants={itemVariants}
-          className="w-40 h-40 sm:w-52 sm:h-52 mx-auto mb-12 rounded-full overflow-hidden border-4 border-indigo-500 dark:border-indigo-400 shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-3 relative z-10"
+          className="w-40 h-40 sm:w-52 mt-12 sm:h-52 mx-auto mb-12 rounded-full overflow-hidden border-4 border-indigo-500 dark:border-indigo-400 shadow-2xl transition-all duration-500 hover:scale-110 hover:rotate-3 relative z-10"
           whileHover={{ boxShadow: "0 0 30px rgba(79, 70, 229, 0.7)" }}
         >
           <Image
-            src="/images/Profile.png" // Ensure this matches the exact path and case
+            src="/images/mypicture.png" // Ensure this matches the exact path and case
             alt="Seng Hoirna"
             className="w-full h-full object-cover"
             width={300}
@@ -145,20 +145,8 @@ export default function About() {
           } tracking-tight drop-shadow-xl`}
           style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
         >
-          About{" "}
-          <motion.span
-            variants={nameVariants}
-            initial="visible"
-            whileHover="hover"
-            className={`inline-block cursor-pointer relative ${
-              theme === "dark"
-                ? "text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
-                : "text-gray-900 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
-            }`}
-            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Replaced Poppins
-          >
-            Seng Hoirna
-          </motion.span>
+          My Profile{" "}
+
         </motion.h1>
 
         {/* Introduction */}
@@ -170,19 +158,11 @@ export default function About() {
           style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
         >
           Hello! I’m{" "}
-          <motion.span
-            variants={nameVariants}
-            initial="visible"
-            whileHover="hover"
-            className={`font-bold text-indigo-500 dark:text-indigo-300 drop-shadow-md cursor-pointer inline-block ${
-              theme === "dark"
-                ? "hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
-                : "hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
-            }`}
-            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to nested span
-          >
+          <span className="text-green-600 font-bold">
             Seng Hoirna
-          </motion.span>
+          </span>
+         
+    
           , a dedicated full-stack developer with a passion for building
           innovative, user-focused web solutions. I love turning ideas into
           reality with clean code and creative design.

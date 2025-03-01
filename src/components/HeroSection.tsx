@@ -199,7 +199,7 @@ const HeroSection = () => {
 
             {/* Profile Image */}
             <Image
-              src="/images/Profile.png"
+              src="/images/mypicture.png"
               alt="Seng Hoirna's Profile Picture"
               width={350}
               height={350}
