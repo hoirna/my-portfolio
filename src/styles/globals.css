@@ -1,31 +1,27 @@
 /* Base Tailwind CSS */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Mode Settings - These can be used when system prefers dark theme */
+/* Dark Mode Settings - System Preference */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
-/* Force font for Navbar */
-header .MuiTypography-root {
-  font-family: "Courier New", Courier, monospace !important;
-}
+
 /* Light Theme Variables */
 :root {
   --background: #ffffff;
   --foreground: #1a202c;
-  --primary: #F9EF19;
+  --primary: #F9EF19;       /* Bright yellow for light theme */
   --primary-light: #FFEB3B;
   --primary-dark: #FBC02D;
-  --secondary: #1976D2;
+  --secondary: #1976D2;     /* Blue tones */
   --secondary-light: #42A5F5;
   --secondary-dark: #1565C0;
-  --accent: #FF4081;
+  --accent: #FF4081;        /* Pink/red tones */
   --accent-light: #FF80AB;
   --accent-dark: #F50057;
 }
@@ -33,14 +29,14 @@ header .MuiTypography-root {
 /* Dark Theme Variables */
 .dark {
   --background: #111;
-  --foreground: #f9ef19;
-  --primary: #1976D2;
+  --foreground: #f9ef19;    /* Bright yellow for dark theme text */
+  --primary: #1976D2;       /* Blue shifts to primary */
   --primary-light: #42A5F5;
   --primary-dark: #1565C0;
-  --secondary: #FF4081;
+  --secondary: #FF4081;     /* Pink shifts to secondary */
   --secondary-light: #FF80AB;
   --secondary-dark: #F50057;
-  --accent: #FBC02D;
+  --accent: #FBC02D;        /* Yellow shifts to accent */
   --accent-light: #FFEB3B;
   --accent-dark: #F9EF19;
 }
@@ -50,25 +46,23 @@ html {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Body Styles - These will react to light or dark class */
 body {
   @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-white;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Roboto', Arial, sans-serif; /* Set your global font family */
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* Typing effect animation */
+/* Force font for Navbar Typography */
+header .MuiTypography-root {
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+/* Typing Effect Animation */
 @keyframes typing {
-  0% {
-    width: 0; /* Start with no width */
-  }
-  70% {
-    width: 100%; /* Typing completes at 70% of the total duration */
-  }
-  100% {
-    width: 100%; /* Holds full width for the remaining 30% (pause) */
-  }
+  0% { width: 0; }
+  70% { width: 100%; }
+  100% { width: 100%; }
 }
 
 .typing-effect {
@@ -77,19 +71,16 @@ body {
   overflow: hidden;
   width: 0;
   animation: typing 3s steps(30) 1s forwards;
+  animation-iteration-count: 1;
   font-family: "Courier New", Courier, monospace;
-  animation: typing 10s steps(60, end) infinite, blink 0.75s step-end infinite;
   border-right: 4px solid #00ff00;
 }
 
-/* Keyframe for blinking cursor */
+/* Blinking Cursor */
 @keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+  50% { border-color: transparent; }
 }
 
-/* Cursor */
 .cursor {
   display: inline-block;
   width: 4px;
@@ -97,73 +88,233 @@ body {
   animation: blink 0.75s step-end infinite;
 }
 
-.typing-effect {
-  border-color: #00ff00; /* This is the cursor color */
+/* Spin Animation (Sun/Moon Base) */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Spin Animation */
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+/* Pulse Animation (Sun/Moon Glow) */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
 }
 
 .spin {
   animation: spin 5s linear infinite;
 }
 
-/* Cloud Animation */
-@keyframes cloudMove {
+/* Sun and Moon Glow */
+.sun-moon-glow {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  right: auto;
+  animation: pulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.dark .sun-moon-glow {
+  filter: drop-shadow(0 0 10px rgba(240, 240, 240, 0.6));
+}
+
+/* Kazuha-inspired Cloud Animation */
+@keyframes cloudFlow {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-20vw) translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(60vw) translateY(-5vh) scale(1.05);
+    opacity: 0.6;
   }
   100% {
-    transform: translateX(100vw);
+    transform: translateX(120vw) translateY(0) scale(1);
+    opacity: 0.3;
   }
 }
 
-/* Cloud Animations (Multiple Clouds with different speeds) */
+/* Hero Section Clouds */
 .animate-clouds {
   position: absolute;
-  top: 15%;
-  left: -20%;
-  width: 320px;
+  top: 5%;
+  left: -25%;
+  width: 450px;
   height: 150px;
   opacity: 0.5;
-  animation: cloudMove 50s linear infinite;
+  animation: cloudFlow 25s ease-in-out infinite;
+  filter: blur(6px);
 }
 
 .animate-clouds-2 {
   position: absolute;
-  top: 25%;
-  left: -10%;
-  width: 250px;
+  top: 15%;
+  left: -20%;
+  width: 400px;
   height: 120px;
   opacity: 0.4;
-  animation: cloudMove 60s linear infinite;
+  animation: cloudFlow 30s ease-in-out infinite 2s;
+  filter: blur(5px);
 }
 
 .animate-clouds-3 {
   position: absolute;
-  top: 10%;
+  top: 25%;
   left: -30%;
-  width: 280px;
-  height: 130px;
+  width: 420px;
+  height: 135px;
   opacity: 0.3;
-  animation: cloudMove 40s linear infinite;
+  animation: cloudFlow 20s ease-in-out infinite 4s;
+  filter: blur(7px);
 }
 
 .animate-clouds-4 {
   position: absolute;
-  top: 30%;
-  left: -5%;
-  width: 350px;
-  height: 170px;
+  top: 35%;
+  left: -15%;
+  width: 480px;
+  height: 165px;
   opacity: 0.6;
-  animation: cloudMove 70s linear infinite;
+  animation: cloudFlow 35s ease-in-out infinite 6s;
+  filter: blur(6px);
+}
+
+.animate-clouds-5 {
+  position: absolute;
+  top: 45%;
+  left: -35%;
+  width: 500px;
+  height: 180px;
+  opacity: 0.45;
+  animation: cloudFlow 28s ease-in-out infinite 1s;
+  filter: blur(8px);
+}
+
+.animate-clouds-6 {
+  position: absolute;
+  top: 55%;
+  left: -10%;
+  width: 460px;
+  height: 140px;
+  opacity: 0.55;
+  animation: cloudFlow 32s ease-in-out infinite 3s;
+  filter: blur(5px);
+}
+
+/* About Section Clouds */
+.animate-clouds-about {
+  position: absolute;
+  top: 10%;
+  left: -20%;
+  width: 450px;
+  height: 150px;
+  opacity: 0.2;
+  animation: cloudFlow 40s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+.animate-clouds-about-2 {
+  position: absolute;
+  top: 60%;
+  left: -15%;
+  width: 400px;
+  height: 120px;
+  opacity: 0.15;
+  animation: cloudFlow 50s ease-in-out infinite 5s;
+  filter: blur(7px);
+}
+
+/* Skills Section Clouds */
+.animate-clouds-skills {
+  position: absolute;
+  top: 20%;
+  left: -25%;
+  width: 450px;
+  height: 150px;
+  opacity: 0.15;
+  animation: cloudFlow 45s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+.animate-clouds-skills-2 {
+  position: absolute;
+  top: 70%;
+  left: -20%;
+  width: 400px;
+  height: 120px;
+  opacity: 0.1;
+  animation: cloudFlow 55s ease-in-out infinite 3s;
+  filter: blur(7px);
+}
+
+/* Projects Section Clouds */
+.animate-clouds-projects {
+  position: absolute;
+  top: 15%;
+  left: -20%;
+  width: 450px;
+  height: 150px;
+  opacity: 0.2;
+  animation: cloudFlow 42s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+.animate-clouds-projects-2 {
+  position: absolute;
+  top: 65%;
+  left: -15%;
+  width: 400px;
+  height: 120px;
+  opacity: 0.15;
+  animation: cloudFlow 52s ease-in-out infinite 4s;
+  filter: blur(7px);
+}
+
+/* Contact Section Clouds */
+.animate-clouds-contact {
+  position: absolute;
+  top: 25%;
+  left: -20%;
+  width: 450px;
+  height: 150px;
+  opacity: 0.2;
+  animation: cloudFlow 40s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+.animate-clouds-contact-2 {
+  position: absolute;
+  top: 75%;
+  left: -15%;
+  width: 400px;
+  height: 120px;
+  opacity: 0.15;
+  animation: cloudFlow 50s ease-in-out infinite 5s;
+  filter: blur(7px);
+}
+
+/* Footer Section Clouds */
+.animate-clouds-footer {
+  position: absolute;
+  top: 10%;
+  left: -25%;
+  width: 450px;
+  height: 150px;
+  opacity: 0.15;
+  animation: cloudFlow 45s ease-in-out infinite;
+  filter: blur(8px);
+}
+
+.animate-clouds-footer-2 {
+  position: absolute;
+  top: 60%;
+  left: -20%;
+  width: 400px;
+  height: 120px;
+  opacity: 0.1;
+  animation: cloudFlow 55s ease-in-out infinite 3s;
+  filter: blur(7px);
 }
 
 /* Stars for Dark Mode */
@@ -175,6 +326,7 @@ body {
   height: 100%;
   background: transparent;
   pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 30%);
 }
 
 .star {
@@ -186,54 +338,22 @@ body {
 }
 
 @keyframes twinkle {
-  0% {
-    opacity: 0.1;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 0.2;
-    transform: scale(0.9);
-  }
+  0% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.2; transform: scale(0.9); }
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* Stars background with gradient */
-.stars {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 30%);
-}
-
-/* Dark Mode Overrides for Body */
-body.dark-theme {
-  background-color: var(--background);
-  color: var(--foreground);
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
 }
 
 /* Zoom Effect Animation */
 @keyframes zoom {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 .animate-zoom {
@@ -247,8 +367,8 @@ body.dark-theme {
 
 .flip-card {
   transform-style: preserve-3d;
-  width: 300px;
-  height: 400px;
+  width: 100%; /* Adjusted from fixed 300px for responsiveness */
+  height: 100%; /* Adjusted from fixed 400px */
   transition: transform 1s ease-in-out;
 }
 
@@ -274,17 +394,16 @@ body.dark-theme {
   align-items: center;
 }
 
+/* Removed hardcoded padding to allow component-specific control */
 .flip-card-front {
   background-color: white;
   color: black;
-  padding: 2rem;
 }
 
 .flip-card-back {
   background-color: #3b82f6;
   color: white;
   transform: rotateY(180deg);
-  padding: 2rem;
 }
 
 .flip-card:hover .flip-card-inner {
@@ -293,4 +412,25 @@ body.dark-theme {
 
 .flip-card .flip-card-inner {
   transform: rotateY(0deg);
+}
+
+/* Navbar-Specific Styles */
+header {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Component-Specific Styles */
+.hero-section,
+.about-section,
+.skills-section,
+.projects-section,
+.contact-section,
+footer {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure SVGs inherit theme-based fills */
+svg {
+  transition: fill 0.3s ease;
 }
