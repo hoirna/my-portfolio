@@ -129,7 +129,10 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between text-center lg:text-left gap-12">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white">
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white"
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
+            >
               <span className="typing-effect">
                 Hi, I am <span className="text-[#80ff80]">SENG HOIRNA.</span>
               </span>
@@ -138,6 +141,7 @@ const HeroSection = () => {
               className={`mt-4 text-lg sm:text-xl lg:text-2xl font-medium ${
                 theme === "dark" ? "text-gray-300" : "text-gray-700"
               }`}
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
             >
               A passionate{" "}
               <span
@@ -157,6 +161,7 @@ const HeroSection = () => {
                     ? "bg-gradient-to-r from-[#00ff00] to-[#80ff80] text-gray-900 hover:from-[#00cc00] hover:to-[#66cc66]"
                     : "bg-gradient-to-r from-[#00ff00] to-[#80ff80] text-white hover:from-[#00cc00] hover:to-[#66cc66]"
                 }`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to button
               >
                 Hire Me
               </Link>
@@ -196,8 +201,8 @@ const HeroSection = () => {
             <Image
               src="/images/profile.png"
               alt="Seng Hoirna's Profile Picture"
-              width={350}  // Adjusted to match the largest container size
-              height={350} // Adjusted to match the largest container size
+              width={350}
+              height={350}
               className={`relative z-10 object-cover w-full h-full rounded-full border-4 ${
                 theme === "dark" ? "border-[#80ff80]" : "border-[#00ff00]"
               } shadow-2xl transition-all duration-300 ease-in-out`}

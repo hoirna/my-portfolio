@@ -29,10 +29,16 @@ const ProjectsSection = () => {
     <section className="bg-gradient-to-br from-[#F9EF19] via-[#fbcfe8] to-[#a78bfa] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight">
+          <h2
+            className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight"
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
+          >
             Featured Projects
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          <p
+            className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
+          >
             Discover some of the innovative solutions I’ve crafted, blending design and technology.
           </p>
         </div>
@@ -43,15 +49,22 @@ const ProjectsSection = () => {
               className="relative p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-xl transform transition-all hover:scale-105 hover:shadow-2xl border-t-4 border-[#F9EF19]"
             >
               <div className="text-5xl mb-6">{project.icon}</div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <h3
+                className="text-2xl font-bold text-gray-900 dark:text-white mb-4"
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h3
+              >
                 {project.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p
+                className="text-gray-600 dark:text-gray-300 mb-6"
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to project description
+              >
                 {project.description}
               </p>
               <Link
                 href={project.link}
                 className="inline-flex items-center text-[#F9EF19] hover:text-[#d4c000] font-medium transition-colors"
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Link
               >
                 Learn More
                 <svg

@@ -48,17 +48,30 @@ export default function About() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const nameVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
     hover: {
       scale: 1.05,
       y: -3,
       textShadow: "0 0 15px rgba(79, 70, 229, 0.8)",
-      transition: { duration: 0.3, ease: "easeOut", yoyo: Infinity, repeatDelay: 0.5 },
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        yoyo: Infinity,
+        repeatDelay: 0.5,
+      },
     },
   };
 
@@ -112,7 +125,7 @@ export default function About() {
           whileHover={{ boxShadow: "0 0 30px rgba(79, 70, 229, 0.7)" }}
         >
           <Image
-            src="/images/Mypic.png"
+            src="/images/Profile.png"
             alt="Seng Hoirna"
             className="w-full h-full object-cover"
             width={300}
@@ -129,6 +142,7 @@ export default function About() {
               ? "bg-gradient-to-r from-indigo-400 via-cyan-300 to-purple-500"
               : "bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800"
           } tracking-tight drop-shadow-xl`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
         >
           About{" "}
           <motion.span
@@ -137,9 +151,10 @@ export default function About() {
             whileHover="hover"
             className={`inline-block cursor-pointer relative ${
               theme === "dark"
-                ? "hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
-                : "hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
+                ? "text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
+                : "text-gray-900 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
             }`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Replaced Poppins
           >
             Seng Hoirna
           </motion.span>
@@ -151,6 +166,7 @@ export default function About() {
           className={`text-lg sm:text-xl lg:text-2xl mb-16 max-w-4xl mx-auto leading-relaxed ${
             theme === "dark" ? "text-gray-200" : "text-gray-800"
           } font-medium`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
         >
           Hello! I’m{" "}
           <motion.span
@@ -162,10 +178,13 @@ export default function About() {
                 ? "hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
                 : "hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
             }`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to nested span
           >
             Seng Hoirna
           </motion.span>
-          , a dedicated full-stack developer with a passion for building innovative, user-focused web solutions. I love turning ideas into reality with clean code and creative design.
+          , a dedicated full-stack developer with a passion for building
+          innovative, user-focused web solutions. I love turning ideas into
+          reality with clean code and creative design.
         </motion.p>
 
         {/* Skills Section */}
@@ -176,65 +195,83 @@ export default function About() {
                 ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-indigo-500"
                 : "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700"
             } drop-shadow-lg`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
           >
             Core Competencies
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {Object.entries(skillCategories).map(([category, subCategories]) => (
-              <motion.div
-                key={category}
-                className={`p-8 rounded-3xl ${
-                  theme === "dark"
-                    ? "bg-gray-800/80 border border-gray-700/50"
-                    : "bg-white/80 border border-indigo-200/50"
-                } shadow-xl backdrop-blur-md transition-all duration-300`}
-                whileHover={{ scale: 1.03, boxShadow: "0 12px 25px rgba(0, 0, 0, 0.15)" }}
-              >
-                <h3
-                  className={`text-2xl sm:text-3xl font-semibold mb-8 bg-clip-text text-transparent ${
+            {Object.entries(skillCategories).map(
+              ([category, subCategories]) => (
+                <motion.div
+                  key={category}
+                  className={`p-8 rounded-3xl ${
                     theme === "dark"
-                      ? "bg-gradient-to-r from-indigo-300 to-cyan-400"
-                      : "bg-gradient-to-r from-indigo-600 to-purple-600"
-                  }`}
+                      ? "bg-gray-800/80 border border-gray-700/50"
+                      : "bg-white/80 border border-indigo-200/50"
+                  } shadow-xl backdrop-blur-md transition-all duration-300`}
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 12px 25px rgba(0, 0, 0, 0.15)",
+                  }}
                 >
-                  {category}
-                </h3>
-                <div className="space-y-8">
-                  {Object.entries(subCategories).map(([subCategory, skills]) => (
-                    <div key={subCategory}>
-                      <h4
-                        className={`text-xl sm:text-2xl font-medium mb-6 ${
-                          theme === "dark" ? "text-gray-300" : "text-gray-700"
-                        }`}
-                      >
-                        {subCategory}
-                      </h4>
-                      <div className="flex flex-wrap justify-center gap-4">
-                        {Array.isArray(skills) ? (
-                          skills.map((skill, index) => (
-                            <motion.div
-                              key={index}
-                              variants={skillCardVariants}
-                              initial="rest"
-                              whileHover="hover"
-                              className={`py-3 px-6 rounded-full text-center font-medium cursor-pointer ${
-                                theme === "dark"
-                                  ? "bg-gradient-to-br from-indigo-600 to-purple-700 text-white"
-                                  : "bg-gradient-to-br from-indigo-400 to-purple-500 text-white"
-                              } shadow-md`}
-                            >
-                              {skill}
-                            </motion.div>
-                          ))
-                        ) : (
-                          <p className="text-red-500">Error: Invalid skills data</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                  <h3
+                    className={`text-2xl sm:text-3xl font-semibold mb-8 bg-clip-text text-transparent ${
+                      theme === "dark"
+                        ? "bg-gradient-to-r from-indigo-300 to-cyan-400"
+                        : "bg-gradient-to-r from-indigo-600 to-purple-600"
+                    }`}
+                    style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h3
+                  >
+                    {category}
+                  </h3>
+                  <div className="space-y-8">
+                    {Object.entries(subCategories).map(
+                      ([subCategory, skills]) => (
+                        <div key={subCategory}>
+                          <h4
+                            className={`text-xl sm:text-2xl font-medium mb-6 ${
+                              theme === "dark"
+                                ? "text-gray-300"
+                                : "text-gray-700"
+                            }`}
+                            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h4
+                          >
+                            {subCategory}
+                          </h4>
+                          <div className="flex flex-wrap justify-center gap-4">
+                            {Array.isArray(skills) ? (
+                              skills.map((skill, index) => (
+                                <motion.div
+                                  key={index}
+                                  variants={skillCardVariants}
+                                  initial="rest"
+                                  whileHover="hover"
+                                  className={`py-3 px-6 rounded-full text-center font-medium cursor-pointer ${
+                                    theme === "dark"
+                                      ? "bg-gradient-to-br from-indigo-600 to-purple-700 text-white"
+                                      : "bg-gradient-to-br from-indigo-400 to-purple-500 text-white"
+                                  } shadow-md`}
+                                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to skill tags
+                                >
+                                  {skill}
+                                </motion.div>
+                              ))
+                            ) : (
+                              <p
+                                className="text-red-500"
+                                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to error message
+                              >
+                                Error: Invalid skills data
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </motion.div>
+              )
+            )}
           </div>
         </motion.div>
 
@@ -246,6 +283,7 @@ export default function About() {
                 ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-indigo-500"
                 : "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700"
             } drop-shadow-lg`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
           >
             Education Background
           </h2>
@@ -267,6 +305,7 @@ export default function About() {
                   className={`text-xl sm:text-2xl font-semibold ${
                     theme === "dark" ? "text-indigo-300" : "text-indigo-600"
                   }`}
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h3
                 >
                   {edu.degree}
                 </h3>
@@ -274,6 +313,7 @@ export default function About() {
                   className={`text-lg font-medium ${
                     theme === "dark" ? "text-gray-300" : "text-gray-700"
                   }`}
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to institution/duration
                 >
                   {edu.institution} | {edu.duration}
                 </p>
@@ -281,6 +321,7 @@ export default function About() {
                   className={`text-base mt-2 ${
                     theme === "dark" ? "text-gray-400" : "text-gray-600"
                   }`}
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to description
                 >
                   {edu.description}
                 </p>
@@ -297,6 +338,7 @@ export default function About() {
                 ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-indigo-500"
                 : "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700"
             } drop-shadow-lg`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
           >
             Professional Journey
           </h2>
@@ -304,6 +346,7 @@ export default function About() {
             className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed ${
               theme === "dark" ? "text-gray-200" : "text-gray-800"
             } font-medium`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
           >
             I’m{" "}
             <motion.span
@@ -315,10 +358,14 @@ export default function About() {
                   ? "hover:bg-gradient-to-r hover:from-cyan-400 hover:via-purple-400 hover:to-indigo-500"
                   : "hover:bg-gradient-to-r hover:from-indigo-500 hover:via-purple-500 hover:to-cyan-600"
               }`}
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to nested span
             >
               Seng Hoirna
             </motion.span>
-            , and with over a year of experience in the tech industry, I’ve delivered high-quality frontends and scalable backends. My mission is to craft solutions that are both functional and visually stunning.
+            , and with over a year of experience in the tech industry, I’ve
+            delivered high-quality frontends and scalable backends. My mission
+            is to craft solutions that are both functional and visually
+            stunning.
           </p>
         </motion.div>
 
@@ -331,6 +378,7 @@ export default function About() {
                 ? "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
                 : "bg-gradient-to-r from-indigo-600 to-purple-700 hover:from-indigo-700 hover:to-purple-800"
             } text-white text-lg font-semibold rounded-full shadow-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(79,70,229,0.8)]`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Link
           >
             Let’s Build Something Epic
             <motion.svg
@@ -340,7 +388,11 @@ export default function About() {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
               animate={{ x: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+                ease: "easeInOut",
+              }}
             >
               <path
                 strokeLinecap="round"

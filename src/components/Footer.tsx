@@ -63,7 +63,10 @@ const Footer = () => {
             ))}
           </div>
           {/* Copyright Text */}
-          <p className="text-sm sm:text-base">
+          <p
+            className="text-sm sm:text-base"
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
+          >
             © {new Date().getFullYear()} Seng Hoirna. All rights reserved.
           </p>
           {/* Optional: Additional Links */}
@@ -73,6 +76,7 @@ const Footer = () => {
               className={`transition-colors duration-300 text-sm sm:text-base ${
                 theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Privacy Policy
             >
               Privacy Policy
             </a>
@@ -81,6 +85,7 @@ const Footer = () => {
               className={`transition-colors duration-300 text-sm sm:text-base ${
                 theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
               }`}
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Terms of Service
             >
               Terms of Service
             </a>

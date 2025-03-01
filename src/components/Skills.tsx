@@ -21,7 +21,10 @@ const Skills = () => {
       className={`py-16 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10">
+        <h2
+          className="text-3xl sm:text-4xl font-bold text-center mb-10"
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
+        >
           My <span className={theme === 'dark' ? 'text-[#80ff80]' : 'text-[#00ff00]'}>Skills</span>
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -35,7 +38,12 @@ const Skills = () => {
                 theme === 'dark' ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'
               } transition-all duration-300`}
             >
-              <span className="text-lg font-semibold mb-2">{skill.name}</span>
+              <span
+                className="text-lg font-semibold mb-2"
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to skill names
+              >
+                {skill.name}
+              </span>
               <div className="w-full bg-gray-300 rounded-full h-1.5">
                 <motion.div
                   className={`h-1.5 rounded-full ${

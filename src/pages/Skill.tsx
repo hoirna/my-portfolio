@@ -32,6 +32,7 @@ const Skills = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-center mb-12"
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
           >
             My <span className={theme === 'dark' ? 'text-[#80ff80]' : 'text-[#00ff00]'}>Skills</span>
           </motion.h1>
@@ -47,8 +48,18 @@ const Skills = () => {
                   theme === 'dark' ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'
                 } transition-all duration-300`}
               >
-                <h3 className="text-xl font-semibold mb-2">{skill.name}</h3>
-                <p className="text-sm mb-4 opacity-75">{skill.description}</p>
+                <h3
+                  className="text-xl font-semibold mb-2"
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h3
+                >
+                  {skill.name}
+                </h3>
+                <p
+                  className="text-sm mb-4 opacity-75"
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to description
+                >
+                  {skill.description}
+                </p>
                 <div className="w-full bg-gray-300 rounded-full h-2.5">
                   <motion.div
                     className={`h-2.5 rounded-full ${
@@ -59,7 +70,12 @@ const Skills = () => {
                     transition={{ duration: 1, delay: index * 0.1 }}
                   />
                 </div>
-                <p className="text-right text-sm mt-1">{skill.level}%</p>
+                <p
+                  className="text-right text-sm mt-1"
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to percentage
+                >
+                  {skill.level}%
+                </p>
               </motion.div>
             ))}
           </div>

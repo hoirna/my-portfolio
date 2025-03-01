@@ -32,7 +32,10 @@ const AboutSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-8 transform hover:scale-110 transition-transform duration-300 ease-in-out">
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-8 transform hover:scale-110 transition-transform duration-300 ease-in-out"
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
+          >
             About Me
           </h2>
 
@@ -41,6 +44,7 @@ const AboutSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
           >
             I am Seng Hoirna, a passionate full-stack developer dedicated to
             crafting seamless and scalable web experiences. I specialize in
@@ -72,14 +76,21 @@ const AboutSection = () => {
                 <div className="flip-card w-full h-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl">
                   <div className="flip-card-inner w-full h-full absolute transition-all duration-600 transform-style-preserve-3d">
                     <div className="flip-card-front bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col justify-center items-center">
-                      <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
+                      <h3
+                        className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white"
+                        style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h3
+                      >
                         {card.title}
                       </h3>
                     </div>
                     <div className="flip-card-back bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-xl p-8 flex flex-col justify-center shadow-lg transform rotate-y-180 transition-all duration-300">
                       <ul className="space-y-3">
                         {card.skills.map((skill) => (
-                          <li key={skill} className="text-lg">
+                          <li
+                            key={skill}
+                            className="text-lg"
+                            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to li
+                          >
                             {skill}
                           </li>
                         ))}
@@ -100,6 +111,7 @@ const AboutSection = () => {
             <Link
               href="/Contact"
               className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold text-lg rounded-lg shadow-xl hover:scale-110 transform transition-all duration-300"
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to button
             >
               Contact Me
             </Link>

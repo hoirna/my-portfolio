@@ -96,6 +96,7 @@ export default function Projects() {
               ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500"
               : "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-700"
           }`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
         >
           My Projects
         </motion.h1>
@@ -106,6 +107,7 @@ export default function Projects() {
           className={`text-lg sm:text-xl ${
             theme === "dark" ? "text-gray-300" : "text-gray-700"
           } text-center mb-16 max-w-2xl mx-auto`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
         >
           A showcase of innovation and craftsmanship, endlessly scrolling for your inspiration.
         </motion.p>
@@ -156,15 +158,22 @@ export default function Projects() {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2 + tagIndex * 0.1, duration: 0.3 }}
+                        style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to tags
                       >
                         {tag}
                       </motion.span>
                     ))}
                   </div>
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 drop-shadow-md">
+                  <h2
+                    className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 drop-shadow-md"
+                    style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
+                  >
                     {project.title}
                   </h2>
-                  <p className="text-xs sm:text-sm lg:text-base text-gray-100 mb-4 drop-shadow-sm">
+                  <p
+                    className="text-xs sm:text-sm lg:text-base text-gray-100 mb-4 drop-shadow-sm"
+                    style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to description
+                  >
                     {project.description}
                   </p>
                   <Link
@@ -174,6 +183,7 @@ export default function Projects() {
                         ? "bg-white/20 hover:bg-white/30 text-white"
                         : "bg-gray-900/20 hover:bg-gray-900/30 text-gray-900"
                     } font-semibold rounded-full shadow-md transition-all duration-300 text-sm sm:text-base`}
+                    style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Link
                   >
                     Explore
                     <motion.svg

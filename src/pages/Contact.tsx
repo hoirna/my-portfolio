@@ -144,6 +144,7 @@ export default function Contact() {
               ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
               : "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"
           } animate-text`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
         >
           Let’s Connect
         </motion.h1>
@@ -152,6 +153,7 @@ export default function Contact() {
           className={`text-lg sm:text-xl ${
             theme === "dark" ? "text-gray-300" : "text-gray-700"
           } text-center mb-12 max-w-xl mx-auto`}
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
         >
           Drop me a message or ping me on socials—I’m all ears for new ideas and collabs!
         </motion.p>
@@ -172,6 +174,7 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Name
               </label>
@@ -187,6 +190,7 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to input
               />
             </div>
             <div className="mb-6">
@@ -195,6 +199,7 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Email
               </label>
@@ -210,6 +215,7 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to input
               />
             </div>
             <div className="mb-6">
@@ -218,12 +224,13 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Message
               </label>
               <textarea
                 id="message"
-                placeholder="What’s on your mind?"
+                placeholder="What's on your mind?"
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
@@ -233,6 +240,7 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to textarea
               />
             </div>
             <button
@@ -242,6 +250,7 @@ export default function Contact() {
                   ? "bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
                   : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
               } text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105`}
+              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to button
             >
               Send It!
             </button>
@@ -250,6 +259,7 @@ export default function Contact() {
                 className={`mt-4 text-center ${
                   status.includes("success") ? "text-green-500" : "text-red-500"
                 }`}
+                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to status message
               >
                 {status}
               </p>
@@ -263,6 +273,7 @@ export default function Contact() {
             className={`text-2xl sm:text-3xl font-bold mb-6 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             } drop-shadow-md`}
+            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
           >
             Catch Me Online
           </h2>

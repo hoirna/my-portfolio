@@ -4,15 +4,22 @@ const ContactSection = () => {
   return (
     <section className="bg-gradient-to-br from-[#F9EF19] via-[#fbcfe8] to-[#a78bfa] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight">
-          Let&apos;s Connect
+        <h2
+          className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-8 leading-tight"
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
+        >
+          Let’s Connect
         </h2>
-        <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-          Feel free to reach out if you&apos;d like to collaborate, discuss a project, or just say hi! I&apos;d love to hear from you.
+        <p
+          className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8"
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
+        >
+          Feel free to reach out if you’ve like to collaborate, discuss a project, or just say hi! I’d love to hear from you.
         </p>
         <Link
           href="/contact"
           className="inline-flex items-center px-8 py-4 bg-[#F9EF19] text-gray-900 font-bold rounded-full shadow-lg hover:bg-[#d4c000] transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#fbcfe8] focus:ring-opacity-50"
+          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to Link
         >
           Get in Touch
           <svg

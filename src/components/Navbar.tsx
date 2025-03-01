@@ -11,11 +11,11 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navItems = [
-    { text: 'Home', path: '/' },
-    { text: 'About', path: '/About' },
-    { text: 'Skills', path: '/Skill' },
-    { text: 'Projects', path: '/Projects' },
-    { text: 'Contact', path: '/Contact' },
+    { text: 'HOME', path: '/' },
+    { text: 'ABOUT', path: '/About' },
+    { text: 'SKILLS', path: '/Skill' },
+    { text: 'PROJECTS', path: '/Projects' },
+    { text: 'CONTACT', path: '/Contact' },
   ];
 
   // Animation variants for the name
@@ -70,13 +70,13 @@ const Navbar = () => {
       className={`fixed w-full ${
         theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
       } shadow-md z-50`}
-      style={{ fontFamily: 'Montserrat, sans-serif' }} // Applied globally to navbar
     >
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4 py-3">
         <Typography
           variant="h6"
           component="div"
           className="text-3xl font-semibold tracking-tight"
+          sx={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to name
         >
           <Link href="/" legacyBehavior>
             <a className="inline-block">
@@ -116,6 +116,7 @@ const Navbar = () => {
                   className={`relative inline-block px-1 py-2 transition-all duration-300 ease-in-out ${
                     theme === 'dark' ? 'text-white hover:text-green-400' : 'text-gray-900 hover:text-green-600'
                   }`}
+                  style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to nav items
                 >
                   {item.text}
                   <span
@@ -184,7 +185,7 @@ const Navbar = () => {
                       className: `${
                         theme === 'dark' ? 'text-white' : 'text-gray-900'
                       } text-lg tracking-wide`,
-                      sx: { fontFamily: 'Courier New' }, // Replaced Roboto with Montserrat
+                      sx: { fontFamily: '"Courier New", Courier, monospace' }, // Applied to drawer items
                     }}
                   />
                 </ListItem>
