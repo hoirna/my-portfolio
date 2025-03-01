@@ -139,7 +139,7 @@ export default function Contact() {
         {/* Heading */}
         <motion.h1
           variants={itemVariants}
-          className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold text-center mb-6 bg-clip-text text-transparent ${
+          className={`text-5xl sm:text-6xl lg:text-7xl mt-14 font-extrabold text-center mb-6 bg-clip-text text-transparent ${
             theme === "dark"
               ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
               : "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"

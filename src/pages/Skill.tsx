@@ -4,12 +4,13 @@ import Head from 'next/head';
 
 const skillsData = [
   { name: 'HTML', level: 75, description: 'Semantic markup and structure' },
-  { name: 'CSS', level: 75, description: 'Styling, Tailwind CSS, animations' },
-  { name: 'JavaScript', level: 65, description: 'Dynamic functionality, ES6+' },
+  { name: 'CSS', level: 65, description: 'Styling, Tailwind CSS, animations' },
+  { name: 'JavaScript', level: 65, description: 'Dynamic functionality' },
   { name: 'Next.js', level: 85, description: 'Server-side rendering, static sites' },
-  { name: 'Node.js', level: 75, description: 'Backend development, APIs' },
+  { name: 'Node.js', level: 65, description: 'Backend development, APIs' },
   { name: 'TypeScript', level: 70, description: 'Type-safe JavaScript' },
   { name: 'Git', level: 80, description: 'Version control, collaboration' },
+  { name: 'Figma', level: 85, description: 'Designing UX, UI' },
 ];
 
 const Skills = () => {
@@ -26,7 +27,7 @@ const Skills = () => {
           theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mt-6 mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}

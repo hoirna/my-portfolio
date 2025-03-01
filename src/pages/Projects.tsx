@@ -86,7 +86,7 @@ export default function Projects() {
           : "bg-gradient-to-b from-gray-100 via-white to-gray-200 text-gray-900"
       } transition-colors duration-500 overflow-hidden`}
     >
-      <section className="max-w-7xl mx-auto">
+      <section className="max-w-7xl mt-8 mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
