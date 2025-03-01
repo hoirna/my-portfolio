@@ -11,9 +11,10 @@
     --foreground: #ededed;
   }
 }
-
-/* Custom Theme Variables for Light and Dark Modes */
-
+/* Force font for Navbar */
+header .MuiTypography-root {
+  font-family: "Courier New", Courier, monospace !important;
+}
 /* Light Theme Variables */
 :root {
   --background: #ffffff;
