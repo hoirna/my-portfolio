@@ -3,33 +3,7 @@ import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   return (
-    <section className="bg-gradient-to-br from-[#F9EF19] via-[#fbcfe8] to-[#a78bfa] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 sm:py-24 lg:py-28 relative overflow-hidden">
-      {/* Subtle Cloud Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="animate-clouds-contact">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 450 150"
-            width="100%"
-            height="100%"
-            className="fill-yellow-200 dark:fill-gray-700 opacity-20"
-          >
-            <path d="M50,100 Q80,40 120,80 T180,90 Q220,50 260,90 T320,100 Q380,60 420,90 T450,100 H0 Q20,130 50,100 Z" />
-          </svg>
-        </div>
-        <div className="animate-clouds-contact-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 400 120"
-            width="100%"
-            height="100%"
-            className="fill-purple-200 dark:fill-gray-600 opacity-15"
-          >
-            <path d="M40,90 Q70,30 110,70 T160,80 Q200,40 240,80 T300,90 Q340,50 380,80 T400,90 H0 Q20,110 40,90 Z" />
-          </svg>
-        </div>
-      </div>
-
+    <section className="bg-gradient-to-br from-[#F9EF19] via-[#fbcfe8] to-[#a78bfa] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 sm:py-24 lg:py-28 relative overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -37,22 +11,20 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-8 transform hover:scale-105 transition-transform duration-300"
-            style={{ fontFamily: '"Courier New", Courier, monospace' }}
-          >
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-8">
             Let’s Connect
           </h2>
+
           <motion.p
             className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            style={{ fontFamily: '"Courier New", Courier, monospace' }}
           >
             Feel free to reach out if you’d like to collaborate, discuss a project, or just say hi! I’d love to hear from you.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -62,7 +34,6 @@ const ContactSection = () => {
             <Link
               href="/contact"
               className="relative inline-flex items-center px-8 py-4 bg-[#F9EF19] text-gray-900 font-bold rounded-full shadow-lg overflow-hidden group focus:outline-none focus:ring-4 focus:ring-[#fbcfe8] focus:ring-opacity-50"
-              style={{ fontFamily: '"Courier New", Courier, monospace' }}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[#d4c000] to-[#F9EF19] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               <span className="relative z-10 flex items-center">

@@ -1,48 +1,50 @@
-import { useTheme } from '@/context/ThemeContext';
-import { motion } from 'framer-motion';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+"use client";
+
+import { useTheme } from "@/context/ThemeContext";
+import { motion } from "framer-motion";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Footer = () => {
   const { theme } = useTheme();
 
   const socialLinks = [
     {
-      name: 'GitHub',
-      url: 'https://github.com/hoirna',
+      name: "GitHub",
+      url: "https://github.com/hoirna",
       icon: <GitHubIcon className="w-6 h-6" />,
     },
     {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/seng-hoirna-353752343/',
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/seng-hoirna-353752343/",
       icon: <LinkedInIcon className="w-6 h-6" />,
     },
     {
-      name: 'Twitter',
-      url: 'https://x.com',
+      name: "Twitter",
+      url: "https://x.com",
       icon: <TwitterIcon className="w-6 h-6" />,
     },
     {
-      name: 'Facebook',
-      url: 'https://www.facebook.com/profile.php?id=100016305190362',
+      name: "Facebook",
+      url: "https://www.facebook.com/profile.php?id=100016305190362",
       icon: <FacebookIcon className="w-6 h-6" />,
     },
     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/hoirna_/',
+      name: "Instagram",
+      url: "https://www.instagram.com/hoirna_/",
       icon: <InstagramIcon className="w-6 h-6" />,
     },
   ];
 
   return (
     <footer
-      className={`py-12 sm:py-16 lg:py-20 relative overflow-hidden ${
-        theme === 'dark'
-          ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300'
-          : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700'
+      className={`py-12 sm:py-16 lg:py-20 relative overflow-hidden font-sans ${
+        theme === "dark"
+          ? "bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300"
+          : "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700"
       }`}
     >
       {/* Subtle Cloud Background */}
@@ -93,21 +95,22 @@ const Footer = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-all duration-300 ${
-                  theme === 'dark' ? 'text-gray-300 hover:text-[#80ff80]' : 'text-gray-700 hover:text-[#00ff00]'
+                className={`p-1.5 rounded-full transition-all duration-300 ${
+                  theme === "dark"
+                    ? "text-gray-300 hover:text-white hover:bg-gray-700"
+                    : "text-gray-700 hover:text-black hover:bg-gray-300"
                 }`}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.15 }}
+                transition={{ duration: 0.2 }}
               >
                 {link.icon}
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Copyright Text */}
+          {/* Copyright */}
           <motion.p
             className="text-sm sm:text-base"
-            style={{ fontFamily: '"Courier New", Courier, monospace' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -116,7 +119,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Seng Hoirna. All rights reserved.
           </motion.p>
 
-          {/* Additional Links */}
+          {/* Footer Links */}
           <motion.div
             className="flex space-x-6"
             initial={{ opacity: 0 }}
@@ -127,18 +130,20 @@ const Footer = () => {
             <a
               href="/privacy-policy"
               className={`transition-colors duration-300 text-sm sm:text-base ${
-                theme === 'dark' ? 'text-gray-300 hover:text-[#80ff80]' : 'text-gray-700 hover:text-[#00ff00]'
+                theme === "dark"
+                  ? "text-gray-300 hover:text-[#80ff80]"
+                  : "text-gray-700 hover:text-[#00ff00]"
               }`}
-              style={{ fontFamily: '"Courier New", Courier, monospace' }}
             >
               Privacy Policy
             </a>
             <a
               href="/terms-of-service"
               className={`transition-colors duration-300 text-sm sm:text-base ${
-                theme === 'dark' ? 'text-gray-300 hover:text-[#80ff80]' : 'text-gray-700 hover:text-[#00ff00]'
+                theme === "dark"
+                  ? "text-gray-300 hover:text-[#80ff80]"
+                  : "text-gray-700 hover:text-[#00ff00]"
               }`}
-              style={{ fontFamily: '"Courier New", Courier, monospace' }}
             >
               Terms of Service
             </a>
