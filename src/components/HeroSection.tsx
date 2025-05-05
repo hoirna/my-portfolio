@@ -33,7 +33,7 @@ const HeroSection = () => {
 
   const typingSpeed = 100;
   const deletingSpeed = 50;
-  const pauseTime = 1500;
+  const pauseTime = 3000;
 
   useEffect(() => {
     const handleTyping = () => {
@@ -71,7 +71,7 @@ const HeroSection = () => {
   }, [text, isDeleting, isPaused, wordIndex, words]);
 
   return (
-    <section className="relative py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+    <section className="relative py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5 dark:opacity-[3%] bg-[url('/images/dot-pattern.svg')]" />
 
@@ -82,23 +82,17 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 xl:gap-24">
           {/* Text content */}
-          <div className="flex-1 max-w-2xl">
-            <div className="mb-6">
-              <span className="inline-block px-4 py-1.5 text-sm font-medium rounded-full bg-green-100/80 dark:bg-green-900/50 text-green-700 dark:text-green-200 backdrop-blur-sm">
-                Welcome to my portfolio
-              </span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              <span className="block">Hello, I&apos;m</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-400 dark:to-emerald-500">
+          <div className="flex-1 max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+              <span className="block mt-8">I&apos;m</span>
+              <span className="text-transparent mt-3 bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-400 dark:to-emerald-500">
                 Seng Hoirna
               </span>
               <div className="h-16 sm:h-20 flex items-center mt-4">
                 <span className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 font-medium">
                   I am a{" "}
                   <span className="relative">
-                    <span className="typing-text inline-block min-w-[120px] text-gray-800 dark:text-gray-200 font-semibold">
+                    <span className="typing-text inline-block min-w-[160px] text-gray-800 dark:text-gray-200 font-semibold">
                       {text}
                       {showCursor && (
                         <span className="cursor inline-block w-[2px] h-8 bg-green-500 dark:bg-green-400 ml-1 align-middle"></span>
@@ -119,22 +113,21 @@ const HeroSection = () => {
                 href="/contact"
                 className="px-8 py-3.5 font-medium rounded-full shadow-lg transition-all duration-300
                 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700
-                text-white hover:shadow-green-500/30 transform hover:-translate-y-0.5"
+                text-white hover:shadow-green-500/30"
               >
                 Contact Me
               </Link>
               <Link
                 href="/projects"
                 className="px-8 py-3.5 font-medium rounded-full transition-all duration-300
-                border-2 border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500/10
-                transform hover:-translate-y-0.5"
+                border-2 border-green-500 text-green-600 dark:text-green-400 hover:bg-green-500/10"
               >
                 View Projects
               </Link>
             </div>
           </div>
 
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 flex-shrink-0 group">
+          <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-96 lg:h-96 flex-shrink-0 group">
             <div
               className={`absolute inset-0 rounded-full opacity-70 group-hover:opacity-100 
               bg-gradient-to-br from-green-400/30 to-emerald-600/30 dark:from-green-500/20 dark:to-emerald-700/20 
@@ -143,11 +136,11 @@ const HeroSection = () => {
 
             <div className="relative z-10 w-full h-full overflow-hidden rounded-full border-4 border-white dark:border-gray-800 shadow-xl">
               <Image
-                src="/images/mypicture.png"
+                src="/images/mypics.png"
                 alt="Seng Hoirna - Professional Portfolio"
-                width={320}
-                height={320}
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                width={384}
+                height={384}
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 pointer-events-none"
                 priority
               />
             </div>
@@ -162,10 +155,8 @@ const HeroSection = () => {
           display: inline-block;
           animation: blink 0.9s ease infinite;
           vertical-align: middle;
-          margin-left: 2px;
+          margin-left: 4px;
         }
-       
-        
       `}</style>
     </section>
   );

@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed w-full ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        theme === "dark" ? "bg-green-950 text-green-200" : "bg-green-200 text-green-900"
       } shadow-md z-50`}
     >
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-3 py-2">
@@ -40,8 +40,8 @@ const Navbar = () => {
           component="div"
           style={{
             fontFamily: '"DM Sans", sans-serif',
-            fontSize: "1.5rem", // Reduced font size
-            fontWeight: 400,
+            fontSize: "1.5rem",
+            fontWeight: 500,
             color: theme === "dark" ? "#ffffff" : "#111827",
           }}
         >
@@ -109,7 +109,7 @@ const Navbar = () => {
             theme === "dark"
               ? "bg-gray-900 text-white"
               : "bg-white text-gray-900"
-          } font-sans text-sm font-semibold`}
+          } font-sans text-lg font-bold`}
         >
           {navItems.map((item) => (
             <Link href={item.path} key={item.text} legacyBehavior>
