@@ -5,7 +5,7 @@ import ContactSection from '../components/ContactSection';
 import Skills from '../components/Skills';
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100">
+    <div className="min-h-screen">
       <HeroSection />
       <AboutSection />
       <Skills />

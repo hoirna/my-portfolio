@@ -1,4 +1,7 @@
-import { useTheme } from "@/context/ThemeContext"; // Adjust path as needed
+
+'use client'
+
+import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
@@ -115,19 +118,34 @@ export default function Contact() {
 
   return (
     <main
-      className={`min-h-screen py-16 px-6 sm:px-10 lg:px-20 ${
-        theme === "dark"
-          ? "bg-gradient-to-tr from-black via-gray-900 to-indigo-900 text-white"
-          : "bg-gradient-to-tr from-indigo-100 via-white to-purple-100 text-gray-900"
-      } transition-colors duration-500 overflow-hidden relative`}
+      className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden ${
+        theme === "dark" ? "bg-gray-950 text-gray-100" : "bg-gray-100 text-gray-900"
+      } transition-colors duration-500 relative`}
     >
-      {/* Background Glow Effect */}
+      {/* Background Grid and Gradient Overlay */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div
+          className={`absolute inset-0 bg-grid-pattern bg-[length:25px_25px] opacity-3 ${
+            theme === "dark" ? "bg-gray-800/5" : "bg-gray-400/5"
+          }`}
+        ></div>
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
+            theme === "dark" ? "to-gray-950/30" : "to-gray-100/30"
+          }`}
+        ></div>
+      </div>
+
+      {/* Decorative Elements */}
       <div
-        className={`absolute inset-0 ${
-          theme === "dark"
-            ? "bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 animate-pulse"
-            : "bg-gradient-to-br from-indigo-200/20 via-purple-200/20 to-pink-200/20"
-        }`}
+        className={`absolute top-0 left-0 w-64 h-64 ${
+          theme === "dark" ? "bg-cyan-500/10" : "bg-indigo-300/10"
+        } rounded-full blur-3xl animate-float`}
+      />
+      <div
+        className={`absolute bottom-0 right-0 w-72 h-72 ${
+          theme === "dark" ? "bg-purple-500/10" : "bg-purple-300/10"
+        } rounded-full blur-3xl animate-float-slow`}
       />
 
       <motion.section
@@ -139,12 +157,11 @@ export default function Contact() {
         {/* Heading */}
         <motion.h1
           variants={itemVariants}
-          className={`text-5xl sm:text-6xl lg:text-7xl mt-14 font-extrabold text-center mb-6 bg-clip-text text-transparent ${
+          className={`text-5xl sm:text-6xl lg:text-5xl mt-14 font-extrabold text-center mb-6 bg-clip-text text-transparent ${
             theme === "dark"
               ? "bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400"
               : "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"
           } animate-text`}
-          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h1
         >
           Let’s Connect
         </motion.h1>
@@ -153,7 +170,6 @@ export default function Contact() {
           className={`text-lg sm:text-xl ${
             theme === "dark" ? "text-gray-300" : "text-gray-700"
           } text-center mb-12 max-w-xl mx-auto`}
-          style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to p
         >
           Drop me a message or ping me on socials—I’m all ears for new ideas and collabs!
         </motion.p>
@@ -174,7 +190,6 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Name
               </label>
@@ -190,7 +205,6 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to input
               />
             </div>
             <div className="mb-6">
@@ -199,7 +213,6 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Email
               </label>
@@ -215,7 +228,6 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to input
               />
             </div>
             <div className="mb-6">
@@ -224,7 +236,6 @@ export default function Contact() {
                 className={`block text-left ${
                   theme === "dark" ? "text-gray-300" : "text-gray-700"
                 } mb-2 font-medium`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to label
               >
                 Message
               </label>
@@ -240,7 +251,6 @@ export default function Contact() {
                     ? "bg-gray-900/50 text-white border-gray-600 focus:ring-cyan-400"
                     : "bg-gray-100/50 text-gray-900 border-gray-300 focus:ring-indigo-500"
                 } border focus:outline-none focus:ring-2 transition-all duration-300`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to textarea
               />
             </div>
             <button
@@ -250,7 +260,6 @@ export default function Contact() {
                   ? "bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
                   : "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
               } text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105`}
-              style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to button
             >
               Send It!
             </button>
@@ -259,7 +268,6 @@ export default function Contact() {
                 className={`mt-4 text-center ${
                   status.includes("success") ? "text-green-500" : "text-red-500"
                 }`}
-                style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to status message
               >
                 {status}
               </p>
@@ -273,7 +281,6 @@ export default function Contact() {
             className={`text-2xl sm:text-3xl font-bold mb-6 ${
               theme === "dark" ? "text-white" : "text-gray-900"
             } drop-shadow-md`}
-            style={{ fontFamily: '"Courier New", Courier, monospace' }} // Applied to h2
           >
             Catch Me Online
           </h2>
@@ -296,18 +303,6 @@ export default function Contact() {
           </div>
         </motion.div>
       </motion.section>
-
-      {/* Decorative Elements */}
-      <div
-        className={`absolute top-0 left-0 w-64 h-64 ${
-          theme === "dark" ? "bg-cyan-500/10" : "bg-indigo-300/10"
-        } rounded-full blur-3xl animate-float`}
-      />
-      <div
-        className={`absolute bottom-0 right-0 w-72 h-72 ${
-          theme === "dark" ? "bg-purple-500/10" : "bg-purple-300/10"
-        } rounded-full blur-3xl animate-float-slow`}
-      />
     </main>
   );
 }

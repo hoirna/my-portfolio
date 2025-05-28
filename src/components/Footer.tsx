@@ -66,7 +66,7 @@ const Footer = () => {
             viewBox="0 0 400 120"
             width="100%"
             height="100%"
-            className="fill-gray-200 dark:fill-gray-600 opacity-10"
+            className="fill-gray-200 dark:fill-gray-600 opacity-40"
           >
             <path d="M40,90 Q70,30 110,70 T160,80 Q200,40 240,80 T300,90 Q340,50 380,80 T400,90 H0 Q20,110 40,90 Z" />
           </svg>

@@ -2,75 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Mode Settings - System Preference */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --grid-color: rgba(255, 255, 255, 0.1);
   }
 }
 
-/* Light Theme Variables */
 :root {
   --background: #ffffff;
   --foreground: #1a202c;
-  --primary: #F9EF19;
-  --primary-light: #FFEB3B;
-  --primary-dark: #FBC02D;
-  --secondary: #1976D2;
-  --secondary-light: #42A5F5;
-  --secondary-dark: #1565C0;
-  --accent: #FF4081;
-  --accent-light: #FF80AB;
-  --accent-dark: #F50057;
+  --grid-color: rgba(0, 0, 0, 0.1);
+  --primary: #f9ef19;
+  --primary-light: #ffeb3b;
+  --primary-dark: #fbc02d;
+  --secondary: #1976d2;
+  --secondary-light: #42a5f5;
+  --secondary-dark: #1565c0;
+  --accent: #ff4081;
+  --accent-light: #ff80ab;
+  --accent-dark: #f50057;
 }
 
-/* Dark Theme Variables */
 .dark {
   --background: #111;
   --foreground: #f9ef19;
-  --primary: #1976D2;
-  --primary-light: #42A5F5;
-  --primary-dark: #1565C0;
-  --secondary: #FF4081;
-  --secondary-light: #FF80AB;
-  --secondary-dark: #F50057;
-  --accent: #FBC02D;
-  --accent-light: #FFEB3B;
-  --accent-dark: #F9EF19;
+  --grid-color: rgba(255, 255, 255, 0.1);
+  --primary: #1976d2;
+  --primary-light: #42a5f5;
+  --primary-dark: #1565c0;
+  --secondary: #ff4081;
+  --secondary-light: #ff80ab;
+  --secondary-dark: #f50057;
+  --accent: #fbc02d;
+  --accent-light: #ffeb3b;
+  --accent-dark: #f9ef19;
 }
 
-/* Global Styles */
 html {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 body {
-  @apply bg-background text-foreground font-sans; /* Apply Inter globally */
+  @apply bg-background text-foreground font-sans bg-grid-pattern;
 }
 
-/* Apply monospace font to typing effect and code */
-code, pre, .typing-effect, .typing-text {
-  @apply font-mono; /* Apply JetBrains Mono */
+code,
+pre,
+.typing-effect,
+.typing-text {
+  @apply font-mono;
 }
 
-/* Override navbar typography (previously Montserrat) */
-header, header .MuiTypography-root {
-  @apply font-sans; /* Use Inter */
+header,
+header .MuiTypography-root {
+  @apply font-sans;
 }
 
-/* Zoom Effect Animation */
 @keyframes zoom {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .animate-zoom {
   animation: zoom 8s infinite ease-in-out;
 }
 
-/* 3D Flip Card */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -133,15 +138,62 @@ footer {
   overflow: hidden;
 }
 
-/* Ensure SVGs inherit theme-based fills */
 svg {
   transition: fill 0.3s ease;
 }
+
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .lottie-animation {
   animation: float 6s ease-in-out infinite;
+}
+
+.carousel {
+  display: flex;
+  animation: scroll 15s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel:hover {
+  animation-play-state: paused;
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      var(--grid-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+@keyframes gridPulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.04);
+  }
+}
+.animate-gridPulse {
+  animation: gridPulse 5s ease-in-out infinite;
 }
