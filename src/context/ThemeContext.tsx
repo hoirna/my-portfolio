@@ -1,4 +1,6 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+'use client';
+
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -9,33 +11,33 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        setTheme(savedTheme as 'light' | 'dark');
-      } else {
-        setTheme('light');
-      }
-    }
+    // Client-side only: Read saved theme or system preference
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+    setTheme(initialTheme);
+    // Apply .dark class only for dark theme
+    document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+    setIsInitialized(true);
   }, []);
 
-  useEffect(() => {
-    // Apply the theme class to the document HTML element
-    if (typeof window !== 'undefined') {
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(theme);
-    }
-  }, [theme]);
-
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    if (typeof window !== 'undefined') {
+    setTheme((prev) => {
+      const newTheme = prev === 'light' ? 'dark' : 'light';
       localStorage.setItem('theme', newTheme);
-    }
+      document.documentElement.classList.toggle('dark', newTheme === 'dark');
+      return newTheme;
+    });
   };
+
+  // Prevent rendering until theme is initialized to avoid flash
+  if (!isInitialized) {
+    return null; // Or a loading placeholder
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

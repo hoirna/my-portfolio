@@ -1,154 +1,127 @@
-"use client";
+'use client';
 
-import { useTheme } from "@/context/ThemeContext";
-import { motion } from "framer-motion";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { useTheme } from '@/context/ThemeContext';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   const { theme } = useTheme();
 
   const socialLinks = [
     {
-      name: "GitHub",
-      url: "https://github.com/hoirna",
+      name: 'GitHub',
+      url: 'https://github.com/hoirna',
       icon: <GitHubIcon className="w-6 h-6" />,
     },
     {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/seng-hoirna-353752343/",
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/seng-hoirna-353752343/',
       icon: <LinkedInIcon className="w-6 h-6" />,
     },
     {
-      name: "Twitter",
-      url: "https://x.com",
+      name: 'Twitter',
+      url: 'https://x.com',
       icon: <TwitterIcon className="w-6 h-6" />,
     },
     {
-      name: "Facebook",
-      url: "https://www.facebook.com/profile.php?id=100016305190362",
+      name: 'Facebook',
+      url: 'https://www.facebook.com/profile.php?id=100016305190362',
       icon: <FacebookIcon className="w-6 h-6" />,
     },
     {
-      name: "Instagram",
-      url: "https://www.instagram.com/hoirna_/",
+      name: 'Instagram',
+      url: 'https://www.instagram.com/hoirna_/',
       icon: <InstagramIcon className="w-6 h-6" />,
     },
   ];
 
   return (
     <footer
-      className={`py-12 sm:py-16 lg:py-20 relative overflow-hidden font-sans ${
-        theme === "dark"
-          ? "bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300"
-          : "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700"
-      }`}
+      className={`py-12 sm:py-16 lg:py-20 relative font-sans ${
+        theme === 'dark'
+          ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300'
+          : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700'
+      } backdrop-blur-md bg-opacity-80`}
     >
-      {/* Subtle Cloud Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="animate-clouds-footer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 450 150"
-            width="100%"
-            height="100%"
-            className="fill-gray-300 dark:fill-gray-700 opacity-15"
-          >
-            <path d="M50,100 Q80,40 120,80 T180,90 Q220,50 260,90 T320,100 Q380,60 420,90 T450,100 H0 Q20,130 50,100 Z" />
-          </svg>
-        </div>
-        <div className="animate-clouds-footer-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 400 120"
-            width="100%"
-            height="100%"
-            className="fill-gray-200 dark:fill-gray-600 opacity-40"
-          >
-            <path d="M40,90 Q70,30 110,70 T160,80 Q200,40 240,80 T300,90 Q340,50 380,80 T400,90 H0 Q20,110 40,90 Z" />
-          </svg>
-        </div>
-      </div>
-
+      <style jsx>{`
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .fade-in {
+          opacity: 0;
+          transform: translateY(30px);
+          animation: fadeIn 0.7s ease-out forwards;
+        }
+        .social-links {
+          opacity: 0;
+          animation: fadeIn 0.6s ease-out 0.3s forwards;
+        }
+        .copyright {
+          opacity: 0;
+          animation: fadeIn 0.6s ease-out 0.5s forwards;
+ Reduces unnecessary repetition in the footer links section */}
+        .footer-links {
+          opacity: 0;
+          animation: fadeIn 0.6s ease-out 0.7s forwards;
+        }
+        .social-link {
+          transition: all 0.3s ease;
+        }
+        .social-link:hover {
+          transform: scale(1.15);
+          background-color: ${theme === 'dark' ? 'rgb(55, 65, 81)' : 'rgb(209, 213, 219)'};
+          color: ${theme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'};
+        }
+        .footer-link {
+          transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+          color: ${theme === 'dark' ? '#80ff80' : '#00ff00'};
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          className="flex flex-col items-center justify-center space-y-8"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Social Media Links */}
-          <motion.div
-            className="flex space-x-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
+        <div className="flex flex-col items-center justify-center space-y-8 fade-in">
+          <div className="flex space-x-8 social-links">
             {socialLinks.map((link) => (
-              <motion.a
+              <a
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-1.5 rounded-full transition-all duration-300 ${
-                  theme === "dark"
-                    ? "text-gray-300 hover:text-white hover:bg-gray-700"
-                    : "text-gray-700 hover:text-black hover:bg-gray-300"
+                className={`social-link p-1.5 rounded-full ${
+                  theme === 'dark'
+                    ? 'text-gray-100'
+                    : 'text-gray-700'
                 }`}
-                whileHover={{ scale: 1.15 }}
-                transition={{ duration: 0.2 }}
               >
                 {link.icon}
-              </motion.a>
+              </a>
             ))}
-          </motion.div>
+          </div>
 
           {/* Copyright */}
-          <motion.p
-            className="text-sm sm:text-base"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
+          <p className="text-sm sm:text-base copyright">
             © {new Date().getFullYear()} Seng Hoirna. All rights reserved.
-          </motion.p>
+          </p>
 
           {/* Footer Links */}
-          <motion.div
-            className="flex space-x-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
+          <div className="flex space-x-6 footer-links">
             <a
-              href="/privacy-policy"
-              className={`transition-colors duration-300 text-sm sm:text-base ${
-                theme === "dark"
-                  ? "text-gray-300 hover:text-[#80ff80]"
-                  : "text-gray-700 hover:text-[#00ff00]"
+              href="/Privacy-Policy"
+              className={`footer-link text-sm sm:text-base ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}
             >
               Privacy Policy
             </a>
-            <a
-              href="/terms-of-service"
-              className={`transition-colors duration-300 text-sm sm:text-base ${
-                theme === "dark"
-                  ? "text-gray-300 hover:text-[#80ff80]"
-                  : "text-gray-700 hover:text-[#00ff00]"
-              }`}
-            >
-              Terms of Service
-            </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </footer>
   );

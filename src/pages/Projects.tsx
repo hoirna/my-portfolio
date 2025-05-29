@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
 import { FiArrowRight, FiExternalLink, FiGithub } from "react-icons/fi";
+import Head from "next/head";
 
 export default function Projects() {
   const { theme } = useTheme();
@@ -92,6 +93,11 @@ export default function Projects() {
   };
 
   return (
+     <>
+    <Head>
+        <title>Projects | My Portfolio</title>
+        <meta name="description" content="A showcase of my technical skills and expertise." />
+      </Head>
     <main
       className={`min-h-screen py-12 px-4 sm:px-6 lg:px-8 overflow-hidden ${
         theme === "dark" ? "bg-gray-950 text-gray-100" : "bg-gray-100 text-gray-900"
@@ -99,7 +105,7 @@ export default function Projects() {
     >
       <div className="fixed inset-0 pointer-events-none">
         <div
-          className={`absolute inset-0 bg-grid-pattern bg-[length:25px_25px] opacity-3 ${
+          className={`absolute inset-0 bg-grid-pattern bg-[length:30px_30px] opacity-3 ${
             theme === "dark" ? "bg-gray-800/5" : "bg-gray-400/5"
           }`}
         ></div>
@@ -221,7 +227,6 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* CTA Section */}
         <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
@@ -237,7 +242,7 @@ export default function Projects() {
           </h2>
           <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
             <Link
-              href="/contact"
+              href="/Contact"
               className={`inline-flex items-center px-5 py-2.5 rounded-full text-sm font-semibold ${
                 theme === "dark"
                   ? "bg-emerald-600 hover:bg-emerald-500 text-white"
@@ -251,5 +256,6 @@ export default function Projects() {
         </motion.div>
       </section>
     </main>
+    </>
   );
 }

@@ -1,7 +1,4 @@
-'use client';
-
 import { useTheme } from '@/context/ThemeContext';
-import { motion } from 'framer-motion';
 import { FaHtml5, FaCss3Alt, FaJs, FaNodeJs } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript } from 'react-icons/si';
 
@@ -17,57 +14,73 @@ const skillsData = [
 const SkillsSection = () => {
   const { theme } = useTheme();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
-  };
-
   return (
     <section
       id="SkillsSection"
-      className={`py-20 sm:py-28 lg relative overflow-hidden font-sans ${
-        theme === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
-      }`}
+      className="relative py-20 sm:py-28 lg:py-20 font-sans overflow-hidden"
     >
+      <style jsx>{`
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes progress {
+          from {
+            width: 0;
+          }
+          to {
+            width: var(--progress-width);
+          }
+        }
+        .fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        .card-item {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+        .card-item:nth-child(1) { animation-delay: 0.3s; }
+        .card-item:nth-child(2) { animation-delay: 0.4s; }
+        .card-item:nth-child(3) { animation-delay: 0.5s; }
+        .card-item:nth-child(4) { animation-delay: 0.6s; }
+        .card-item:nth-child(5) { animation-delay: 0.7s; }
+        .card-item:nth-child(6) { animation-delay: 0.8s; }
+        .progress-bar {
+          width: 0;
+          animation: progress 1.2s ease-out 0.5s forwards;
+        }
+        .card {
+          transition: all 0.3s ease;
+        }
+        .card:hover {
+          border-color: ${theme === 'dark' ? 'rgba(52, 211, 153, 0.3)' : 'rgba(16, 185, 129, 0.3)'};
+          box-shadow: ${theme === 'dark' ? '0 4px 20px rgba(16, 185, 129, 0.2)' : '0 4px 20px rgba(16, 185, 129, 0.1)'};
+        }
+        .card:hover .card-bg {
+          opacity: 1;
+        }
+        .card-bg {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+      `}</style>
       <div className="fixed inset-0 pointer-events-none">
-        <div
-          className={`absolute inset-0 bg-[size:90px_90px] bg-[linear-gradient(to_right,rgba(16,185,129,0.4)_2px,transparent_2px),linear-gradient(to_bottom,rgba(16,185,129,0.4)_2px,transparent_2px)] opacity-35 dark:opacity-25 animate-gridPulse ${
-            theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-400/5'
-          }`}
-        ></div>
+     <div
+  className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse"
+/>
         <div
           className={`absolute inset-0 bg-gradient-to-b from-transparent ${
             theme === 'dark' ? 'to-gray-950/30' : 'to-gray-100/30'
           }`}
         ></div>
       </div>
-
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16 fade-in">
           <span
             className={`text-sm font-medium px-4 py-1 rounded-full ${
               theme === 'dark'
@@ -77,8 +90,11 @@ const SkillsSection = () => {
           >
             Experience
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold">
-            Proficient{' '}
+          <h2 className="text-4xl py-3 sm:text-5xl lg:text-6xl font-semibold">
+           
+            <span className={theme === 'dark' ? 'text-gray-100' : 'text-gray-900'}>
+               Proficient{' '}
+            </span>
             <span className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'}>
               Skills
             </span>
@@ -88,29 +104,21 @@ const SkillsSection = () => {
               theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
             }`}
           >
-            My technical toolkit includes modern web technologies that I&rsquo;ve mastered through
+            My technical toolkit includes modern web technologies that I’ve mastered through
             years of hands-on experience.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillsData.map((skill) => (
-            <motion.div
+            <div
               key={skill.name}
-              variants={itemVariants}
-              className={`group relative p-6 rounded-xl border ${
+              className={`card relative p-6 rounded-xl border ${
                 theme === 'dark'
-                  ? 'bg-gray-800/50 border-gray-700 hover:border-emerald-400/30'
-                  : 'bg-gray-50 border-gray-200 hover:border-emerald-500/30'
-              } transition-all duration-300 hover:shadow-lg ${
-                theme === 'dark' ? 'hover:shadow-emerald-900/20' : 'hover:shadow-emerald-100'
-              }`}
+                  ? 'bg-gray-800/50 border-gray-700'
+                  : 'bg-gray-50 border-gray-200'
+              } card-item`}
+              style={{ ['--progress-width' as never]: `${skill.level}%` } as React.CSSProperties }
             >
               <div className="flex items-center gap-4 mb-4">
                 <span
@@ -120,10 +128,10 @@ const SkillsSection = () => {
                 >
                   {skill.icon}
                 </span>
-                <h3 className="text-xl font-semibold">{skill.name}</h3>
+                <h3 className={`text-xl font-medium ${theme === 'dark' ? ' text-white ': 'text-black'}`}>{skill.name}</h3>
               </div>
 
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-3">
                 <span
                   className={`text-sm font-medium ${
                     theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
@@ -145,12 +153,8 @@ const SkillsSection = () => {
                   theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
                 }`}
               >
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1.2, delay: 0.2, type: 'spring' }}
-                  viewport={{ once: true }}
-                  className={`h-full rounded-full ${
+                <div
+                  className={`h-full rounded-full progress-bar ${
                     theme === 'dark'
                       ? 'bg-gradient-to-r from-emerald-500 to-emerald-400'
                       : 'bg-gradient-to-r from-emerald-600 to-emerald-400'
@@ -159,15 +163,15 @@ const SkillsSection = () => {
               </div>
 
               <div
-                className={`absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                className={`card-bg absolute inset-0 -z-10 rounded-xl ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-emerald-900/20 to-gray-800'
                     : 'bg-gradient-to-br from-emerald-100/50 to-gray-50'
                 }`}
               ></div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <div
           className={`mt-16 pt-16 border-t ${
@@ -187,7 +191,7 @@ const SkillsSection = () => {
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
               }`}
             >
-              Technology evolves rapidly, and I&rsquo;m committed to staying at the forefront. I
+              Technology evolves rapidly, and I’m committed to staying at the forefront. I
               regularly update my skills through courses, certifications, and hands-on projects to
               ensure I deliver cutting-edge solutions.
             </p>

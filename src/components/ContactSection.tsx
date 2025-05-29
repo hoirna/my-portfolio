@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useTheme } from '@/context/ThemeContext';
+import Link from "next/link";
+import { useTheme } from "@/context/ThemeContext";
 
 const ContactSection = () => {
   const { theme } = useTheme();
@@ -10,133 +9,163 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className={`py-20 sm:py-28 lg:py-32 relative overflow-hidden font-sans ${
-        theme === 'dark' ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
-      }`}
+      className="relative py-20 sm:py-28 lg:py-20 font-sans overflow-hidden"
     >
+      <style jsx>{`
+        @keyframes fadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes scaleIn {
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .fade-in {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        .fade-in-delay {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeIn 0.6s ease-out 0.3s forwards;
+        }
+        .scale-in {
+          opacity: 0;
+          transform: scale(0.95);
+          animation: scaleIn 0.6s ease-out 0.5s forwards;
+        }
+        .button-hover {
+          transition: all 0.3s ease;
+        }
+        .button-hover:hover .gradient-overlay {
+          opacity: 1;
+        }
+        .gradient-overlay {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .button-hover:hover .arrow {
+          transform: translateX(4px);
+        }
+        .arrow {
+          transition: transform 0.3s ease;
+        }
+        .button-hover:hover {
+          border-color: ${theme === "dark"
+            ? "rgba(52, 211, 153, 0.6)"
+            : "rgba(16, 185, 129, 0.6)"};
+          color: ${theme === "dark" ? "rgb(110, 231, 183)" : "rgb(4, 120, 87)"};
+        }
+      `}</style>
       <div className="fixed inset-0 pointer-events-none">
-        <div
-          className={`absolute inset-0 bg-[size:90px_90px] bg-[linear-gradient(to_right,rgba(16,185,129,0.4)_2px,transparent_2px),linear-gradient(to_bottom,rgba(16,185,129,0.4)_2px,transparent_2px)] opacity-25 dark:opacity-15 animate-gridPulse ${
-            theme === 'dark' ? 'bg-gray-800/5' : 'bg-gray-400/5'
-          }`}
-        ></div>
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === 'dark' ? 'to-gray-950/30' : 'to-gray-100/30'
-          }`}
-        ></div>
+        <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <div className="text-center fade-in">
           <span
             className={`text-sm font-medium px-4 py-1 rounded-full ${
-              theme === 'dark' ? 'bg-emerald-900/20 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
+              theme === "dark"
+                ? "bg-emerald-900/20 text-emerald-400"
+                : "bg-emerald-100 text-emerald-700"
             }`}
           >
             GET IN TOUCH
           </span>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-6 mb-6">
-            Let&apos;s <span className={theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'}>Connect</span>
+            <span
+              className={theme === "dark" ? "text-gray-100" : "text-gray-900"}
+            >
+              Let‘s{" "}
+            </span>
+            <span
+              className={
+                theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+              }
+            >
+              Connect
+            </span>
           </h2>
 
-          <motion.p
+          <p
             className={`max-w-2xl mx-auto text-lg ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-            } mb-10`}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+              theme === "dark" ? "text-gray-300" : "text-gray-600"
+            } mb-10 fade-in-delay`}
           >
-            Have a project in mind or want to discuss opportunities? I&apos;m currently available for freelance work and collaborations.
-          </motion.p>
+            Have a project in mind or want to discuss opportunities? I‘m
+            currently available for freelance work and collaborations.
+          </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row justify-center gap-4"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <Link
-              href="/contact"
-              className={`relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 overflow-hidden group ${
-                theme === 'dark'
-                  ? 'bg-emerald-600 hover:bg-emerald-500 text-white'
-                  : 'bg-emerald-600 hover:bg-emerald-500 text-white'
-              }`}
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              <span className="relative z-10 flex items-center">
-                Contact Me
-                <svg
-                  className="w-5 h-5 ml-3 transform group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
-            </Link>
+       <div className="flex flex-col sm:flex-row justify-center gap-4 scale-in">
+  <Link
+    href="/contact"
+    className="relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 overflow-hidden bg-emerald-600 text-white hover:bg-emerald-700 hover:scale-105"
+  >
+    <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-400 pointer-events-none"></span>
+    <span className="relative z-10 flex items-center">
+      Contact Me
+      <svg
+        className="w-5 h-5 ml-3"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17 8l4 4m0 0l-4 4m4-4H3"
+        />
+      </svg>
+    </span>
+  </Link>
 
-            <Link
-              href="mailto:hello@example.com"
-              className={`relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 border ${
-                theme === 'dark'
-                  ? 'border-emerald-400/30 hover:border-emerald-400/60 text-emerald-400 hover:text-emerald-300'
-                  : 'border-emerald-600/30 hover:border-emerald-600/60 text-emerald-600 hover:text-emerald-700'
-              }`}
-            >
-              Email Directly
-            </Link>
-          </motion.div>
+  <Link
+    href="mailto:hello@example.com"
+    className={`relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 border ${
+      theme === "dark"
+        ? "border-emerald-400/30 text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/20"
+        : "border-emerald-600/30 text-emerald-600 bg-emerald-600/10 hover:bg-emerald-600/20"
+    }`}
+  >
+    Email Directly
+  </Link>
+</div>
 
-          <div
-            className={`mt-16 pt-16 border-t ${
-              theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
-            }`}
-          >
+          <div className="mt-12 gap-4">
             <p
               className={`text-sm ${
-                theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                theme === "dark" ? "text-gray-400" : "text-gray-500"
               }`}
             >
-              Alternatively, connect with me on{' '}
+              Alternatively, connect with me on{" "}
               <a
                 href="https://linkedin.com"
                 className={`hover:underline ${
-                  theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
+                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
                 }`}
               >
                 LinkedIn
-              </a>{' '}
-              or{' '}
+              </a>{" "}
+              or{" "}
               <a
                 href="https://github.com"
                 className={`hover:underline ${
-                  theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
+                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
                 }`}
               >
                 GitHub
               </a>
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
