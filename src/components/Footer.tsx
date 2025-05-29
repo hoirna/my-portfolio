@@ -113,7 +113,7 @@ const Footer = () => {
           {/* Footer Links */}
           <div className="flex space-x-6 footer-links">
             <a
-              href="/Privacy-Policy"
+              href="/Privacy"
               className={`footer-link text-sm sm:text-base ${
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}
