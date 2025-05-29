@@ -6,6 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import Link from 'next/link';
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -89,7 +90,7 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center space-y-8 fade-in">
           <div className="flex space-x-8 social-links">
             {socialLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.url}
                 target="_blank"
@@ -101,7 +102,7 @@ const Footer = () => {
                 }`}
               >
                 {link.icon}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -112,14 +113,14 @@ const Footer = () => {
 
           {/* Footer Links */}
           <div className="flex space-x-6 footer-links">
-            <a
+            <Link
               href="/Privacy"
               className={`footer-link text-sm sm:text-base ${
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
               }`}
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>
