@@ -84,7 +84,7 @@ export default function About() {
       company: "AI FARM CO., LTD.",
       duration: "2024 - 2025",
       responsibilities: [
-        "Built reusable React components for company's design system",
+        "Developed ",
         "Assisted in migrating legacy codebase to TypeScript",
         "Participated in agile development processes and code reviews"
       ],

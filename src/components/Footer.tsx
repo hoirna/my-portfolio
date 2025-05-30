@@ -1,11 +1,7 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeContext';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import { GitHub, LinkedIn, Twitter, Facebook, Instagram } from '@mui/icons-material';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -15,37 +11,43 @@ const Footer = () => {
     {
       name: 'GitHub',
       url: 'https://github.com/hoirna',
-      icon: <GitHubIcon className="w-6 h-6" />,
+      icon: <GitHub fontSize="small" />,
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/seng-hoirna-353752343/',
-      icon: <LinkedInIcon className="w-6 h-6" />,
+      icon: <LinkedIn fontSize="small" />,
     },
     {
       name: 'Twitter',
       url: 'https://x.com',
-      icon: <TwitterIcon className="w-6 h-6" />,
+      icon: <Twitter fontSize="small" />,
     },
     {
       name: 'Facebook',
       url: 'https://www.facebook.com/profile.php?id=100016305190362',
-      icon: <FacebookIcon className="w-6 h-6" />,
+      icon: <Facebook fontSize="small" />,
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/hoirna_/',
-      icon: <InstagramIcon className="w-6 h-6" />,
+      icon: <Instagram fontSize="small" />,
     },
+  ];
+
+  const footerLinks = [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <footer
-      className={`py-12 sm:py-16 lg:py-20 relative font-sans ${
+      className={`py-12 border-t ${
         theme === 'dark'
-          ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300'
-          : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700'
-      } backdrop-blur-md bg-opacity-80`}
+          ? 'bg-gray-900 border-gray-800 text-gray-300'
+          : 'bg-gray-50 border-gray-200 text-gray-700'
+      }`}
     >
       <style jsx>{`
         @keyframes fadeIn {
@@ -56,72 +58,90 @@ const Footer = () => {
         }
         .fade-in {
           opacity: 0;
-          transform: translateY(30px);
-          animation: fadeIn 0.7s ease-out forwards;
+          transform: translateY(20px);
+          animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .social-links {
           opacity: 0;
-          animation: fadeIn 0.6s ease-out 0.3s forwards;
+          animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         }
         .copyright {
           opacity: 0;
-          animation: fadeIn 0.6s ease-out 0.5s forwards;
- Reduces unnecessary repetition in the footer links section */}
+          animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
         .footer-links {
           opacity: 0;
-          animation: fadeIn 0.6s ease-out 0.7s forwards;
+          animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
         }
         .social-link {
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .social-link:hover {
-          transform: scale(1.15);
-          background-color: ${theme === 'dark' ? 'rgb(55, 65, 81)' : 'rgb(209, 213, 219)'};
-          color: ${theme === 'dark' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'};
+          transform: translateY(-2px);
+          color: ${theme === 'dark' ? 'rgb(16, 185, 129)' : 'rgb(5, 150, 105)'};
         }
         .footer-link {
-          transition: color 0.3s ease;
+          transition: color 0.2s ease;
+          position: relative;
         }
         .footer-link:hover {
-          color: ${theme === 'dark' ? '#80ff80' : '#00ff00'};
+          color: ${theme === 'dark' ? 'rgb(16, 185, 129)' : 'rgb(5, 150, 105)'};
+        }
+        .footer-link::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: ${theme === 'dark' ? 'rgb(16, 185, 129)' : 'rgb(5, 150, 105)'};
+          transition: width 0.3s ease;
+        }
+        .footer-link:hover::after {
+          width: 100%;
         }
       `}</style>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center justify-center space-y-8 fade-in">
-          <div className="flex space-x-8 social-links">
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col items-center">
+          <div className="flex space-x-6 social-links mb-8">
             {socialLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`social-link p-1.5 rounded-full ${
+                className={`social-link p-2 rounded-full ${
                   theme === 'dark'
-                    ? 'text-gray-100'
-                    : 'text-gray-700'
+                    ? 'text-gray-400 hover:bg-gray-800'
+                    : 'text-gray-500 hover:bg-gray-100'
                 }`}
+                aria-label={link.name}
               >
                 {link.icon}
               </Link>
             ))}
           </div>
 
-          {/* Copyright */}
-          <p className="text-sm sm:text-base copyright">
+          <nav className="flex space-x-6 footer-links mb-8">
+            {footerLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`footer-link text-sm font-medium ${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          <p className={`text-xs copyright text-center ${
+            theme === 'dark' ? 'text-gray-500' : 'text-gray-400'
+          }`}>
             © {new Date().getFullYear()} Seng Hoirna. All rights reserved.
           </p>
-
-          {/* Footer Links */}
-          <div className="flex space-x-6 footer-links">
-            <Link
-              href="/Privacy"
-              className={`footer-link text-sm sm:text-base ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-              }`}
-            >
-              Privacy Policy
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

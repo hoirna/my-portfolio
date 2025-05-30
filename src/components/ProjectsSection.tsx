@@ -127,9 +127,7 @@ const ShowcaseSection = ({
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-            
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
             
             <div className="absolute top-4 left-4 flex gap-2">
               {item.featured && (
@@ -140,10 +138,7 @@ const ShowcaseSection = ({
               
             </div>
           </div>
-          
-          {/* Text content */}
-          <div className="flex-1 p-6 flex flex-col">
-            {/* Meta info */}
+            <div className="flex-1 p-6 flex flex-col">
             <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-3">      
               {item.views && (
                 <span className="flex items-center gap-1">
@@ -153,7 +148,6 @@ const ShowcaseSection = ({
               )}
             </div>
             
-            {/* Title */}
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
               {item.link ? (
                 <Link href={item.link} className="hover:underline">
@@ -164,12 +158,10 @@ const ShowcaseSection = ({
               )}
             </h3>
             
-            {/* Excerpt */}
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
               {item.excerpt}
             </p>
             
-            {/* Tags */}
             {item.tags.length > 0 && (
               <div className="mt-auto mb-4 flex flex-wrap gap-2">
                 {item.tags.slice(0, 3).map((tag) => (
@@ -183,7 +175,6 @@ const ShowcaseSection = ({
               </div>
             )}
             
-            {/* Action buttons */}
             <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
               <div className="flex gap-2">
                 {item.status && (
@@ -228,7 +219,7 @@ const ShowcaseSection = ({
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-20 relative overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-16 relative overflow-hidden">
         <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(139,92,246,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.15)_1px,transparent_1px)] animate-gridPulse" />
         <div

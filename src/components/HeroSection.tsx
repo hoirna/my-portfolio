@@ -5,12 +5,13 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import { FaVuejs, FaReact, FaNodeJs, FaGitAlt } from "react-icons/fa";
+import { FaVuejs, FaNode, FaGitAlt, FaFigma } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiJavascript,
   SiTypescript,
   SiTailwindcss,
+  SiDirectus,
 } from "react-icons/si";
 
 const HeroSection = () => {
@@ -35,8 +36,8 @@ const HeroSection = () => {
       position: { top: "10%", left: "clamp(5%, 10vw, 15%)" },
     },
     {
-      name: "React",
-      icon: <FaReact />,
+      name: "Directus",
+      icon: <SiDirectus />,
       position: { top: "20%", right: "clamp(5%, 10vw, 10%)" },
     },
     {
@@ -56,13 +57,18 @@ const HeroSection = () => {
     },
     {
       name: "Node.js",
-      icon: <FaNodeJs />,
+      icon: <FaNode />,
       position: { top: "60%", right: "clamp(5%, 10vw, 5%)" },
     },
     {
       name: "Tailwind",
       icon: <SiTailwindcss />,
       position: { bottom: "10%", right: "clamp(5%, 10vw, 25%)" },
+    },
+    {
+      name: "Figma",
+      icon: <FaFigma />,
+      position: { bottom: "15%", left: "clamp(15%, 10vw, 20%)" },
     },
     {
       name: "Git",
@@ -77,10 +83,14 @@ const HeroSection = () => {
 
   useEffect(() => {
     const nameTimer = setInterval(() => {
-      setNameIndex((prev) => (prev + 1) % names.length);
-    }, 5500);
+      setNameIndex((prev) => {
+        const newIndex = (prev + 1) % names.length;
+        console.log("nameIndex:", newIndex, "currentName:", names[newIndex]);
+        return newIndex;
+      });
+    }, 5000);
     return () => clearInterval(nameTimer);
-  }, [names.length]);
+  }, [names, names.length]);
 
   useEffect(() => {
     setCurrentName(names[nameIndex]);
@@ -129,6 +139,8 @@ const HeroSection = () => {
       </Head>
       <section className="relative py-12 sm:py-16 lg:py-20 font-sans">
         <style jsx>{`
+          @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap");
+
           @keyframes float {
             0%,
             100% {
@@ -156,6 +168,16 @@ const HeroSection = () => {
               transform: translateY(0);
             }
           }
+          @keyframes smoothNameTransition {
+            0% {
+              opacity: 0;
+              transform: translateY(15px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
           .animate-float {
             animation: float 3s ease-in-out infinite;
           }
@@ -171,7 +193,14 @@ const HeroSection = () => {
             animation: fadeIn 0.8s ease-out 0.2s forwards;
           }
           .name-transition {
-            animation: nameSlideIn 0.5s ease-out;
+            font-family: "Noto Sans Khmer", Arial, sans-serif;
+            display: block;
+            width: 100%;
+            overflow: visible;
+            white-space: nowrap;
+            color: #10b981;
+            font-size: 3.5rem;
+            animation: smoothNameTransition 0.5s ease-in-out forwards;
           }
           @keyframes fadeIn {
             to {
@@ -206,15 +235,6 @@ const HeroSection = () => {
             opacity: 0.3;
             transform: scale(1);
           }
-          .link-hover {
-            transition: transform 0.3s ease;
-          }
-          .link-hover:hover {
-            transform: scale(1.05);
-          }
-          .link-hover:active {
-            transform: scale(0.95);
-          }
         `}</style>
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
@@ -232,9 +252,9 @@ const HeroSection = () => {
         />
         <div className="max-w-6xl mt-6 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-            <div className="flex-1 max-w-2xl fade-in">
-              <h1 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-                <span className="block text-gray-600 dark:text-gray-400 text-base sm:text-lg font-medium mb-2 py-2">
+            <div className="flex-1 max-w-2xl fade-in mt-16">
+              <h1 className="text-3.5xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                <span className="block text-gray-600 dark:text-gray-400 text-lg sm:text-xl font-medium mb-2 py-2">
                   Hello, I&apos;m
                 </span>
                 <span
@@ -244,18 +264,18 @@ const HeroSection = () => {
                   {currentName}
                 </span>
                 <div className="h-12 sm:h-16 flex items-center">
-                  <span className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 font-medium">
+                  <span className="text-2xl sm:text-3xl text-gray-600 dark:text-gray-400 font-medium">
                     I’m skilled with{" "}
                     <span className="relative inline-flex items-center">
-                      <span className="typing-text min-w-[140px] sm:min-w-[180px] text-gray-800 dark:text-gray-200 font-semibold">
+                      <span className="typing-text min-w-[200px] sm:min-w-[180px] text-gray-800 dark:text-gray-200 font-semibold">
                         {text}
-                        <span className="cursor inline-block w-[2px] h-6 sm:h-8 bg-emerald-500 ml-1 align-middle animate-pulse"></span>
+                        <span className="cursor inline-block w-[3px] h-7 sm:h-9 bg-emerald-500 ml-1 align-middle animate-pulse"></span>
                       </span>
                     </span>
                   </span>
                 </div>
               </h1>
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
                 Crafting exceptional digital experiences with modern web
                 technologies and thoughtful user-centered design.
               </p>
@@ -263,7 +283,7 @@ const HeroSection = () => {
                 <div className="link-hover">
                   <Link
                     href="/Contact"
-                    className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2"
+                    className="px-6 py-3 font-medium rounded-lg transition-all duration-300 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2 text-lg"
                   >
                     <span>Get in touch</span>
                   </Link>
@@ -271,7 +291,7 @@ const HeroSection = () => {
                 <div className="link-hover">
                   <Link
                     href="/Projects"
-                    className="px-6 py-3 font-medium rounded-lg transition-all duration-300 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-600/10 dark:hover:bg-emerald-500/10 flex items-center gap-2"
+                    className="px-6 py-3 font-medium rounded-lg transition-all duration-300 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-600/10 dark:hover:bg-emerald-500/10 flex items-center gap-2 text-lg"
                   >
                     <span>View work</span>
                   </Link>
@@ -292,7 +312,7 @@ const HeroSection = () => {
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl sm:text-2xl text-emerald-500 dark:text-emerald-400 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 group-hover/icon:shadow-xl transition-all duration-300">
                       {tech.icon}
                     </div>
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
                       {tech.name}
                     </div>
                   </div>
@@ -305,11 +325,11 @@ const HeroSection = () => {
                   alt="Seng Hoirna - Professional Portfolio"
                   fill
                   sizes="(max-width: 639px) 64vw, (max-width: 1023px) 80vw, 384px"
-                  className="object-cover"
+                  className="object-cover "
                   priority
                 />
               </div>
-              <div className="absolute inset-[-8px] rounded-full border-2 border-dashed border-emerald-400/30 dark:border-emerald-500/20 animate-rotate" />
+              <div className="absolute inset-[-8px] rounded-full border-2 border-dashed border-emerald-400/50 dark:border-emerald-500/40 animate-rotate" />
             </div>
           </div>
         </div>
