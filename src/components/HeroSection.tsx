@@ -137,7 +137,7 @@ const HeroSection = () => {
           content="A showcase of my technical skills and expertise."
         />
       </Head>
-      <section className="relative py-12 sm:py-16 lg:py-20 font-sans">
+      <section className="relative py-12 sm:py-16 lg:py-24 mb-1 font-sans">
         <style jsx>{`
           @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap");
 

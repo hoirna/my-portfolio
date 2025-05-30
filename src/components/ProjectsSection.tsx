@@ -61,7 +61,7 @@ const ShowcaseSection = ({
       image: "/images/Image02.jpg",
       category: "Full Stack",
       featured: true,
-      tags: ["Next.js", "TypeScript", "Tailwind CSS","Directus"],
+      tags: ["Next.js", "TypeScript","Directus"],
       link: "http://139.59.230.143:3000/",
       status: "Completed",
       type: 'project'
@@ -74,7 +74,7 @@ const ShowcaseSection = ({
       category: "Front-end",
       featured: false,
       tags: ["Next.js", "Tailwind CSS", "Creative"],
-      link: "https://my-portfolio-h5eyj6969-seng-hoirnas-projects.vercel.app",
+      link: "https://seng-hoirna-portfolio.vercel.app/",
       githubLink: "https://github.com/hoirna/my-portfolio",
       status: "In Progress",
       type: 'project'

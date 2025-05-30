@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from '@/context/ThemeContext';
-import { GitHub, LinkedIn, Twitter, Facebook, Instagram } from '@mui/icons-material';
+import { FaGithub, FaLinkedin, FaTwitter, FaFacebook, FaInstagram, FaTelegramPlane } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -10,35 +10,39 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/hoirna',
-      icon: <GitHub fontSize="small" />,
+      url: 'https://github.com/hofahrenheit',
+      icon: <FaGithub className="w-5 h-5" />,
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/seng-hoirna-353752343/',
-      icon: <LinkedIn fontSize="small" />,
+      icon: <FaLinkedin className="w-5 h-5" />,
     },
     {
       name: 'Twitter',
       url: 'https://x.com',
-      icon: <Twitter fontSize="small" />,
+      icon: <FaTwitter className="w-5 h-5" />,
     },
     {
       name: 'Facebook',
       url: 'https://www.facebook.com/profile.php?id=100016305190362',
-      icon: <Facebook fontSize="small" />,
+      icon: <FaFacebook className="w-5 h-5" />,
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/hoirna_/',
-      icon: <Instagram fontSize="small" />,
+      icon: <FaInstagram className="w-5 h-5" />,
+    },
+    {
+      name: 'Telegram',
+      url: 'https://t.me/S_hoirna', 
+      icon: <FaTelegramPlane className="w-5 h-5" />,
     },
   ];
 
   const footerLinks = [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Privacy Policy', href: '/Privacy' },
+    { name: 'Contact', href: '/Contact' },
   ];
 
   return (

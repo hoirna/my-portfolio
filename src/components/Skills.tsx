@@ -3,7 +3,7 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
-  FaNode,
+  FaFigma,
   FaReact,
   FaVuejs,
   FaAngular,
@@ -19,12 +19,12 @@ const skillsData = [
   { name: "JavaScript", level: 88, icon: <FaJs /> },
   { name: "Next.js", level: 85, icon: <SiNextdotjs /> },
   { name: "TypeScript", level: 80, icon: <SiTypescript /> },
-  { name: "Node.js", level: 75, icon: <FaNode /> },
+  { name: "Figma", level: 75, icon: <FaFigma /> },
 ];
 
 const sliderIcons = [
   { name: "React", icon: <FaReact /> },
-  { name: "Vue", icon: <FaVuejs /> },
+  { name: "Vue 3", icon: <FaVuejs /> },
   { name: "Angular", icon: <FaAngular /> },
   { name: "Python", icon: <FaPython /> },
   { name: "Docker", icon: <FaDocker /> },
@@ -266,17 +266,17 @@ const SkillsSection = () => {
           <div className="text-center mb-8 fade-in">
             <h3
               className={`text-3xl font-semibold ${
-                theme === "dark" ? "text-gray-200" : "text-gray-800"
+              theme === "dark" ? "text-gray-200" : "text-gray-800"
               }`}
             >
-              Languages I Used to Know
+              Technologies I Used to Know
             </h3>
             <p
               className={`mt-2 ${
                 theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              Technologies I&apos;ve worked with almost a year
+              Technologies most used, including frameworks, languages, and tools that shaped journey.
             </p>
           </div>
           <div className="slider-container w-full overflow-hidden relative">

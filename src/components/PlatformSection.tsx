@@ -9,11 +9,11 @@ const PlatformSection = () => {
   const aiPlatforms = [
     {
       id: 1,
-      title: "Backend AI Assistant",
+      title: "Backend AI",
       description:
         "Automate API development, database optimization, and cloud infrastructure with AI-powered code generation and analysis.",
       icon: "⚙️",
-      link: "/platforms/backend-ai",
+      link: "/",
       tags: ["GPT-4 (Code)", "Claude (Analysis)", "Serverless"],
       recommendedFor: [
         "API scaffolding",
@@ -23,11 +23,11 @@ const PlatformSection = () => {
     },
     {
       id: 2,
-      title: "Frontend AI Copilot",
+      title: "Frontend AI",
       description:
         "Generate responsive components, fix CSS issues, and optimize React/Vue performance with AI-assisted development.",
       icon: "💻",
-      link: "/platforms/frontend-ai",
+      link: "/",
       tags: ["Grok (Real-time)", "Deepseek (Debugging)", "Tailwind"],
       recommendedFor: [
         "Component generation",
@@ -37,11 +37,11 @@ const PlatformSection = () => {
     },
     {
       id: 3,
-      title: "UX/UI Design Partner",
+      title: "UX/UI Design",
       description:
         "Transform wireframes into production-ready designs with AI-powered layout suggestions and accessibility compliance checks.",
       icon: "🎨",
-      link: "/platforms/design-ai",
+      link: "/",
       tags: ["Claude (UX Writing)", "GPT-4 (Prototyping)", "Figma"],
       recommendedFor: [
         "Design system generation",
