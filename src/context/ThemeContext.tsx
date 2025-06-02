@@ -10,17 +10,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Client-side only: Read saved theme or system preference
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'dark');
+    
     setTheme(initialTheme);
-    // Apply .dark class only for dark theme
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
     setIsInitialized(true);
   }, []);
@@ -34,9 +32,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // Prevent rendering until theme is initialized to avoid flash
   if (!isInitialized) {
-    return null; // Or a loading placeholder
+    return null;
   }
 
   return (
