@@ -14,9 +14,9 @@ import {
 import { SiNextdotjs, SiTypescript } from "react-icons/si";
 
 const skillsData = [
-  { name: "HTML", level: 90, icon: <FaHtml5 /> },
+  { name: "HTML", level: 85, icon: <FaHtml5 /> },
   { name: "CSS", level: 85, icon: <FaCss3Alt /> },
-  { name: "JavaScript", level: 88, icon: <FaJs /> },
+  { name: "JavaScript", level: 70, icon: <FaJs /> },
   { name: "Next.js", level: 85, icon: <SiNextdotjs /> },
   { name: "TypeScript", level: 80, icon: <SiTypescript /> },
   { name: "Figma", level: 75, icon: <FaFigma /> },

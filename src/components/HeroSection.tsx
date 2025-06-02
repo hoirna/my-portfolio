@@ -22,6 +22,7 @@ const HeroSection = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [currentName, setCurrentName] = useState("SENG Hoirna");
   const [nameIndex, setNameIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const words = useMemo(
     () => ["Web Developer", "UI/UX Designer", "Digital Creator"],
@@ -33,47 +34,56 @@ const HeroSection = () => {
     {
       name: "Vue.js",
       icon: <FaVuejs />,
-      position: { top: "10%", left: "clamp(5%, 10vw, 15%)" },
+      position: { top: "10%", left: "5%" },
+      mobilePosition: { top: "5%", left: "5%" },
     },
     {
       name: "Directus",
       icon: <SiDirectus />,
-      position: { top: "20%", right: "clamp(5%, 10vw, 10%)" },
+      position: { top: "20%", right: "10%" },
+      mobilePosition: { top: "15%", right: "5%" },
     },
     {
       name: "Next.js",
       icon: <SiNextdotjs />,
-      position: { bottom: "25%", left: "clamp(5%, 10vw, 5%)" },
+      position: { bottom: "25%", left: "5%" },
+      mobilePosition: { bottom: "20%", left: "5%" },
     },
     {
       name: "JavaScript",
       icon: <SiJavascript />,
-      position: { top: "35%", left: "clamp(5%, 10vw, 5%)" },
+      position: { top: "35%", left: "5%" },
+      mobilePosition: { top: "25%", left: "5%" },
     },
     {
       name: "TypeScript",
       icon: <SiTypescript />,
-      position: { bottom: "35%", right: "clamp(5%, 10vw, 15%)" },
+      position: { bottom: "35%", right: "15%" },
+      mobilePosition: { bottom: "30%", right: "5%" },
     },
     {
       name: "Node.js",
       icon: <FaNode />,
-      position: { top: "60%", right: "clamp(5%, 10vw, 5%)" },
+      position: { top: "60%", right: "5%" },
+      mobilePosition: { top: "55%", right: "5%" },
     },
     {
       name: "Tailwind",
       icon: <SiTailwindcss />,
-      position: { bottom: "10%", right: "clamp(5%, 10vw, 25%)" },
+      position: { bottom: "10%", right: "25%" },
+      mobilePosition: { bottom: "5%", right: "15%" },
     },
     {
       name: "Figma",
       icon: <FaFigma />,
-      position: { bottom: "15%", left: "clamp(15%, 10vw, 20%)" },
+      position: { bottom: "15%", left: "20%" },
+      mobilePosition: { bottom: "10%", left: "15%" },
     },
     {
       name: "Git",
       icon: <FaGitAlt />,
-      position: { top: "50%", left: "clamp(5%, 5vw, 10%)" },
+      position: { top: "50%", left: "10%" },
+      mobilePosition: { top: "45%", left: "5%" },
     },
   ];
 
@@ -82,15 +92,23 @@ const HeroSection = () => {
   const pauseTime = 1500;
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    // Set initial value
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const nameTimer = setInterval(() => {
-      setNameIndex((prev) => {
-        const newIndex = (prev + 1) % names.length;
-        console.log("nameIndex:", newIndex, "currentName:", names[newIndex]);
-        return newIndex;
-      });
+      setNameIndex((prev) => (prev + 1) % names.length);
     }, 5000);
     return () => clearInterval(nameTimer);
-  }, [names, names.length]);
+  }, [names.length]);
 
   useEffect(() => {
     setCurrentName(names[nameIndex]);
@@ -158,16 +176,6 @@ const HeroSection = () => {
               transform: rotate(360deg);
             }
           }
-          @keyframes nameSlideIn {
-            0% {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
           @keyframes smoothNameTransition {
             0% {
               opacity: 0;
@@ -209,21 +217,17 @@ const HeroSection = () => {
           }
           .tech-icon {
             transform: scale(0.8);
+            transition: all 0.3s ease;
           }
           .tech-icon:hover {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(10deg);
           }
           @media (min-width: 640px) {
             .tech-icon {
               transform: scale(1);
             }
-          }
-          @media (max-width: 639px) {
             .tech-icon:hover {
-              transform: scale(1.1);
-            }
-            .tech-icon div:last-child {
-              display: none;
+              transform: scale(1.2) rotate(10deg);
             }
           }
           .glow {
@@ -265,7 +269,7 @@ const HeroSection = () => {
                 </span>
                 <div className="h-12 sm:h-16 flex items-center">
                   <span className="text-2xl sm:text-3xl text-gray-600 dark:text-gray-400 font-medium">
-                    I’m skilled with{" "}
+                    I&apos;m skilled with{" "}
                     <span className="relative inline-flex items-center">
                       <span className="typing-text min-w-[200px] sm:min-w-[180px] text-gray-800 dark:text-gray-200 font-semibold">
                         {text}
@@ -304,17 +308,19 @@ const HeroSection = () => {
                   key={tech.name}
                   className="absolute z-20 cursor-pointer group/icon tech-icon animate-float transition-transform duration-300"
                   style={{
-                    ...tech.position,
+                    ...(isMobile ? tech.mobilePosition : tech.position),
                     animationDelay: `${index * 0.2}s`,
                   }}
                 >
                   <div className="relative">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl sm:text-2xl text-emerald-500 dark:text-emerald-400 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 group-hover/icon:shadow-xl transition-all duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-lg sm:text-xl md:text-2xl text-emerald-500 dark:text-emerald-400 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 group-hover/icon:shadow-xl transition-all duration-300">
                       {tech.icon}
                     </div>
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
-                      {tech.name}
-                    </div>
+                    {!isMobile && (
+                      <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs sm:text-sm px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+                        {tech.name}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -325,7 +331,7 @@ const HeroSection = () => {
                   alt="Seng Hoirna - Professional Portfolio"
                   fill
                   sizes="(max-width: 639px) 64vw, (max-width: 1023px) 80vw, 384px"
-                  className="object-cover "
+                  className="object-cover"
                   priority
                 />
               </div>

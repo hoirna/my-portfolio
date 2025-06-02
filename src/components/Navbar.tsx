@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { useTheme } from '@/context/ThemeContext';
+import Link from "next/link";
+import { useState } from "react";
+import { useTheme } from "@/context/ThemeContext";
 import {
   Toolbar,
   IconButton,
@@ -13,35 +13,32 @@ import {
   ListItemText,
   Box,
   useMediaQuery,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-
+} from "@mui/material";
+import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
+import { FaCode } from "react-icons/fa6";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const navItems = [
-    { text: 'Home', path: '/' },
-    { text: 'About', path: '/About' },
-    { text: 'Skills', path: '/Skill' },
-    { text: 'Projects', path: '/Projects' },
-    { text: 'Contact', path: '/Contact' },
+    { text: "Home", path: "/" },
+    { text: "About", path: "/About" },
+    { text: "Skills", path: "/Skill" },
+    { text: "Projects", path: "/Projects" },
+    { text: "Contact", path: "/Contact" },
   ];
 
-  const name = 'SENG HOIRNA';
+  const name = "SENG HOIRNA";
 
   return (
     <header
       className={`fixed w-full ${
-        theme === 'dark'
-          ? 'bg-gray-900/50 text-gray-100 border-b border-gray-700'
-          : 'bg-white/50 text-gray-900 border-b border-gray-200'
-      } shadow-sm z-50 transition-colors duration-300 backdrop-blur-md`}
+        theme === "dark"
+          ? "bg-gray-900/50 text-gray-100 border-b border-gray-700"
+          : "bg-white/50 text-gray-900 border-b border-gray-200"
+      } shadow-sm z-50 transition-all duration-500 backdrop-blur-md`}
     >
       <style jsx>{`
         @keyframes fadeIn {
@@ -50,10 +47,13 @@ const Navbar = () => {
             transform: translateY(0);
           }
         }
-        @keyframes scaleIn {
-          to {
-            opacity: 1;
-            transform: scale(1);
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-5px);
           }
         }
         .fade-in {
@@ -66,11 +66,21 @@ const Navbar = () => {
           transform: translateX(20px);
           animation: fadeIn 0.4s ease-out forwards;
         }
-        .nav-item:nth-child(1) { animation-delay: 0.1s; }
-        .nav-item:nth-child(2) { animation-delay: 0.2s; }
-        .nav-item:nth-child(3) { animation-delay: 0.3s; }
-        .nav-item:nth-child(4) { animation-delay: 0.4s; }
-        .nav-item:nth-child(5) { animation-delay: 0.5s; }
+        .nav-item:nth-child(1) {
+          animation-delay: 0.1s;
+        }
+        .nav-item:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .nav-item:nth-child(3) {
+          animation-delay: 0.3s;
+        }
+        .nav-item:nth-child(4) {
+          animation-delay: 0.4s;
+        }
+        .nav-item:nth-child(5) {
+          animation-delay: 0.5s;
+        }
         .footer {
           opacity: 0;
           transform: translateX(20px);
@@ -82,18 +92,39 @@ const Navbar = () => {
         .underline {
           transform: scaleX(0);
           transform-origin: left;
-          transition: transform 0.2s ease-out;
+          transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .icon-button {
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .icon-button:hover {
-          background-color: ${
-            theme === 'dark' ? 'rgba(74, 222, 128, 0.2)' : 'rgba(16, 185, 129, 0.2)'
-          };
+          background-color: ${theme === "dark"
+            ? "rgba(74, 222, 128, 0.2)"
+            : "rgba(16, 185, 129, 0.2)"};
+          transform: scale(1.1);
+        }
+        .menu-item {
+          position: relative;
+          overflow: hidden;
+        }
+        .menu-item::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: ${theme === "dark" ? "#4ADE80" : "#10B981"};
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.3s ease;
+        }
+        .menu-item:hover::after {
+          transform: scaleX(1);
+          transform-origin: left;
         }
       `}</style>
-         <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
         <div
           className={`absolute inset-0 bg-gradient-to-b from-transparent ${
@@ -101,22 +132,33 @@ const Navbar = () => {
           }`}
         ></div>
       </div>
-      <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4 py-3">
+      <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography
-          variant="h6"
+          variant="h5"
           component="div"
-          className={isMobile ? 'fade-in' : ''}
+          className={isMobile ? "fade-in" : ""}
           sx={{
             fontFamily: '"Inter", sans-serif',
-            fontSize: { xs: '1.2rem', sm: '1.35rem', md: '1.5rem' },
+            fontSize: { xs: "1.2rem", sm: "1.35rem", md: "1.5rem" },
             fontWeight: 600,
-            letterSpacing: '0.125em',
-            color: theme === 'dark' ? '#ffffff' : '#111827',
+            letterSpacing: "0.125em",
+            color: theme === "dark" ? "#ffffff" : "#111827",
           }}
         >
           <Link href="/" legacyBehavior>
-            <a className="inline-block hover:no-underline">
-              <span className="text-green-500">{"</>"}</span> {name}
+            <a className="logo-container hover:no-underline flex items-center">
+              <FaCode
+                size={isMobile ? 24 : 28}
+                className="code-icon text-green-500 mr-2 transition-all duration-300"
+                style={{
+                  display: "inline-block",
+                  verticalAlign: "middle",
+                }}
+              />
+              <span className="relative">
+                {name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+              </span>
             </a>
           </Link>
         </Typography>
@@ -134,21 +176,21 @@ const Navbar = () => {
                     px: 2,
                     py: 1.5,
                     borderRadius: 1,
-                    transition: 'all 0.3s ease',
+                    transition: "all 0.3s ease",
                     color:
                       hoveredItem === item.text
-                        ? theme === 'dark'
-                          ? '#ffffff'
-                          : '#111827'
-                        : theme === 'dark'
-                        ? '#9CA3AF'
-                        : '#6B7280',
-                    '&:hover': {
-                      color: theme === 'dark' ? '#ffffff' : '#111827',
+                        ? theme === "dark"
+                          ? "#ffffff"
+                          : "#111827"
+                        : theme === "dark"
+                        ? "#9CA3AF"
+                        : "#6B7280",
+                    "&:hover": {
+                      color: theme === "dark" ? "#ffffff" : "#111827",
                       backgroundColor:
-                        theme === 'dark'
-                          ? 'rgba(255, 255, 255, 0.05)'
-                          : 'rgba(0, 0, 0, 0.03)',
+                        theme === "dark"
+                          ? "rgba(255, 255, 255, 0.05)"
+                          : "rgba(0, 0, 0, 0.03)",
                     },
                   }}
                 >
@@ -157,9 +199,9 @@ const Navbar = () => {
                     sx={{
                       fontFamily: '"Inter", sans-serif',
                       fontWeight: 500,
-                      fontSize: '0.95rem',
-                      letterSpacing: '0.025em',
-                      position: 'relative',
+                      fontSize: "0.95rem",
+                      letterSpacing: "0.025em",
+                      position: "relative",
                     }}
                   >
                     {item.text}
@@ -167,13 +209,14 @@ const Navbar = () => {
                       <Box
                         className="underline"
                         sx={{
-                          position: 'absolute',
+                          position: "absolute",
                           bottom: -4,
                           left: 0,
-                          width: '100%',
-                          height: '2px',
-                          backgroundColor: theme === 'dark' ? '#4ADE80' : '#10B981',
-                          borderRadius: '2px',
+                          width: "100%",
+                          height: "2px",
+                          backgroundColor:
+                            theme === "dark" ? "#4ADE80" : "#10B981",
+                          borderRadius: "2px",
                         }}
                       />
                     )}
@@ -189,23 +232,23 @@ const Navbar = () => {
             className="icon-button"
             sx={{
               ml: 1,
-              color: theme === 'dark' ? '#E5E7EB' : '#374151',
+              color: theme === "dark" ? "#E5E7EB" : "#374151",
               backgroundColor:
-                theme === 'dark'
-                  ? 'rgba(74, 222, 128, 0.1)'
-                  : 'rgba(16, 185, 129, 0.1)',
+                theme === "dark"
+                  ? "rgba(74, 222, 128, 0.1)"
+                  : "rgba(16, 185, 129, 0.1)",
               border:
-                theme === 'dark'
-                  ? '1px solid rgba(74, 222, 128, 0.3)'
-                  : '1px solid rgba(16, 185, 129, 0.3)',
+                theme === "dark"
+                  ? "1px solid rgba(74, 222, 128, 0.3)"
+                  : "1px solid rgba(16, 185, 129, 0.3)",
               width: 40,
               height: 40,
             }}
           >
-            {theme === 'light' ? (
-              <Brightness4Icon sx={{ fontSize: 20 }} />
+            {theme === "light" ? (
+              <FiMoon size={20} />
             ) : (
-              <Brightness7Icon sx={{ fontSize: 20, color: '#4ADE80' }} />
+              <FiSun size={20} color="#4ADE80" />
             )}
           </IconButton>
         </Box>
@@ -216,23 +259,23 @@ const Navbar = () => {
             aria-label="toggle-theme"
             className="icon-button"
             sx={{
-              color: theme === 'dark' ? '#E5E7EB' : '#374151',
+              color: theme === "dark" ? "#E5E7EB" : "#374151",
               backgroundColor:
-                theme === 'dark'
-                  ? 'rgba(74, 222, 128, 0.1)'
-                  : 'rgba(16, 185, 129, 0.1)',
+                theme === "dark"
+                  ? "rgba(74, 222, 128, 0.1)"
+                  : "rgba(16, 185, 129, 0.1)",
               border:
-                theme === 'dark'
-                  ? '1px solid rgba(74, 222, 128, 0.3)'
-                  : '1px solid rgba(16, 185, 129, 0.3)',
+                theme === "dark"
+                  ? "1px solid rgba(74, 222, 128, 0.3)"
+                  : "1px solid rgba(16, 185, 129, 0.3)",
               width: 40,
               height: 40,
             }}
           >
-            {theme === 'light' ? (
-              <Brightness4Icon sx={{ fontSize: 20 }} />
+            {theme === "light" ? (
+              <FiMoon size={20} />
             ) : (
-              <Brightness7Icon sx={{ fontSize: 20, color: '#4ADE80' }} />
+              <FiSun size={20} color="#4ADE80" />
             )}
           </IconButton>
 
@@ -242,24 +285,20 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="icon-button"
             sx={{
-              color: theme === 'dark' ? '#E5E7EB' : '#374151',
+              color: theme === "dark" ? "#E5E7EB" : "#374151",
               backgroundColor:
-                theme === 'dark'
-                  ? 'rgba(74, 222, 128, 0.1)'
-                  : 'rgba(16, 185, 129, 0.1)',
+                theme === "dark"
+                  ? "rgba(74, 222, 128, 0.1)"
+                  : "rgba(16, 185, 129, 0.1)",
               border:
-                theme === 'dark'
-                  ? '1px solid rgba(74, 222, 128, 0.3)'
-                  : '1px solid rgba(16, 185, 129, 0.3)',
+                theme === "dark"
+                  ? "1px solid rgba(74, 222, 128, 0.3)"
+                  : "1px solid rgba(16, 185, 129, 0.3)",
               width: 40,
               height: 40,
             }}
           >
-            {isOpen ? (
-              <CloseIcon sx={{ fontSize: 20 }} />
-            ) : (
-              <MenuIcon sx={{ fontSize: 20 }} />
-            )}
+            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </IconButton>
         </Box>
       </Toolbar>
@@ -270,40 +309,40 @@ const Navbar = () => {
         onClose={() => setIsOpen(false)}
         PaperProps={{
           sx: {
-            width: isMobile ? '100%' : '320px',
-            backgroundColor: theme === 'dark' ? '#111827' : '#ffffff',
-            transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out',
+            width: isMobile ? "100%" : "320px",
+            backgroundColor: theme === "dark" ? "#111827" : "#ffffff",
+            transition: "transform 0.4s ease-in-out, opacity 0.4s ease-in-out",
           },
-          className: isOpen ? 'fade-in' : '',
+          className: isOpen ? "fade-in" : "",
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
             p: 2,
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
             <IconButton
               onClick={() => setIsOpen(false)}
               className="icon-button fade-in"
               sx={{
-                color: theme === 'dark' ? '#E5E7EB' : '#374151',
+                color: theme === "dark" ? "#E5E7EB" : "#374151",
                 backgroundColor:
-                  theme === 'dark'
-                    ? 'rgba(74, 222, 128, 0.1)'
-                    : 'rgba(16, 185, 129, 0.1)',
+                  theme === "dark"
+                    ? "rgba(74, 222, 128, 0.1)"
+                    : "rgba(16, 185, 129, 0.1)",
                 border:
-                  theme === 'dark'
-                    ? '1px solid rgba(74, 222, 128, 0.3)'
-                    : '1px solid rgba(16, 185, 129, 0.3)',
+                  theme === "dark"
+                    ? "1px solid rgba(74, 222, 128, 0.3)"
+                    : "1px solid rgba(16, 185, 129, 0.3)",
                 width: 40,
                 height: 40,
               }}
             >
-              <CloseIcon sx={{ fontSize: 20 }} />
+              <FiX size={20} />
             </IconButton>
           </Box>
 
@@ -317,11 +356,11 @@ const Navbar = () => {
                       py: 1.5,
                       px: 2,
                       borderRadius: 1,
-                      '&:hover': {
+                      "&:hover": {
                         backgroundColor:
-                          theme === 'dark'
-                            ? 'rgba(74, 222, 128, 0.1)'
-                            : 'rgba(16, 185, 129, 0.1)',
+                          theme === "dark"
+                            ? "rgba(74, 222, 128, 0.1)"
+                            : "rgba(16, 185, 129, 0.1)",
                       },
                     }}
                   >
@@ -331,8 +370,8 @@ const Navbar = () => {
                         sx: {
                           fontFamily: '"Inter", sans-serif',
                           fontWeight: 500,
-                          fontSize: '1.1rem',
-                          color: theme === 'dark' ? '#E5E7EB' : '#374151',
+                          fontSize: "1.1rem",
+                          color: theme === "dark" ? "#E5E7EB" : "#374151",
                         },
                       }}
                     />
@@ -342,11 +381,11 @@ const Navbar = () => {
             ))}
           </List>
 
-          <Box sx={{ p: 2, textAlign: 'center' }} className="footer">
+          <Box sx={{ p: 2, textAlign: "center" }} className="footer">
             <Typography
               variant="body2"
               sx={{
-                color: theme === 'dark' ? '#9CA3AF' : '#6B7280',
+                color: theme === "dark" ? "#9CA3AF" : "#6B7280",
                 fontFamily: '"Inter", sans-serif',
               }}
             >

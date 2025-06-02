@@ -8,39 +8,33 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiNodedotjs,
-  SiReact,
   SiGit,
   SiFigma,
+  SiTailwindcss
 } from "react-icons/si";
 
 const skillsData = [
   {
     name: "HTML",
-    level: 95,
+    level: 85,
     description: "Semantic markup and accessibility best practices",
     icon: SiHtml5,
   },
   {
     name: "CSS",
-    level: 90,
+    level: 85,
     description: "Modern layouts, animations, and Tailwind expertise",
     icon: SiCss3,
   },
   {
     name: "JavaScript",
-    level: 88,
+    level: 70,
     description: "ES6+ features and functional programming",
     icon: SiJavascript,
   },
   {
-    name: "React",
-    level: 87,
-    description: "Component-based architecture and hooks",
-    icon: SiReact,
-  },
-  {
     name: "Node.js",
-    level: 85,
+    level: 65,
     description: "Building scalable backend services and APIs",
     icon: SiNodedotjs,
   },
@@ -57,8 +51,14 @@ const skillsData = [
     icon: SiNextdotjs,
   },
   {
+   name: "Tailwind CSS",
+   level: 85,
+   description:"Responsiveness with better style",
+   icon: SiTailwindcss,
+  },
+  {
     name: "Git",
-    level: 92,
+    level: 90,
     description: "Version control and team collaboration",
     icon: SiGit,
   },

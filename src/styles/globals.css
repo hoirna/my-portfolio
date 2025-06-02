@@ -98,3 +98,13 @@ footer {
 .carousel:hover {
   animation-play-state: paused;
 }
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.7s step-end infinite;
+}

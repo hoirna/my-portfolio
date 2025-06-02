@@ -13,13 +13,13 @@ const PlatformSection = () => {
       description:
         "Automate API development, database optimization, and cloud infrastructure with AI-powered code generation and analysis.",
       icon: "⚙️",
-      link: "/",
+      link: "https://chatgpt.com",
       tags: ["GPT-4 (Code)", "Claude (Analysis)", "Serverless"],
       recommendedFor: [
         "API scaffolding",
         "Database optimization",
-        "Cloud architecture"
-      ]
+        "Cloud architecture",
+      ],
     },
     {
       id: 2,
@@ -27,13 +27,13 @@ const PlatformSection = () => {
       description:
         "Generate responsive components, fix CSS issues, and optimize React/Vue performance with AI-assisted development.",
       icon: "💻",
-      link: "/",
+      link: "https://grok.com",
       tags: ["Grok (Real-time)", "Deepseek (Debugging)", "Tailwind"],
       recommendedFor: [
         "Component generation",
         "Performance tuning",
-        "Accessibility fixes"
-      ]
+        "Accessibility fixes",
+      ],
     },
     {
       id: 3,
@@ -41,13 +41,13 @@ const PlatformSection = () => {
       description:
         "Transform wireframes into production-ready designs with AI-powered layout suggestions and accessibility compliance checks.",
       icon: "🎨",
-      link: "/",
+      link: "https://claude.ai",
       tags: ["Claude (UX Writing)", "GPT-4 (Prototyping)", "Figma"],
       recommendedFor: [
         "Design system generation",
         "User flow optimization",
-        "Microcopy suggestions"
-      ]
+        "Microcopy suggestions",
+      ],
     },
   ];
 
@@ -141,7 +141,9 @@ const PlatformSection = () => {
               Specialized
             </span>{" "}
             <span
-              className={theme === "dark" ? "text-emerald-400" : "text-emerald-600"}
+              className={
+                theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+              }
             >
               AI Solutions
             </span>
@@ -151,7 +153,8 @@ const PlatformSection = () => {
               theme === "dark" ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            Optimized AI recommendations for backend, frontend, and UX/UI development workflows.
+            Optimized AI recommendations for backend, frontend, and UX/UI
+            development workflows.
           </p>
         </div>
 
@@ -191,9 +194,11 @@ const PlatformSection = () => {
               </p>
 
               <div className="mb-6">
-                <h4 className={`text-sm font-medium mb-2 ${
-                  theme === "dark" ? "text-emerald-300" : "text-emerald-700"
-                }`}>
+                <h4
+                  className={`text-sm font-medium mb-2 ${
+                    theme === "dark" ? "text-emerald-300" : "text-emerald-700"
+                  }`}
+                >
                   Recommended for:
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -227,29 +232,32 @@ const PlatformSection = () => {
                 ))}
               </div>
 
-              <Link
-                href={platform.link}
-                className={`inline-flex items-center mt-auto font-medium transition-colors duration-300 ${
-                  theme === "dark"
-                    ? "text-emerald-400 hover:text-emerald-300"
-                    : "text-emerald-600 hover:text-emerald-500"
-                }`}
-              >
-                Explore solutions
-                <svg
-                  className="arrow w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <Link href={platform.link} passHref legacyBehavior>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center mt-auto font-medium transition-colors duration-300 ${
+                    theme === "dark"
+                      ? "text-emerald-400 hover:text-emerald-300"
+                      : "text-emerald-600 hover:text-emerald-500"
+                  }`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
+                  Explore solutions
+                  <svg
+                    className="arrow w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
               </Link>
 
               <div
@@ -281,49 +289,74 @@ const PlatformSection = () => {
                 theme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              Each AI model is strategically selected for its strengths in specific development areas:
+              Each AI model is strategically selected for its strengths in
+              specific development areas:
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className={`p-4 rounded-lg ${
-                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-              }`}>
-                <h4 className={`font-bold mb-2 ${
-                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-                }`}>Backend</h4>
-                <ul className={`space-y-1 text-sm ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}>
+              <div
+                className={`p-4 rounded-lg ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                }`}
+              >
+                <h4
+                  className={`font-bold mb-2 ${
+                    theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+                  }`}
+                >
+                  Backend
+                </h4>
+                <ul
+                  className={`space-y-1 text-sm ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
                   <li>• GPT-4 for code generation</li>
                   <li>• Claude for architecture analysis</li>
                   <li>• Deepseek for debugging</li>
                 </ul>
               </div>
-              
-              <div className={`p-4 rounded-lg ${
-                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-              }`}>
-                <h4 className={`font-bold mb-2 ${
-                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-                }`}>Frontend</h4>
-                <ul className={`space-y-1 text-sm ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}>
+
+              <div
+                className={`p-4 rounded-lg ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                }`}
+              >
+                <h4
+                  className={`font-bold mb-2 ${
+                    theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+                  }`}
+                >
+                  Frontend
+                </h4>
+                <ul
+                  className={`space-y-1 text-sm ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
                   <li>• Grok for real-time suggestions</li>
                   <li>• GPT-4 for component generation</li>
                   <li>• Claude for accessibility</li>
                 </ul>
               </div>
-              
-              <div className={`p-4 rounded-lg ${
-                theme === "dark" ? "bg-gray-800" : "bg-gray-100"
-              }`}>
-                <h4 className={`font-bold mb-2 ${
-                  theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-                }`}>UX/UI</h4>
-                <ul className={`space-y-1 text-sm ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                }`}>
+
+              <div
+                className={`p-4 rounded-lg ${
+                  theme === "dark" ? "bg-gray-800" : "bg-gray-100"
+                }`}
+              >
+                <h4
+                  className={`font-bold mb-2 ${
+                    theme === "dark" ? "text-emerald-400" : "text-emerald-600"
+                  }`}
+                >
+                  UX/UI
+                </h4>
+                <ul
+                  className={`space-y-1 text-sm ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
                   <li>• Claude for UX writing</li>
                   <li>• GPT-4 for prototyping</li>
                   <li>• Grok for design iterations</li>

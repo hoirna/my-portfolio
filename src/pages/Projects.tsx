@@ -24,9 +24,9 @@ export default function Projects() {
     {
       id: 1,
       title: "AI FARM ROBOTICS",
-      description: "A cutting-edge e-commerce platform for agricultural robotics with AI integration, built for scalability and performance.",
+      description: "A modern, responsive company website for an agricultural robotics business, featuring AI integration and built for scalability and high performance.",
       image: "/images/Image01.jpg",
-      link: "/projects/ecommerce",
+      link: "http://139.59.230.143:3000/",
       github: "",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Directus"],
       accentColor: "from-indigo-500 to-purple-600",
@@ -34,10 +34,10 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "Portfolio Builder",
+      title: "My Portfilio",
       description: "An intuitive drag-and-drop tool for creating stunning professional portfolios with real-time previews.",
       image: "/images/Image02.jpg",
-      link: "/projects/portfolio-builder",
+      link: "/",
       github: "",
       tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
       accentColor: "from-pink-500 to-rose-600",
@@ -45,7 +45,7 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "E-commerce",
+      title: "School E-commerce",
       description: "A simple e-commerce platform built with vanilla technologies.",
       image: "/images/Image03.jpg",
       link: "",
@@ -119,7 +119,7 @@ export default function Projects() {
       <section className="max-w-6xl mx-auto mt-16 relative z-10" ref={ref}>
         <motion.div style={{ opacity, y }} className="text-center mb-12">
           <motion.h1
-            className={`text-4xl sm:text-5xl lg:text-5xl font-extrabold mb-4 bg-clip-text text-transparent ${
+            className={`text-4xl sm:text-5xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent ${
               theme === "dark"
                 ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
                 : "bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600"

@@ -102,42 +102,42 @@ const ContactSection = () => {
             currently available for freelance work and collaborations.
           </p>
 
-       <div className="flex flex-col sm:flex-row justify-center gap-4 scale-in">
-  <Link
-    href="/contact"
-    className="relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 overflow-hidden bg-emerald-600 text-white hover:bg-emerald-700 hover:scale-105"
-  >
-    <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-400 pointer-events-none"></span>
-    <span className="relative z-10 flex items-center">
-      Contact Me
-      <svg
-        className="w-5 h-5 ml-3"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17 8l4 4m0 0l-4 4m4-4H3"
-        />
-      </svg>
-    </span>
-  </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 scale-in">
+            <Link
+              href="/Contact"
+              className="relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 overflow-hidden bg-emerald-600 text-white hover:bg-emerald-700 hover:scale-105"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-400 pointer-events-none"></span>
+              <span className="relative z-10 flex items-center">
+                Contact Me
+                <svg
+                  className="w-5 h-5 ml-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+            </Link>
 
-  <Link
-    href="mailto:hello@example.com"
-    className={`relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 border ${
-      theme === "dark"
-        ? "border-emerald-400/30 text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/20"
-        : "border-emerald-600/30 text-emerald-600 bg-emerald-600/10 hover:bg-emerald-600/20"
-    }`}
-  >
-    Email Directly
-  </Link>
-</div>
+            <Link
+              href="mailto:mrrhorna168@gmail.com"
+              className={`relative inline-flex items-center justify-center px-8 py-4 rounded-full font-medium transition-all duration-300 border ${
+                theme === "dark"
+                  ? "border-emerald-400/30 text-emerald-400 bg-emerald-400/10 hover:bg-emerald-400/20"
+                  : "border-emerald-600/30 text-emerald-600 bg-emerald-600/10 hover:bg-emerald-600/20"
+              }`}
+            >
+              Email Directly
+            </Link>
+          </div>
 
           <div className="mt-12 gap-4">
             <p
