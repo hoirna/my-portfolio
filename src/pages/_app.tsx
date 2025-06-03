@@ -12,28 +12,27 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); 
+    }, 12000); 
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, []);
-
-  if (isLoading) {
-    return (
-      <ThemeProvider>
-        <Loading />
-      </ThemeProvider>
-    );
-  }
-
   return (
     <ThemeProvider>
-      <Navbar />
-      <main>
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Navbar />
+          <main className="min-h-[calc(100vh-128px)]"> 
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </>
+      )}
     </ThemeProvider>
   );
 }

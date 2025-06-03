@@ -116,7 +116,7 @@ export default function Projects() {
         ></div>
       </div>
 
-      <section className="max-w-6xl mx-auto mt-16 relative z-10" ref={ref}>
+      <section className="max-w-6xl mx-auto mt-24 relative z-10" ref={ref}>
         <motion.div style={{ opacity, y }} className="text-center mb-12">
           <motion.h1
             className={`text-4xl sm:text-5xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent ${

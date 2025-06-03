@@ -133,7 +133,7 @@ export default function Contact() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-5xl mx-auto relative z-10"
+          className="max-w-5xl mt-20 mx-auto relative z-10"
         >
           <motion.h1
             variants={itemVariants}

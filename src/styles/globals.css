@@ -108,3 +108,9 @@ footer {
 .animate-blink {
   animation: blink 0.7s step-end infinite;
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

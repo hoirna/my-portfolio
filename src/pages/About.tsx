@@ -130,7 +130,7 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           className="max-w-6xl mx-auto relative z-10"
         >
-          <div className="text-center mt-12 mb-24">
+          <div className="text-center mt-20 mb-24">
             <motion.div
               variants={itemVariants}
               className="w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-emerald-500 shadow-lg relative group"
