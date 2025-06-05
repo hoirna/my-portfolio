@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
+import Image from "next/image";
 import {
   Toolbar,
   IconButton,
@@ -15,7 +16,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
-import { FaCode } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,14 +65,13 @@ const Navbar = () => {
           }}
         >
           <Link href="/" legacyBehavior>
-            <a className="logo-container hover:no-underline flex items-center">
-              <FaCode
-                size={isMobile ? 24 : 28}
-                className="code-icon text-green-500 mr-2 transition-all duration-300"
-                style={{
-                  display: "inline-block",
-                  verticalAlign: "middle",
-                }}
+            <a className="hover:no-underline flex items-center">
+              <Image
+                src="/images/icon.png"
+                alt="Logo"
+                width={isMobile ? 24 : 28}
+                height={isMobile ? 24 : 28}
+                className="mr-2 transition-all duration-300"
               />
               <span className="relative">
                 {name}
@@ -299,18 +298,6 @@ const Navbar = () => {
               </Link>
             ))}
           </List>
-
-          <Box sx={{ p: 2, textAlign: "center" }} className="footer">
-            <Typography
-              variant="body2"
-              sx={{
-                color: theme === "dark" ? "#9CA3AF" : "#6B7280",
-                fontFamily: '"Inter", sans-serif',
-              }}
-            >
-              © {new Date().getFullYear()} {name}
-            </Typography>
-          </Box>
         </Box>
       </Drawer>
     </header>
