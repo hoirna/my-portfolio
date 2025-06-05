@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 import {
   Toolbar,
@@ -16,11 +16,22 @@ import {
 } from "@mui/material";
 import { FiMenu, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { FaCode } from "react-icons/fa6";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { text: "Home", path: "/" },
@@ -35,103 +46,11 @@ const Navbar = () => {
   return (
     <header
       className={`fixed w-full ${
-        theme === "dark"
-          ? "bg-gray-900/50 text-gray-100 border-b border-gray-700"
-          : "bg-white/50 text-gray-900 border-b border-gray-200"
-      } shadow-sm z-50 transition-all duration-500 backdrop-blur-md`}
+        theme === "dark" ? "text-gray-100" : "text-gray-900"
+      }  z-50 transition-all duration-500 ${
+        isScrolled ? "backdrop-blur-md" : ""
+      } bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0)_1px,transparent_1px)]`}
     >
-      <style jsx>{`
-        @keyframes fadeIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-5px);
-          }
-        }
-        .fade-in {
-          opacity: 0;
-          transform: translateY(-10px);
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-        .nav-item {
-          opacity: 0;
-          transform: translateX(20px);
-          animation: fadeIn 0.4s ease-out forwards;
-        }
-        .nav-item:nth-child(1) {
-          animation-delay: 0.1s;
-        }
-        .nav-item:nth-child(2) {
-          animation-delay: 0.2s;
-        }
-        .nav-item:nth-child(3) {
-          animation-delay: 0.3s;
-        }
-        .nav-item:nth-child(4) {
-          animation-delay: 0.4s;
-        }
-        .nav-item:nth-child(5) {
-          animation-delay: 0.5s;
-        }
-        .footer {
-          opacity: 0;
-          transform: translateX(20px);
-          animation: fadeIn 0.4s ease-out 0.6s forwards;
-        }
-        .nav-link:hover .underline {
-          transform: scaleX(1);
-        }
-        .underline {
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .icon-button {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .icon-button:hover {
-          background-color: ${theme === "dark"
-            ? "rgba(74, 222, 128, 0.2)"
-            : "rgba(16, 185, 129, 0.2)"};
-          transform: scale(1.1);
-        }
-        .menu-item {
-          position: relative;
-          overflow: hidden;
-        }
-        .menu-item::after {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: ${theme === "dark" ? "#4ADE80" : "#10B981"};
-          transform: scaleX(0);
-          transform-origin: right;
-          transition: transform 0.3s ease;
-        }
-        .menu-item:hover::after {
-          transform: scaleX(1);
-          transform-origin: left;
-        }
-      `}</style>
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === "dark" ? "to-gray-950/30" : "to-gray-100/30"
-          }`}
-        ></div>
-      </div>
       <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
         <Typography
           variant="h5"

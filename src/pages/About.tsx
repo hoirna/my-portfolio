@@ -102,8 +102,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About | My Portfolio</title>
-        <meta name="description" content="A showcase of my education and professional experience." />
+        <title>About | Seng Hoirna</title>
       </Head>
       <main
         className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden ${
@@ -396,7 +395,7 @@ export default function About() {
               </motion.p>
               <motion.div variants={itemVariants}>
                 <Link
-                  href="/contact"
+                  href="/Contact"
                   className={`group inline-flex items-center px-8 py-4 rounded-full font-medium text-lg ${
                     theme === "dark"
                       ? "bg-emerald-600 hover:bg-emerald-500 text-white"

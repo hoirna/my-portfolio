@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
+import Head from "next/head";
 const Loading: React.FC = () => {
   const [outputLines, setOutputLines] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
@@ -60,6 +60,10 @@ const Loading: React.FC = () => {
   }, []);
 
   return (
+      <>
+      <Head>
+        <title>Loading.....</title>
+      </Head>
     <div 
       className="fixed inset-0 flex items-center justify-center bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50"
       aria-live="polite"
@@ -128,7 +132,7 @@ const Loading: React.FC = () => {
           
           <div className="absolute w-16 h-16 animate-spin" style={{ animationDuration: '3s' }}>
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full shadow-sm" />
+              <div className="w-2 h-2 bg-yellow-400 rounded-full shadow-sm" />
             </div>
           </div>
           
@@ -158,6 +162,7 @@ const Loading: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

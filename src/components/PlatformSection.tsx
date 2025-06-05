@@ -113,11 +113,19 @@ const PlatformSection = () => {
           transform: translateY(-2px);
         }
       `}</style>
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div
+          className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
+          style={{
+            backgroundColor:
+              theme === "dark"
+                ? "rgba(0, 0, 0, 0.9)"
+                : "rgba(245, 245, 245, 0.9)",
+          }}
+        />
         <div
           className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === "dark" ? "to-gray-950/30" : "to-gray-100/30"
+            theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
           }`}
         ></div>
       </div>

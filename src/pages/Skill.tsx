@@ -76,11 +76,7 @@ const Skills = () => {
   return (
     <>
       <Head>
-        <title>Skill | My Portfolio</title>
-        <meta
-          name="description"
-          content="A showcase of my technical skills and expertise."
-        />
+        <title>Skill | Seng Hoirna</title>
       </Head>
       <div className="fixed inset-0 pointer-events-none">
         <div

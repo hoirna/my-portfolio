@@ -36,7 +36,7 @@ export default function Contact() {
     },
     {
       name: "Telegram",
-      url: "https://t.me/senghoirna", // Updated placeholder; replace with your actual Telegram handle
+      url: "https://t.me/S_Hoirna", 
       icon: <FaTelegramPlane className="w-8 h-8" />,
     },
   ];
@@ -104,11 +104,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact | My Portfolio</title>
-        <meta
-          name="description"
-          content="A showcase of my technical skills and expertise."
-        />
+        <title>Contact | Seng Hoirna</title>
       </Head>
       <main
         className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden ${

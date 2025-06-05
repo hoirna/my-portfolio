@@ -10,11 +10,22 @@ const AboutSection = () => {
       className="relative py-24 sm:py-24 lg:py-40 font-sans bg-white dark:bg-gray-900"
       aria-labelledby="about-heading"
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-100/20 dark:bg-blue-900/10 rounded-full filter blur-3xl opacity-20" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-100/20 dark:bg-purple-900/10 rounded-full filter blur-3xl opacity-20" />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div
+          className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
+          style={{
+            backgroundColor:
+              theme === "dark"
+                ? "rgba(0, 0, 0, 0.9)"
+                : "rgba(245, 245, 245, 0.9)",
+          }}
+        />
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
+            theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
+          }`}
+        ></div>
       </div>
-
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <header className="text-center mb-20">
           <span

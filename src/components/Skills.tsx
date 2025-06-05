@@ -146,11 +146,19 @@ const SkillsSection = () => {
           transition: transform 0.3s ease;
         }
       `}</style>
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.15)_1px,transparent_1px)] animate-gridPulse" />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div
+          className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
+          style={{
+            backgroundColor:
+              theme === "dark"
+                ? "rgba(0, 0, 0, 0.9)"
+                : "rgba(245, 245, 245, 0.9)",
+          }}
+        />
         <div
           className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === "dark" ? "to-gray-950/30" : "to-gray-100/30"
+            theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
           }`}
         ></div>
       </div>
@@ -266,7 +274,7 @@ const SkillsSection = () => {
           <div className="text-center mb-8 fade-in">
             <h3
               className={`text-3xl font-semibold ${
-              theme === "dark" ? "text-gray-200" : "text-gray-800"
+                theme === "dark" ? "text-gray-200" : "text-gray-800"
               }`}
             >
               Technologies I Used to Know
@@ -276,7 +284,8 @@ const SkillsSection = () => {
                 theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
             >
-              Technologies most used, including frameworks, languages, and tools that shaped journey.
+              Technologies most used, including frameworks, languages, and tools
+              that shaped journey.
             </p>
           </div>
           <div className="slider-container w-full overflow-hidden relative">
