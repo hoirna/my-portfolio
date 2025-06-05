@@ -155,7 +155,7 @@ const Footer = () => {
               theme === "dark" ? "text-gray-500" : "text-gray-400"
             }`}
           >
-            ©{new Date().getFullYear()}Seng Hoirna. All rights reserved.
+            ©{new Date().getFullYear()} Seng Hoirna. All rights reserved.
           </p>
         </div>
       </div>

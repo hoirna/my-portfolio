@@ -160,7 +160,9 @@ const ContactSection = () => {
             >
               Alternatively, connect with me on{" "}
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/seng-hoirna-353752343/"
+                 target="_blank"
+                rel="noopener noreferrer"
                 className={`hover:underline ${
                   theme === "dark" ? "text-emerald-400" : "text-emerald-600"
                 }`}
@@ -169,7 +171,9 @@ const ContactSection = () => {
               </a>{" "}
               or{" "}
               <a
-                href="https://github.com"
+                href="https://github.com/hoirna"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`hover:underline ${
                   theme === "dark" ? "text-emerald-400" : "text-emerald-600"
                 }`}

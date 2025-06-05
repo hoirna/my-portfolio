@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
-import { FiArrowRight, FiEye, FiGithub } from "react-icons/fi";
+import { FiArrowRight, FiEye, FiGithub, FiDownload } from "react-icons/fi";
 
 type ShowcaseItem = {
   id: number;
@@ -209,6 +209,8 @@ const ShowcaseSection = ({
                 {item.link && (
                   <Link
                     href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1"
                     title="Learn more"
                   >
@@ -287,6 +289,22 @@ const ShowcaseSection = ({
         )}
         <div className={`grid ${getGridClasses()} gap-6`}>
           {filteredItems.map((item, index) => renderCard(item, index))}
+        </div>
+        <div className="mt-12 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Downloads
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
+            Get my personal CV details in PDF format.
+          </p>
+          <a
+            href="/PDF/Seng_Hoirna_CV.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-emerald-700 dark:hover:bg-emerald-500 transition-colors shadow-md"
+          >
+            <FiDownload className="w-5 h-5" />
+            Download CV
+          </a>
         </div>
       </div>
     </section>
