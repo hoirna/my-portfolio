@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <Head>
-        <link rel="icon" href="/icon.png" />
+        <link rel="icon" href="/images/code_icon.png" />
       </Head>
 
       {isLoading ? (

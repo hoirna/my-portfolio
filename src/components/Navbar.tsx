@@ -67,11 +67,11 @@ const Navbar = () => {
           <Link href="/" legacyBehavior>
             <a className="hover:no-underline flex items-center">
               <Image
-                src="/images/icon.png"
+                src="/images/code_icon.png"
                 alt="Logo"
                 width={isMobile ? 24 : 28}
                 height={isMobile ? 24 : 28}
-                className="mr-2 transition-all duration-300"
+                className="mr-2 w-10 h-10 transition-all duration-300"
               />
               <span className="relative">
                 {name}
