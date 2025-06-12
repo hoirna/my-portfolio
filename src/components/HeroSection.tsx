@@ -13,6 +13,7 @@ import {
   SiTailwindcss,
   SiDirectus,
 } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -142,22 +143,52 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [text, isDeleting, isPaused, wordIndex, words]);
 
+  const nameVariants = {
+    initial: {
+      x: 20,
+      scale: 1,
+      opacity: 0,
+      textShadow: "0 0 0 rgba(16, 185, 129, 0)",
+    },
+    animate: {
+      x: 0,
+      scale: 1,
+      opacity: 1,
+      textShadow: [
+        "0 0 0 rgba(16, 185, 129, 0)",
+        "0 0 10px rgba(16, 185, 129, 0.3)",
+        "0 0 20px rgba(16, 185, 129, 0.2)",
+        "0 0 30px rgba(16, 185, 129, 0.1)",
+      ],
+      transition: {
+        duration: 0.5,
+        ease: [0.4, 0, 0.2, 1],
+        textShadow: {
+          duration: 0.8,
+          ease: "easeOut",
+        },
+      },
+    },
+    exit: {
+      x: -20,
+      scale: 0.95,
+      opacity: 0,
+      textShadow: "0 0 0 rgba(16, 185, 129, 0)",
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
+  };
+
   return (
     <>
       <Head>
         <title>Home | Seng Hoirna</title>
       </Head>
-      <section className="relative py-12 sm:py-16 lg:py-24 mb-1 font-sans">
+      <section className="relative py-12 sm:py-16 lg:py-24 font-sans">
         <div className="fixed inset-0 pointer-events-none z-0">
-          <div
-            className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
-            style={{
-              backgroundColor:
-                theme === "dark"
-                  ? "rgba(0, 0, 0, 0.9)"
-                  : "rgba(245, 245, 245, 0.9)",
-            }}
-          />
+          <div className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]" />
           <div
             className={`absolute inset-0 bg-gradient-to-b from-transparent ${
               theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
@@ -172,29 +203,40 @@ const HeroSection = () => {
         />
         <div className="max-w-6xl mt-16 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center justify-center gap-8 sm:gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-            <div className="flex-1 max-w-2xl fade-in">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-                <span className="block text-gray-600 dark:text-gray-400 text-base sm:text-lg font-medium mb-2">
-                  Hello, I&apos;m
-                </span>
-                <span
-                  key={nameIndex}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-400 dark:to-emerald-500 block mb-3 name-transition"
-                >
-                  {currentName}
-                </span>
-                <div className="h-12 sm:h-14 flex items-center">
-                  <span className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 font-medium">
-                    I&apos;m skilled with{" "}
-                    <span className="relative inline-flex items-center">
-                      <span className="typing-text min-w-[150px] sm:min-w-[180px] text-gray-800 dark:text-gray-200 font-semibold">
-                        {text}
-                        <span className="cursor inline-block w-[2px] h-6 sm:h-7 bg-emerald-500 ml-1 align-middle animate-pulse"></span>
-                      </span>
+            <div className="flex-1 max-w-3xl fade-in">
+              <div className="text-3xl sm:text-5xl lg:text-5xl font-bold text-gray-00 dark:text-white mb-4 leading-tight">
+                <span className="block mb-6">Hey! I&apos;m</span>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={nameIndex}
+                    variants={nameVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 dark:from-green-400 dark:to-emerald-500"
+                    role="heading"
+                    aria-level={3}
+                    aria-label={`Name: ${currentName}`}
+                    style={{
+                      fontSize: "inherit",
+                      willChange: "transform, opacity, text-shadow",
+                    }}
+                  >
+                    {currentName}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+              <div className="h-12 sm:h-14 flex items-center">
+                <span className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 font-medium">
+                  I&apos;m skilled with{" "}
+                  <span className="relative inline-flex items-center">
+                    <span className="min-w-[150px] sm:min-w-[180px] text-gray-800 dark:text-gray-100 text-2xl font-semibold">
+                      {text}
+                      <span className="cursor inline-block w-[2px] h-6 sm:h-7 bg-emerald-500 ml-1 align-middle animate-pulse"></span>
                     </span>
                   </span>
-                </div>
-              </h1>
+                </span>
+              </div>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
                 Crafting exceptional digital experiences with modern web
                 technologies and thoughtful user-centered design.

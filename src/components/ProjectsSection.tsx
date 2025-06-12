@@ -5,16 +5,15 @@ import { useTheme } from "../context/ThemeContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
-import { FiArrowRight, FiEye, FiGithub, FiDownload } from "react-icons/fi";
+import { FiArrowRight, FiEye, FiGithub } from "react-icons/fi";
 
 type ShowcaseItem = {
   id: number;
   title: string;
   excerpt: string;
   image: string;
-  category: string;
+  category: string[];
   views?: number;
-  featured: boolean;
   tags: string[];
   link?: string;
   githubLink?: string;
@@ -57,28 +56,38 @@ const ShowcaseSection = ({
     () => [
       {
         id: 1,
-        title: "AI FARM ROBOTICS with Next.js",
+        title: "AI FARM ROBOTICS",
         excerpt:
           "A full-stack solution built with Next.js, TypeScript, and Stripe integration for seamless company experience.",
         image: "/images/Image02.jpg",
-        category: "Full Stack",
-        featured: true,
-        tags: ["Next.js", "TypeScript", "Directus"],
+        category: ["Full Stack","UI/UX Design"],
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Directus"],
         link: "http://139.59.230.143:3000/",
         status: "Completed",
         type: "project",
       },
       {
         id: 2,
-        title: "Portfolio",
+        title: "Next.js Portfolio",
         excerpt: "Modern and intuitive portfolio website",
         image: "/images/Image03.jpg",
-        category: "Front-end",
-        featured: false,
+        category: ["Front-end"],
         tags: ["Next.js", "Tailwind CSS", "Creative"],
         link: "https://seng-hoirna-portfolio.vercel.app/",
         githubLink: "https://github.com/hoirna/my-portfolio",
         status: "In Progress",
+        type: "project",
+      },
+      {
+        id: 3,
+        title: "HTML Portfolio",
+        excerpt:
+          "A comprehensive platform for AI-driven agricultural solutions, featuring a user-friendly interface and robust backend.",
+        image: "/images/Image01.jpg",
+        category: ["Front-end"],
+        tags: ["HTML", "CSS", "JavaScript"],
+        githubLink: "https://github.com/hoirna",
+        status: "Completed",
         type: "project",
       },
     ],
@@ -96,7 +105,7 @@ const ShowcaseSection = ({
       setFilteredItems(displayItems);
     } else {
       setFilteredItems(
-        displayItems.filter((item) => item.category === activeFilter)
+        displayItems.filter((item) => item.category.includes(activeFilter))
       );
     }
   }, [activeFilter, displayItems]);
@@ -118,8 +127,7 @@ const ShowcaseSection = ({
       <article
         key={item.id}
         className={`relative group bg-white dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-all duration-300 hover:shadow-lg hover:border-emerald-500/30 dark:hover:border-emerald-400/30 ${
-          item.featured ? "lg:col-span-2" : ""
-        }`}
+          theme === "dark" ? "dark:bg-gray-900" : "bg-white"}`}
         style={{
           animationDelay: `${index * 0.1}s`,
           animationFillMode: "both",
@@ -136,11 +144,6 @@ const ShowcaseSection = ({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
             <div className="absolute top-4 left-4 flex gap-2">
-              {item.featured && (
-                <span className="bg-emerald-600 text-white px-2.5 py-1 rounded-full text-xs font-medium">
-                  Featured
-                </span>
-              )}
             </div>
           </div>
           <div className="flex-1 p-6 flex flex-col">
@@ -154,7 +157,7 @@ const ShowcaseSection = ({
             </div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
               {item.link ? (
-                <Link href={item.link} className="hover:underline">
+                <Link href={item.link}>
                   {item.title}
                 </Link>
               ) : (
@@ -166,7 +169,7 @@ const ShowcaseSection = ({
             </p>
             {item.tags.length > 0 && (
               <div className="mt-auto mb-4 flex flex-wrap gap-2">
-                {item.tags.slice(0, 3).map((tag) => (
+                {item.tags.slice(0, 4).map((tag) => (
                   <span
                     key={tag}
                     className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2.5 py-1 rounded-full text-xs"
@@ -226,89 +229,75 @@ const ShowcaseSection = ({
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-16 relative overflow-hidden">
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div
-          className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
-          style={{
-            backgroundColor:
-              theme === "dark"
-                ? "rgba(0, 0, 0, 0.9)"
-                : "rgba(245, 245, 245, 0.9)",
-          }}
-        />
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
-          }`}
-        ></div>
+  <section className="py-16 sm:py-20 lg:py-16 relative overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0">
+      <div
+        className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
+        style={{
+          backgroundColor:
+            theme === "dark" ? "rgba(0, 0, 0, 0.9)" : "rgba(245, 245, 245, 0.9)",
+        }}
+      />
+      <div
+        className={`absolute inset-0 bg-gradient-to-b from-transparent ${
+          theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
+        }`}
+      ></div>
+    </div>
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/20 dark:bg-emerald-900/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-200/20 dark:bg-green-900/10 rounded-full blur-3xl" />
+    </div>
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+          <span>{tagLabel}</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          <span className={theme === "dark" ? "text-gray-100" : "text-gray-900"}>
+            My
+          </span>{" "}
+          <span
+            className={theme === "dark" ? "text-emerald-400" : "text-emerald-600"}
+          >
+            Journey
+          </span>
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          {description}
+        </p>
       </div>
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/20 dark:bg-emerald-900/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-200/20 dark:bg-green-900/10 rounded-full blur-3xl" />
-      </div>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-            <span>{tagLabel}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            <span
-              className={theme === "dark" ? "text-gray-100" : "text-gray-900"}
+      {showFilters && (
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {displayCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveFilter(category)}
+              className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+                activeFilter === category
+                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/20"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`}
             >
-              My
-            </span>{" "}
-            <span
-              className={
-                theme === "dark" ? "text-emerald-400" : "text-emerald-600"
-              }
-            >
-              Journey
-            </span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            {description}
+              {category}
+            </button>
+          ))}
+        </div>
+      )}
+      {filteredItems.length === 0 ? (
+        <div className="text-center p-24 mb-12 ">
+          <p className="text-lg font-medium text-gray-600 dark:text-gray-400">
+            No Project in this Category
           </p>
         </div>
-        {showFilters && (
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
-            {displayCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
-                  activeFilter === category
-                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/20"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        )}
+      ) : (
         <div className={`grid ${getGridClasses()} gap-6`}>
           {filteredItems.map((item, index) => renderCard(item, index))}
         </div>
-        <div className="mt-12 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Downloads
-          </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Get my personal CV details in PDF format.
-          </p>
-          <a
-            href="/PDF/Seng_Hoirna_CV.pdf"
-            download
-            className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-emerald-700 dark:hover:bg-emerald-500 transition-colors shadow-md"
-          >
-            <FiDownload className="w-5 h-5" />
-            Download CV
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+      )}
+    </div>
+  </section>
+);
 };
 
 export default ShowcaseSection;

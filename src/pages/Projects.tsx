@@ -34,7 +34,7 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "My Portfilio",
+      title: "Next.js Portfilio",
       description: "An intuitive drag-and-drop tool for creating stunning professional portfolios with real-time previews.",
       image: "/images/Image02.jpg",
       link: "/",
@@ -45,8 +45,8 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "School E-commerce",
-      description: "A simple e-commerce platform built with vanilla technologies.",
+      title: "HTML Portfolio",
+      description: "A simple portfolio website built with HTML, CSS, and JavaScript.",
       image: "/images/Image03.jpg",
       link: "",
       github: "",

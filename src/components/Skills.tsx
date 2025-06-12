@@ -322,9 +322,9 @@ const SkillsSection = () => {
             theme === "dark" ? "border-gray-800" : "border-gray-200"
           }`}
         >
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto ml-4 sm:ml-4 md:ml-0 sm:px-6 lg:px-8">
             <h3
-              className={`text-2xl font-semibold mb-6 ${
+              className={`text-2xl font-semibold mb-6  ${
                 theme === "dark" ? "text-gray-200" : "text-gray-800"
               }`}
             >

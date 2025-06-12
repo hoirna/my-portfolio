@@ -10,24 +10,18 @@ const AboutSection = () => {
       className="relative py-24 sm:py-24 lg:py-40 font-sans bg-white dark:bg-gray-900"
       aria-labelledby="about-heading"
     >
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div
-          className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
-          style={{
-            backgroundColor:
-              theme === "dark"
-                ? "rgba(0, 0, 0, 0.9)"
-                : "rgba(245, 245, 245, 0.9)",
-          }}
-        />
-        <div
-          className={`absolute inset-0 bg-gradient-to-b from-transparent ${
-            theme === "dark" ? "to-gray-950/10" : "to-gray-50/10"
-          }`}
-        ></div>
-      </div>
+         <div className="fixed inset-0 pointer-events-none z-0">
+          <div
+            className="absolute inset-0 bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.3)_1px,transparent_1px)]"
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-b from-transparent ${
+              theme === "dark" ? "to-gray-950" : "to-gray-50"
+            }`}
+          ></div>
+        </div>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <header className="text-center mb-20">
+        <header className="text-center mb-">
           <span
             className={`text-sm font-medium px-4 py-1 rounded-full ${
               theme === "dark"
@@ -48,7 +42,7 @@ const AboutSection = () => {
           </h2>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="flex flex-col lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
