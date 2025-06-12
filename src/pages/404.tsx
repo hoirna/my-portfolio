@@ -10,6 +10,7 @@ export default function Home() {
       loop
       security='strict'
       autoplay
+      speed={1.5}
     />
     </div>
   );
