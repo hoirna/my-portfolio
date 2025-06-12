@@ -109,7 +109,7 @@ export default function About() {
           theme === "dark" ? "bg-gray-950 text-gray-100" : "bg-gray-100 text-gray-900"
         }`}
       >
-        <div className="fixed inset-0 pointer-events-none">
+       <div className="fixed inset-0 pointer-events-none">
           <div
             className={`absolute inset-0 bg-grid-pattern bg-[length:35px_35px] opacity-3 ${
               theme === "dark" ? "bg-gray-800/5" : "bg-gray-400/5"
@@ -118,7 +118,7 @@ export default function About() {
           <div
             className={`absolute inset-0 bg-gradient-to-b from-transparent ${
               theme === "dark" ? "to-gray-950/30" : "to-gray-100/30"
-            }`}
+            }`} 
           ></div>
         </div>
 

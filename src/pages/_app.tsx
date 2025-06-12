@@ -10,16 +10,22 @@ import Loading from "./Loading";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-    }, 7000);
+    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
 
-    return () => {
-      clearTimeout(timeoutId);
-    };
+    if (!hasSeenLoading) {
+      setIsLoading(true);
+      const timeoutId = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("hasSeenLoading", "true");
+      }, 7000);
+      
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
   }, []);
 
   return (
