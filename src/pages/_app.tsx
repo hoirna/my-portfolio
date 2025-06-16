@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
       const timeoutId = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("hasSeenLoading", "true");
-      }, 7000);
+      }, 9000);
       
       return () => {
         clearTimeout(timeoutId);
@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
       <Head>
-        <link rel="icon" href="/images/code_icon.png" />
+        <link rel="icon" href="/images/logoCoffee.png" />
       </Head>
 
       {isLoading ? (

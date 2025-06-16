@@ -10,23 +10,36 @@ import {
   FaPython,
   FaDocker,
   FaGitAlt,
+  FaNode,
 } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript } from "react-icons/si";
+import { RiTailwindCssFill } from "react-icons/ri";
+
 
 const skillsData = [
   { name: "HTML", level: 85, icon: <FaHtml5 /> },
   { name: "CSS", level: 85, icon: <FaCss3Alt /> },
   { name: "JavaScript", level: 70, icon: <FaJs /> },
   { name: "Next.js", level: 85, icon: <SiNextdotjs /> },
+  { name: "Node.js", level: 70, icon: <FaNode /> },
+  { name: "Tailwind CSS", level: 80, icon: <RiTailwindCssFill /> },
   { name: "TypeScript", level: 80, icon: <SiTypescript /> },
   { name: "Figma", level: 75, icon: <FaFigma /> },
 ];
 
 const sliderIcons = [
+  { name: "HTML", icon: <FaHtml5 /> },
+  { name: "CSS", icon: <FaCss3Alt /> },
+  { name: "Tailwind CSS", icon: <RiTailwindCssFill /> },
   { name: "React", icon: <FaReact /> },
   { name: "Vue 3", icon: <FaVuejs /> },
-  { name: "Angular", icon: <FaAngular /> },
+  { name: "Next.js", icon: <SiNextdotjs /> },
   { name: "Python", icon: <FaPython /> },
+  { name: "Node.js", icon: <FaNode /> },
+  { name: "Angular", icon: <FaAngular /> },
+  { name: "JavaScript", icon: <FaJs /> },
+  { name: "TypeScript", icon: <SiTypescript /> },
+  { name: "Figma", icon: <FaFigma /> },
   { name: "Docker", icon: <FaDocker /> },
   { name: "Git", icon: <FaGitAlt /> },
 ];
@@ -122,14 +135,14 @@ const SkillsSection = () => {
           position: absolute;
           top: 0;
           bottom: 0;
-          width: 150px; /* Wider smoke for a more dramatic SpaceX effect */
+          width: 150px;
           z-index: 10;
           pointer-events: none;
         }
         .slider-track {
           display: flex;
           width: max-content;
-          animation: slide 60s linear infinite;
+          animation: slide 100s linear infinite;
         }
 
         @keyframes slide {
@@ -137,7 +150,7 @@ const SkillsSection = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%); /* Move by half of the content width */
+            transform: translateX(-50%);
           }
         }
 
@@ -162,7 +175,7 @@ const SkillsSection = () => {
           }`}
         ></div>
       </div>
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 fade-in">
           <span
             className={`text-sm font-medium px-4 py-1 rounded-full ${

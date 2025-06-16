@@ -51,7 +51,7 @@ const Navbar = () => {
         isScrolled ? "backdrop-blur-md" : ""
       } bg-[size:100px_100px] bg-[linear-gradient(to_right,rgba(16,185,129,0)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0)_1px,transparent_1px)]`}
     >
-      <Toolbar className="flex justify-between items-center w-full max-w-7xl mx-auto px-4">
+      <Toolbar className="flex justify-between items-center w-full max-w-6xl mx-auto px-4">
         <Typography
           variant="h5"
           component="div"
@@ -67,11 +67,11 @@ const Navbar = () => {
           <Link href="/" legacyBehavior>
             <a className="hover:no-underline flex items-center">
               <Image
-                src="/images/code_icon.png"
+                src="/images/logoCoffee.png"
                 alt="Logo"
                 width={isMobile ? 24 : 28}
                 height={isMobile ? 24 : 28}
-                className="mr-2 w-10 h-10 transition-all duration-300"
+                className="mr-1 mb-3 w-12 h-12 transition-all duration-300"
               />
               <span className="relative">
                 {name}
@@ -159,8 +159,8 @@ const Navbar = () => {
                 theme === "dark"
                   ? "1px solid rgba(74, 222, 128, 0.3)"
                   : "1px solid rgba(16, 185, 129, 0.3)",
-              width: 40,
-              height: 40,
+              width: 35,
+              height: 35,
             }}
           >
             {theme === "light" ? (

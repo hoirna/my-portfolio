@@ -115,7 +115,7 @@ const Footer = () => {
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col items-center">
           <div className="flex space-x-6 social-links mb-8">
             {socialLinks.map((link) => (

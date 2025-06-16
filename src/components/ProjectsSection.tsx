@@ -63,7 +63,7 @@ const ShowcaseSection = ({
         category: ["Full Stack","UI/UX Design"],
         tags: ["Next.js", "TypeScript", "Tailwind CSS", "Directus"],
         link: "http://139.59.230.143:3000/",
-        status: "Completed",
+        status: "In Progress",
         type: "project",
       },
       {
@@ -75,7 +75,7 @@ const ShowcaseSection = ({
         tags: ["Next.js", "Tailwind CSS", "Creative"],
         link: "https://seng-hoirna-portfolio.vercel.app/",
         githubLink: "https://github.com/hoirna/my-portfolio",
-        status: "In Progress",
+        status: "Completed",
         type: "project",
       },
       {
@@ -248,7 +248,7 @@ const ShowcaseSection = ({
       <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/20 dark:bg-emerald-900/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-200/20 dark:bg-green-900/10 rounded-full blur-3xl" />
     </div>
-    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+    <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-4 py-1.5 rounded-full text-sm font-medium mb-4">
           <span>{tagLabel}</span>

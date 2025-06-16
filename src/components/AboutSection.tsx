@@ -20,7 +20,7 @@ const AboutSection = () => {
             }`}
           ></div>
         </div>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <header className="text-center mb-">
           <span
             className={`text-sm font-medium px-4 py-1 rounded-full ${
