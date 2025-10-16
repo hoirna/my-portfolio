@@ -12,13 +12,13 @@ const CoffeeLoading = () => {
         }
         return prev + 1;
       });
-    }, 50); // speed: 50ms per increment
+    }, 50); 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-800 dark:via-gray-900 dark:to-black">
-      {/* Spinning Coffee Bean */}
+ 
       <div className="w-24 h-24 animate-spin-slow">
         <svg
           viewBox="0 0 64 64"
@@ -44,11 +44,6 @@ const CoffeeLoading = () => {
           />
         </svg>
       </div>
-
-      {/* Text */}
-      <h2 className="mt-4 text-xl font-bold text-amber-800 dark:text-amber-200">
-        Brewing Coffee...
-      </h2>
       <p className="text-lg text-amber-700 dark:text-amber-300 font-semibold">
         {progress}%
       </p>

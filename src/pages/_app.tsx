@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
       const timeoutId = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("hasSeenLoading", "true");
-      }, 9000);
+      }, 6000);
       
       return () => {
         clearTimeout(timeoutId);
